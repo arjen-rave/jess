@@ -1077,7 +1077,7 @@ function cardCategory(tags){
 // ═══════════════════════════════════════════════
 // DATE UTILS
 // ═══════════════════════════════════════════════
-function getStart(){ const s=localStorage.getItem('jj_start'); return s?new Date(s+'T00:00:00'):new Date('2025-07-01T00:00:00'); }
+function getStart(){ const s=localStorage.getItem('jj_start'); return s?new Date(s+'T00:00:00'):new Date('2026-06-08T00:00:00'); }
 function dk(d){ const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${day}`; }
 function mmdd(d){ return `${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function today0(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
