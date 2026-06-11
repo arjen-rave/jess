@@ -584,7 +584,7 @@
     { "t": "wherever they go.", "s": "medium" },
     { "t": "Others,", "s": "small" },
     { "t": "whenever.", "s": "big" },
-    { "t": "they go.", "s": "medium" },
+    { "t": "they go.", "s": "medium" }
   ],
   "icon": "running",
   "bg": "#F5EDD8",
