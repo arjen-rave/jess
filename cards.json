@@ -566,5 +566,18 @@
   "icon": "slushy",
   "bg": "#B8D4E8",
   "tags": []
+},
+{
+  "id": 45,
+  "name": "We're All Freaks",
+  "parts": [
+    { "t": "We're all damaged.", "s": "tiny" },
+    { "t": "We're all fragile.", "s": "small" },
+    { "t": "We're all freaks.", "s": "medium" },
+    { "t": "But that's alright.", "s": "big" }
+  ],
+  "icon": "fixed_heart",
+  "bg": "#F0C8C8",
+  "tags": []
 }
 ]  
