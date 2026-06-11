@@ -2241,10 +2241,16 @@ function cf_submitCard(){
     }
   })();
 
-  function dismissInstallBanner() {
+ function dismissInstallBanner() {
     localStorage.setItem('jj_dismissed_install', '1');
     document.getElementById('ios-install-banner').style.display = 'none';
   }
+
+  // Auto-open card form if ?contribute=1
+  (function(){
+    if(new URLSearchParams(window.location.search).get('contribute')==='1')
+      openCardForm();
+  })();
 </script>
 </body>
 </html>
