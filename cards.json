@@ -69,7 +69,7 @@
       { "t": "I just don't", "s": "small" },
       { "t": "give a fuck.", "s": "medium" }
     ],
-    "icon": "face_plain",
+    "icon": "heart_hands",
     "bg": "#F8F4EC",
     "tags": []
   },
@@ -82,7 +82,7 @@
       { "t": "is realising the other person", "s": "tiny" },
       { "t": "was born an idiot.", "s": "medium" }
     ],
-    "icon": "face_curly",
+    "icon": "idiot_thought",
     "bg": "#F0C8C8",
     "tags": []
   },
@@ -106,7 +106,7 @@
       { "t": "will hurt me", "s": "small" },
       { "t": "this time.", "s": "big" }
     ],
-    "icon": "face_plain",
+    "icon": "mushroom",
     "bg": "#C8B8A2",
     "tags": []
   },
@@ -118,7 +118,7 @@
       { "t": "43.", "s": "big" },
       { "t": "I'm out.", "s": "medium" }
     ],
-    "icon": "face_curly",
+    "icon": "cap",
     "bg": "#3C3C3C",
     "tags": []
   },
