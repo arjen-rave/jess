@@ -96,5 +96,401 @@
     "icon": "jack_o_lantern",
     "bg": "#1A1A1A",
     "tags": ["halloween"]
+  },
+  [
+  {
+    "id": 9,
+    "name": "Toxic Trait",
+    "parts": [
+      { "t": "My toxic trait?", "s": "small" },
+      { "t": "Testing whether food that hurt me last time", "s": "tiny" },
+      { "t": "will hurt me", "s": "small" },
+      { "t": "this time.", "s": "big" }
+    ],
+    "icon": "face_plain",
+    "bg": "#C8B8A2",
+    "tags": []
+  },
+  {
+    "id": 10,
+    "name": "Emotionally Matures",
+    "parts": [
+      { "t": "Googled when men fully emotionally mature.", "s": "small" },
+      { "t": "43.", "s": "big" },
+      { "t": "I'm out.", "s": "medium" }
+    ],
+    "icon": "face_curly",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 11,
+    "name": "Being Single",
+    "parts": [
+      { "t": "Being single is great.", "s": "small" },
+      { "t": "I can do whatever I want", "s": "small" },
+      { "t": "(nothing),", "s": "medium" },
+      { "t": "see whoever I want", "s": "small" },
+      { "t": "(no one),", "s": "medium" },
+      { "t": "go out whenever I want", "s": "small" },
+      { "t": "(never).", "s": "big" }
+    ],
+    "icon": "moon",
+    "bg": "#2A3A4A",
+    "tags": ["weekend"]
+  },
+  {
+    "id": 12,
+    "name": "I Recommend Alcohol",
+    "parts": [
+      { "t": "I've tasted relationships.", "s": "small" },
+      { "t": "Situationships. Dating. Being single.", "s": "tiny" },
+      { "t": "I recommend", "s": "small" },
+      { "t": "alcohol.", "s": "big" }
+    ],
+    "icon": "wine_glass",
+    "bg": "#6B3A5A",
+    "tags": []
+  },
+  {
+    "id": 13,
+    "name": "Gaslightenment",
+    "parts": [
+      { "t": "Word of the day:", "s": "tiny" },
+      { "t": "Gaslightenment.", "s": "big" },
+      { "t": "When someone rewrites the whole story", "s": "tiny" },
+      { "t": "and expects you to", "s": "small" },
+      { "t": "thank them for it.", "s": "medium" }
+    ],
+    "icon": "face_plain",
+    "bg": "#1A1A1A",
+    "tags": []
+  },
+  {
+    "id": 14,
+    "name": "Bitchuation",
+    "parts": [
+      { "t": "Word of the day:", "s": "tiny" },
+      { "t": "Bitchuation.", "s": "big" },
+      { "t": "A situation that forces you to act", "s": "small" },
+      { "t": "like a bitch.", "s": "medium" }
+    ],
+    "icon": "face_curly",
+    "bg": "#4A2A3A",
+    "tags": []
+  },
+  {
+    "id": 15,
+    "name": "Be Nice First",
+    "parts": [
+      { "t": "We all have that one friend", "s": "small" },
+      { "t": "you have to warn people about", "s": "tiny" },
+      { "t": "before introducing them.", "s": "small" },
+      { "t": "I am that friend.", "s": "big" }
+    ],
+    "icon": "face_curly",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 16,
+    "name": "Choosing Kindness",
+    "parts": [
+      { "t": "Today I'm choosing", "s": "small" },
+      { "t": "kindness.", "s": "big" },
+      { "t": "But we'll see.", "s": "small" },
+      { "t": "It's still early.", "s": "medium" }
+    ],
+    "icon": "sunrise",
+    "bg": "#E8D5B0",
+    "tags": ["weekday"]
+  },
+  {
+    "id": 17,
+    "name": "Happiest In Her 40s",
+    "parts": [
+      { "t": "Studies show women are happiest in their 40s and 50s.", "s": "tiny" },
+      { "t": "After they stop caring", "s": "small" },
+      { "t": "what everyone thinks.", "s": "big" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#C4455A",
+    "tags": ["birthday"]
+  },
+  {
+    "id": 18,
+    "name": "Say Stupid Stuff",
+    "parts": [
+      { "t": "I don't like to argue.", "s": "small" },
+      { "t": "But you can't just say", "s": "small" },
+      { "t": "stupid stuff", "s": "big" },
+      { "t": "and expect me to keep quiet.", "s": "small" }
+    ],
+    "icon": "face_curly",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 19,
+    "name": "Not Made To Cook",
+    "parts": [
+      { "t": "Not all of us were made to cook.", "s": "small" },
+      { "t": "Some of us were made to have", "s": "tiny" },
+      { "t": "conversations", "s": "big" },
+      { "t": "with the person cooking.", "s": "small" }
+    ],
+    "icon": "coffee_cup",
+    "bg": "#C4956A",
+    "tags": []
+  },
+  {
+    "id": 20,
+    "name": "All This Panic",
+    "parts": [
+      { "t": "All this panic,", "s": "medium" },
+      { "t": "and still", "s": "small" },
+      { "t": "no disco.", "s": "big" }
+    ],
+    "icon": "disco_ball",
+    "bg": "#1A1A2E",
+    "tags": []
+  },
+  {
+    "id": 21,
+    "name": "Horrors Persist",
+    "parts": [
+      { "t": "The horrors persist.", "s": "medium" },
+      { "t": "But so", "s": "small" },
+      { "t": "do I.", "s": "big" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#C8A0B8",
+    "tags": []
+  },
+  {
+    "id": 22,
+    "name": "Talking Shit Calories",
+    "parts": [
+      { "t": "If talking shit burned calories,", "s": "small" },
+      { "t": "I'd look", "s": "small" },
+      { "t": "athletic as hell.", "s": "big" }
+    ],
+    "icon": "dumbbell",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 23,
+    "name": "Tiny Bit Safer",
+    "parts": [
+      { "t": "You don't need to feel amazing.", "s": "small" },
+      { "t": "Just a tiny bit", "s": "small" },
+      { "t": "safer", "s": "big" },
+      { "t": "in your own body.", "s": "medium" }
+    ],
+    "icon": "moon",
+    "bg": "#2A2A4A",
+    "tags": []
+  },
+  {
+    "id": 24,
+    "name": "Calm Down First",
+    "parts": [
+      { "t": "Not every problem needs solving", "s": "small" },
+      { "t": "right now.", "s": "medium" },
+      { "t": "Sometimes calming down", "s": "small" },
+      { "t": "is the first job.", "s": "big" }
+    ],
+    "icon": "face_plain",
+    "bg": "#C8D8C0",
+    "tags": []
+  },
+  {
+    "id": 25,
+    "name": "Damp Sock",
+    "parts": [
+      { "t": "Do not debate.", "s": "big" },
+      { "t": "You are not being paid to educate someone", "s": "tiny" },
+      { "t": "with the listening skills of", "s": "small" },
+      { "t": "a damp sock.", "s": "medium" }
+    ],
+    "icon": "face_plain",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 26,
+    "name": "Let Them Be Wrong",
+    "parts": [
+      { "t": "Let them be wrong.", "s": "big" },
+      { "t": "Peace is realising you don't have to attend", "s": "tiny" },
+      { "t": "every argument", "s": "medium" },
+      { "t": "you're invited to.", "s": "small" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#6A8A6A",
+    "tags": []
+  },
+  {
+    "id": 27,
+    "name": "Honk Once",
+    "parts": [
+      { "t": "Honk once.", "s": "big" },
+      { "t": "Not twice.", "s": "medium" },
+      { "t": "Twice suggests you care.", "s": "small" }
+    ],
+    "icon": "car",
+    "bg": "#E8E0D0",
+    "tags": []
+  },
+  {
+    "id": 28,
+    "name": "Screaming Goose",
+    "parts": [
+      { "t": "Keep your face calm.", "s": "big" },
+      { "t": "Inside, you may be screaming", "s": "tiny" },
+      { "t": "like a goose in a car park.", "s": "medium" },
+      { "t": "Outside:", "s": "small" },
+      { "t": "remain elegant.", "s": "medium" }
+    ],
+    "icon": "face_plain",
+    "bg": "#D8E8D0",
+    "tags": []
+  },
+  {
+    "id": 29,
+    "name": "Absolutely Not Derek",
+    "parts": [
+      { "t": "Do not explain yourself", "s": "small" },
+      { "t": "like you are in court.", "s": "medium" },
+      { "t": "You said no.", "s": "big" },
+      { "t": "That is a full sentence.", "s": "small" },
+      { "t": "So is 'absolutely not, Derek.'", "s": "tiny" }
+    ],
+    "icon": "face_plain",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 30,
+    "name": "Better Parking",
+    "parts": [
+      { "t": "If they keep going,", "s": "small" },
+      { "t": "walk away.", "s": "big" },
+      { "t": "Not because they won.", "s": "small" },
+      { "t": "Because your brain", "s": "small" },
+      { "t": "deserves better parking.", "s": "medium" }
+    ],
+    "icon": "car",
+    "bg": "#4A5A4A",
+    "tags": []
+  },
+  {
+    "id": 31,
+    "name": "Loud Furniture",
+    "parts": [
+      { "t": "Some people are lessons.", "s": "small" },
+      { "t": "Some people are warnings.", "s": "small" },
+      { "t": "Some people are just", "s": "small" },
+      { "t": "loud furniture.", "s": "big" }
+    ],
+    "icon": "folding_chair",
+    "bg": "#C4956A",
+    "tags": []
+  },
+  {
+    "id": 32,
+    "name": "Not Again",
+    "parts": [
+      { "t": "Every morning when I wake", "s": "small" },
+      { "t": "I say the same thing:", "s": "tiny" },
+      { "t": "fuck,", "s": "big" },
+      { "t": "not again.", "s": "medium" }
+    ],
+    "icon": "sunrise",
+    "bg": "#2A3A4A",
+    "tags": ["weekday"]
+  },
+  {
+    "id": 33,
+    "name": "Do The Stupid Thing",
+    "parts": [
+      { "t": "There will never be", "s": "small" },
+      { "t": "the perfect time.", "s": "medium" },
+      { "t": "Do the stupid thing now.", "s": "big" },
+      { "t": "You deserve it.", "s": "small" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#1A3A5A",
+    "tags": []
+  },
+  {
+    "id": 34,
+    "name": "Stop Overthinking",
+    "parts": [
+      { "t": "Stop overthinking.", "s": "big" },
+      { "t": "You are the only one", "s": "small" },
+      { "t": "who cares.", "s": "medium" }
+    ],
+    "icon": "face_plain",
+    "bg": "#B8D4E8",
+    "tags": []
+  },
+  {
+    "id": 35,
+    "name": "Millicent's Observation",
+    "parts": [
+      { "t": "Jess thinks it's worth examining", "s": "small" },
+      { "t": "why you apologised", "s": "small" },
+      { "t": "for taking up space", "s": "medium" },
+      { "t": "before you'd even started.", "s": "tiny" }
+    ],
+    "icon": "face_curly",
+    "bg": "#F5EDD8",
+    "tags": []
+  },
+  {
+    "id": 36,
+    "name": "Ned's Notes",
+    "parts": [
+      { "t": "Jess has watched you say yes", "s": "small" },
+      { "t": "to things you didn't want to do.", "s": "tiny" },
+      { "t": "She has kept notes.", "s": "small" },
+      { "t": "She would like you to", "s": "small" },
+      { "t": "explain yourself.", "s": "big" }
+    ],
+    "icon": "face_curly",
+    "bg": "#E8D5B0",
+    "tags": []
+  },
+  {
+    "id": 37,
+    "name": "Alex's Standards",
+    "parts": [
+      { "t": "You are being harder on yourself", "s": "small" },
+      { "t": "for this mistake", "s": "tiny" },
+      { "t": "than you would be on", "s": "small" },
+      { "t": "literally anyone else on earth.", "s": "medium" },
+      { "t": "Apply your own standards.", "s": "big" },
+      { "t": "Just once.", "s": "small" }
+    ],
+    "icon": "face_plain",
+    "bg": "#C8D8C0",
+    "tags": []
+  },
+  {
+    "id": 38,
+    "name": "Bob's Notes",
+    "parts": [
+      { "t": "Why are you still apologising", "s": "small" },
+      { "t": "for things that are not your fault?", "s": "tiny" },
+      { "t": "Jess has been watching.", "s": "medium" },
+      { "t": "She has kept notes.", "s": "small" },
+      { "t": "She is not impressed.", "s": "big" }
+    ],
+    "icon": "face_plain",
+    "bg": "#F0C8C8",
+    "tags": []
   }
+]  
 ]
