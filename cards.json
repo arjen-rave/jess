@@ -790,7 +790,7 @@
       { "t": "Not everything", "s": "small" },
       { "t": "needs a reaction.", "s": "medium" }
     ],
-    "icon": "margarita",
+    "icon": "margarita_glass",
     "bg": "#E8C547",
     "tags": []
   },
@@ -1048,7 +1048,7 @@
       { "t": "fuck off", "s": "big" },
       { "t": "is my wingman.", "s": "small" }
     ],
-    "icon": "helmet",
+    "icon": "plane",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -1060,7 +1060,7 @@
       { "t": "You're the", "s": "small" },
       { "t": "weapon.", "s": "big" }
     ],
-    "icon": "plug_shooter",
+    "icon": "finger_gun",
     "bg": "#4A2A3A",
     "tags": []
   },
