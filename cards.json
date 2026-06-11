@@ -452,8 +452,8 @@
     "id": 36,
     "name": "Say yes",
     "parts": [
-      { "t": "Why did you say yes", "s": "small" },
-      { "t": "to things you didn't want to do", "s": "big" },
+      { "t": "Why did you say yes to things", "s": "small" },
+      { "t": "you didn't want to do", "s": "big" },
       { "t": "at least three times this week", "s": "small" }
     ],
     "icon": "text_bubble_yes",
@@ -480,7 +480,7 @@
     "name": "Sorry",
     "parts": [
       { "t": "Why are you still", "s": "small" }, { "t": "apologising", "s": "big" },
-      { "t": "for things that are not your fault?", "s": "tiny" }
+      { "t": "for things that are not your fault?", "s": "medium" }
     ],
     "icon": "text_bubble_sorry",
     "bg": "#F0C8C8",
@@ -492,7 +492,8 @@
   "parts": [
     { "t": "Today was great!", "s": "small" },
     { "t": "Chaos is great.", "s": "medium" },
-    { "t": "Chaos is what killed the dinosaurs,", "s": "big" },
+    { "t": "Chaos is what killed,", "s": "medium" },
+    { "t": "the dinosaurs,", "s": "big" },
     { "t": "darling.", "s": "small" }
   ],
   "icon": "dinosaur",
@@ -587,6 +588,54 @@
   ],
   "icon": "running",
   "bg": "#F5EDD8",
+  "tags": []
+},
+{
+  "id": 47,
+  "name": "Radiate Positivity",
+  "parts": [
+    { "t": "Radiate positivity", "s": "small" },
+    { "t": "like fucking", "s": "medium" },
+    { "t": "sunshine.", "s": "big" }
+  ],
+  "icon": "sun",
+  "bg": "#E8C547",
+  "tags": []
+},
+{
+  "id": 48,
+  "name": "Breathe The Good Shit",
+  "parts": [
+    { "t": "Breathe in the good shit.", "s": "medium" },
+    { "t": "Breathe out", "s": "small" },
+    { "t": "the bullshit.", "s": "big" }
+  ],
+  "icon": "air",
+  "bg": "#C8D8C0",
+  "tags": []
+},
+{
+  "id": 49,
+  "name": "Light Up The Room",
+  "parts": [
+    { "t": "You light up", "s": "small" },
+    { "t": "any fucking room", "s": "big" },
+    { "t": "you walk into.", "s": "small" }
+  ],
+  "icon": "sun",
+  "bg": "#E8C547",
+  "tags": []
+},
+{
+  "id": 50,
+  "name": "Trust Your Gut",
+  "parts": [
+    { "t": "Your gut knows what's up.", "s": "small" },
+    { "t": "Trust that", "s": "small" },
+    { "t": "fucking bitch.", "s": "big" }
+  ],
+  "icon": "queen",
+  "bg": "#4A2A3A",
   "tags": []
 }
 ]  
