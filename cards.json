@@ -45,7 +45,7 @@
       { "t": "I'm in Mexico", "s": "big" },
       { "t": "ordering my third tequila.", "s": "small" }
     ],
-    "icon": "margarita_glass",
+    "icon": "shot_glass",
     "bg": "#E8C547",
     "tags": ["weekday"]
   },
