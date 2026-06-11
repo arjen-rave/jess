@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Just For Jess</title>
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="For Jess">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#242424">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -578,6 +584,21 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
 }
 .cf-submit-btn:hover { background:var(--mustard-dark); }
 .cf-submit-note { font-size:11px; color:rgba(245,237,216,0.35); text-align:center; margin-top:8px; font-style:italic; }
+
+/* ── iOS INSTALL BANNER ── */
+#ios-install-banner {
+  background:rgba(232,197,71,0.12); border:1px solid rgba(232,197,71,0.32);
+  border-radius:12px; padding:10px 14px; margin-bottom:14px;
+  display:none; align-items:center; gap:10px;
+  font-size:12px; color:var(--mustard); line-height:1.45;
+}
+#ios-install-banner .install-text { flex:1; }
+#ios-install-banner .install-dismiss {
+  background:none; border:none; color:rgba(232,197,71,0.45);
+  cursor:pointer; font-size:16px; line-height:1; padding:0; flex-shrink:0;
+  transition:color 0.15s;
+}
+#ios-install-banner .install-dismiss:hover { color:var(--mustard); }
 </style>
 </head>
 <body>
@@ -666,6 +687,10 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
 
   <!-- TODAY -->
   <div id="screen-today" class="screen active">
+    <div id="ios-install-banner">
+      <span class="install-text">Tap Share → Add to Home Screen for daily reminders</span>
+      <button class="install-dismiss" onclick="dismissInstallBanner()" title="Dismiss">✕</button>
+    </div>
     <div class="today-meta">
       <div class="today-date" id="today-date">—</div>
       <div class="streak">🔥 <span id="streak-n">0</span> day streak</div>
@@ -712,7 +737,7 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
         <span>Daily reminder</span>
         <input type="time" id="notif-time" value="08:00">
       </div>
-      <p class="settings-note">Notification scheduling activates in the PWA version on iPhone.</p>
+      <p class="settings-note">Set a time to get a daily reminder. Works once installed on your iPhone.</p>
     </div>
 
     <div class="settings-block">
@@ -1077,7 +1102,7 @@ function cardCategory(tags){
 // ═══════════════════════════════════════════════
 // DATE UTILS
 // ═══════════════════════════════════════════════
-function getStart(){ const s=localStorage.getItem('jj_start'); return s?new Date(s+'T00:00:00'):new Date('2026-06-08T00:00:00'); }
+function getStart(){ const s=localStorage.getItem('jj_start'); return s?new Date(s+'T00:00:00'):new Date('2025-07-01T00:00:00'); }
 function dk(d){ const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${day}`; }
 function mmdd(d){ return `${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function today0(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
@@ -2154,6 +2179,72 @@ function cf_submitCard(){
   window.open(fullUrl, '_blank');
   showToast('Opening Google Form… just hit Submit there ✦');
 }
+</script>
+
+<script>
+  // ── SERVICE WORKER ──────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/jess/sw.js')
+        .then(reg => {
+          console.log('SW registered:', reg.scope);
+          window._swReg = reg;
+          const saved = localStorage.getItem('jj_notif_time');
+          if (saved && Notification.permission === 'granted') scheduleNotification(saved);
+        })
+        .catch(err => console.log('SW registration failed:', err));
+    });
+  }
+
+  // ── NOTIFICATIONS ────────────────────────────────────────
+  function scheduleNotification(time) {
+    const [h, m] = time.split(':').map(Number);
+    const next = new Date(); next.setHours(h, m, 0, 0);
+    if (next <= new Date()) next.setDate(next.getDate() + 1);
+    clearTimeout(window._notifTimer);
+    window._notifTimer = setTimeout(() => {
+      if (window._swReg) {
+        window._swReg.showNotification('Just For Jess ✦', {
+          body: 'Your card for today is waiting 💛',
+          icon: '/jess/icon-192.png',
+          badge: '/jess/icon-192.png'
+        });
+      }
+      scheduleNotification(time);
+    }, next - new Date());
+  }
+
+  document.getElementById('notif-time').addEventListener('change', async function () {
+    const time = this.value; if (!time) return;
+    if (!('Notification' in window)) { showToast('Notifications not supported here'); return; }
+    let perm = Notification.permission;
+    if (perm === 'default') perm = await Notification.requestPermission();
+    if (perm !== 'granted') { showToast('Notifications blocked — check your browser settings'); return; }
+    localStorage.setItem('jj_notif_time', time);
+    scheduleNotification(time);
+    const [h, m] = time.split(':');
+    showToast(`Notifications set for ${h}:${m} ✦`);
+  });
+
+  // Restore saved notification time into input on load
+  (function () {
+    const saved = localStorage.getItem('jj_notif_time');
+    if (saved) document.getElementById('notif-time').value = saved;
+  })();
+
+  // ── iOS INSTALL BANNER ───────────────────────────────────
+  (function () {
+    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.navigator.standalone === true;
+    if (isIos && !isStandalone && !localStorage.getItem('jj_dismissed_install')) {
+      document.getElementById('ios-install-banner').style.display = 'flex';
+    }
+  })();
+
+  function dismissInstallBanner() {
+    localStorage.setItem('jj_dismissed_install', '1');
+    document.getElementById('ios-install-banner').style.display = 'none';
+  }
 </script>
 </body>
 </html>
