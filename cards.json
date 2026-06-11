@@ -45,7 +45,7 @@
       { "t": "I'm in Bali", "s": "big" },
       { "t": "ordering my third margarita.", "s": "small" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "margarita_glass",
     "bg": "#E8C547",
     "tags": ["weekday"]
   },
