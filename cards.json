@@ -490,5 +490,81 @@
     "icon": "text_bubble_sorry",
     "bg": "#F0C8C8",
     "tags": []
-  }
+  },
+  {
+  "id": 39,
+  "name": "Chaos Darling",
+  "parts": [
+    { "t": "Today was great!", "s": "small" },
+    { "t": "Chaos is great.", "s": "medium" },
+    { "t": "Chaos is what killed the dinosaurs,", "s": "big" },
+    { "t": "darling.", "s": "small" }
+  ],
+  "icon": "dinosaur",
+  "bg": "#C4455A",
+  "tags": []
+},
+{
+  "id": 40,
+  "name": "Game Show Host",
+  "parts": [
+    { "t": "If you were happy every day of your life,", "s": "tiny" },
+    { "t": "you wouldn't be a human being.", "s": "small" },
+    { "t": "You'd be a", "s": "small" },
+    { "t": "game-show host.", "s": "big" }
+  ],
+  "icon": "prize_wheel",
+  "bg": "#E8C547",
+  "tags": []
+},
+{
+  "id": 41,
+  "name": "Treated Like Humans",
+  "parts": [
+    { "t": "When people complain about being treated", "s": "tiny" },
+    { "t": "like human beings,", "s": "small" },
+    { "t": "it's usually because", "s": "small" },
+    { "t": "they are.", "s": "big" }
+  ],
+  "icon": "face_plain",
+  "bg": "#C8D8C0",
+  "tags": []
+},
+{
+  "id": 42,
+  "name": "Chainsaw",
+  "parts": [
+    { "t": "Well,", "s": "small" },
+    { "t": "fuck me gently", "s": "big" },
+    { "t": "with a chainsaw.", "s": "medium" }
+  ],
+  "icon": "chainsaw",
+  "bg": "#1A1A1A",
+  "tags": []
+},
+{
+  "id": 43,
+  "name": "The Mythic Bitch",
+  "parts": [
+    { "t": "The icon.", "s": "small" },
+    { "t": "The almighty.", "s": "medium" },
+    { "t": "The mythic bitch", "s": "big" }
+  ],
+  "icon": "queen",
+  "bg": "#4A2A3A",
+  "tags": ["birthday"]
+},
+{
+  "id": 44,
+  "name": "Freeze Your Brain",
+  "parts": [
+    { "t": "Freeze your brain.", "s": "big" },
+    { "t": "Suck on that straw.", "s": "medium" },
+    { "t": "Happiness comes", "s": "small" },
+    { "t": "when everything numbs.", "s": "tiny" }
+  ],
+  "icon": "slushy",
+  "bg": "#B8D4E8",
+  "tags": []
+}
 ]  
