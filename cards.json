@@ -583,7 +583,7 @@
     { "t": "Some people bring happiness", "s": "small" },
     { "t": "wherever they go.", "s": "medium" },
     { "t": "Others,", "s": "small" },
-    { "t": "whenever.", "s": "big" },
+    { "t": "whenever", "s": "big" },
     { "t": "they go.", "s": "medium" }
   ],
   "icon": "running",
