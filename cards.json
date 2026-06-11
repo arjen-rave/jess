@@ -115,7 +115,7 @@
     "name": "Emotionally Matures",
     "parts": [
       { "t": "Googled when men fully emotionally mature.", "s": "small" },
-      { "t": "43.", "s": "big" },
+      { "t": "42.", "s": "big" },
       { "t": "I'm out.", "s": "medium" }
     ],
     "icon": "cap",
@@ -161,7 +161,7 @@
       { "t": "and expects you to", "s": "small" },
       { "t": "thank them for it.", "s": "medium" }
     ],
-    "icon": "face_plain",
+    "icon": "gaslight",
     "bg": "#1A1A1A",
     "tags": []
   },
@@ -174,7 +174,7 @@
       { "t": "A situation that forces you to act", "s": "small" },
       { "t": "like a bitch.", "s": "medium" }
     ],
-    "icon": "face_curly",
+    "icon": "queen",
     "bg": "#4A2A3A",
     "tags": []
   },
@@ -185,9 +185,9 @@
       { "t": "We all have that one friend", "s": "small" },
       { "t": "you have to warn people about", "s": "tiny" },
       { "t": "before introducing them.", "s": "small" },
-      { "t": "I am that friend.", "s": "big" }
+      { "t": "Be that friend.", "s": "big" }
     ],
-    "icon": "face_curly",
+    "icon": "devil_heart",
     "bg": "#F0C8C8",
     "tags": []
   },
@@ -200,7 +200,7 @@
       { "t": "But we'll see.", "s": "small" },
       { "t": "It's still early.", "s": "medium" }
     ],
-    "icon": "sunrise",
+    "icon": "boxing",
     "bg": "#E8D5B0",
     "tags": ["weekday"]
   },
@@ -225,7 +225,7 @@
       { "t": "stupid stuff", "s": "big" },
       { "t": "and expect me to keep quiet.", "s": "small" }
     ],
-    "icon": "face_curly",
+    "icon": "face_shush",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -238,7 +238,7 @@
       { "t": "conversations", "s": "big" },
       { "t": "with the person cooking.", "s": "small" }
     ],
-    "icon": "coffee_cup",
+    "icon": "conversation",
     "bg": "#C4956A",
     "tags": []
   },
@@ -300,7 +300,7 @@
       { "t": "Sometimes calming down", "s": "small" },
       { "t": "is the first job.", "s": "big" }
     ],
-    "icon": "face_plain",
+    "icon": "coffee_cup",
     "bg": "#C8D8C0",
     "tags": []
   },
@@ -313,7 +313,7 @@
       { "t": "with the listening skills of", "s": "small" },
       { "t": "a damp sock.", "s": "medium" }
     ],
-    "icon": "face_plain",
+    "icon": "sock",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -326,7 +326,7 @@
       { "t": "every argument", "s": "medium" },
       { "t": "you're invited to.", "s": "small" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "peace",
     "bg": "#6A8A6A",
     "tags": []
   },
@@ -338,7 +338,7 @@
       { "t": "Not twice.", "s": "medium" },
       { "t": "Twice suggests you care.", "s": "small" }
     ],
-    "icon": "car",
+    "icon": "goose",
     "bg": "#E8E0D0",
     "tags": []
   },
@@ -352,7 +352,7 @@
       { "t": "Outside:", "s": "small" },
       { "t": "remain elegant.", "s": "medium" }
     ],
-    "icon": "face_plain",
+    "icon": "goose",
     "bg": "#D8E8D0",
     "tags": []
   },
@@ -380,7 +380,7 @@
       { "t": "Because your brain", "s": "small" },
       { "t": "deserves better parking.", "s": "medium" }
     ],
-    "icon": "car",
+    "icon": "brain",
     "bg": "#4A5A4A",
     "tags": []
   },
@@ -406,7 +406,7 @@
       { "t": "fuck,", "s": "big" },
       { "t": "not again.", "s": "medium" }
     ],
-    "icon": "sunrise",
+    "icon": "bed",
     "bg": "#2A3A4A",
     "tags": ["weekday"]
   },
@@ -419,7 +419,7 @@
       { "t": "Do the stupid thing now.", "s": "big" },
       { "t": "You deserve it.", "s": "small" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "gift",
     "bg": "#1A3A5A",
     "tags": []
   },
@@ -431,34 +431,34 @@
       { "t": "You are the only one", "s": "small" },
       { "t": "who cares.", "s": "medium" }
     ],
-    "icon": "face_plain",
+    "icon": "brain",
     "bg": "#B8D4E8",
     "tags": []
   },
   {
     "id": 35,
-    "name": "Millicent's Observation",
+    "name": "Apologising",
     "parts": [
-      { "t": "Jess thinks it's worth examining", "s": "small" },
+      { "t": "It's worth examining", "s": "small" },
       { "t": "why you apologised", "s": "small" },
-      { "t": "for taking up space", "s": "medium" },
-      { "t": "before you'd even started.", "s": "tiny" }
+      { "t": "for taking up time", "s": "medium" },
+      { "t": "before you even started your presentation.", "s": "tiny" }
     ],
-    "icon": "face_curly",
+    "icon": "hourglass",
     "bg": "#F5EDD8",
     "tags": []
   },
   {
     "id": 36,
-    "name": "Ned's Notes",
+    "name": "Say yes",
     "parts": [
-      { "t": "Jess has watched you say yes", "s": "small" },
-      { "t": "to things you didn't want to do.", "s": "tiny" },
-      { "t": "She has kept notes.", "s": "small" },
-      { "t": "She would like you to", "s": "small" },
+      { "t": "Why did you say yes", "s": "small" },
+      { "t": "to things you didn't want to do", "s": "tiny" },
+      { "t": "at least three times this week", "s": "small" },
+      { "t": "The girls would like you to", "s": "small" },
       { "t": "explain yourself.", "s": "big" }
     ],
-    "icon": "face_curly",
+    "icon": "text_bubble_yes",
     "bg": "#E8D5B0",
     "tags": []
   },
@@ -473,21 +473,21 @@
       { "t": "Apply your own standards.", "s": "big" },
       { "t": "Just once.", "s": "small" }
     ],
-    "icon": "face_plain",
+    "icon": "scales",
     "bg": "#C8D8C0",
     "tags": []
   },
   {
     "id": 38,
-    "name": "Bob's Notes",
+    "name": "Sorry",
     "parts": [
-      { "t": "Why are you still apologising", "s": "small" },
+      { "t": "Why are you still", "s": "small" }, { "t": "apologising", "s": "big" },
       { "t": "for things that are not your fault?", "s": "tiny" },
-      { "t": "Jess has been watching.", "s": "medium" },
-      { "t": "She has kept notes.", "s": "small" },
-      { "t": "She is not impressed.", "s": "big" }
+      { "t": "We'vebeen watching.", "s": "medium" },
+      { "t": "We've kept notes.", "s": "small" },
+      { "t": "We're not impressed.", "s": "big" }
     ],
-    "icon": "face_plain",
+    "icon": "text_bubble_sorry",
     "bg": "#F0C8C8",
     "tags": []
   }
