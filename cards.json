@@ -453,10 +453,8 @@
     "name": "Say yes",
     "parts": [
       { "t": "Why did you say yes", "s": "small" },
-      { "t": "to things you didn't want to do", "s": "tiny" },
-      { "t": "at least three times this week", "s": "small" },
-      { "t": "The girls would like you to", "s": "small" },
-      { "t": "explain yourself.", "s": "big" }
+      { "t": "to things you didn't want to do", "s": "big" },
+      { "t": "at least three times this week", "s": "small" }
     ],
     "icon": "text_bubble_yes",
     "bg": "#E8D5B0",
