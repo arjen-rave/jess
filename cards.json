@@ -482,10 +482,7 @@
     "name": "Sorry",
     "parts": [
       { "t": "Why are you still", "s": "small" }, { "t": "apologising", "s": "big" },
-      { "t": "for things that are not your fault?", "s": "tiny" },
-      { "t": "We'vebeen watching.", "s": "medium" },
-      { "t": "We've kept notes.", "s": "small" },
-      { "t": "We're not impressed.", "s": "big" }
+      { "t": "for things that are not your fault?", "s": "tiny" }
     ],
     "icon": "text_bubble_sorry",
     "bg": "#F0C8C8",
