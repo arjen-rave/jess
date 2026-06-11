@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "name": "Hate Everyone",
+    "parts": [
+      { "t": "My morning routine is simple.", "s": "small" },
+      { "t": "I wake up and", "s": "small" },
+      { "t": "hate everyone.", "s": "big" }
+    ],
+    "icon": "bed",
+    "bg": "#3C3C3C",
+    "tags": ["monday"]
+  },
+  {
+    "id": 2,
+    "name": "Hopefully Friday",
+    "parts": [
+      { "t": "hopefully tomorrow", "s": "big" },
+      { "t": "is Friday", "s": "medium" }
+    ],
+    "icon": "sunrise",
+    "bg": "#B8D4E8",
+    "tags": ["thursday"]
+  },
+  {
+    "id": 3,
+    "name": "Folding Chair",
+    "parts": [
+      { "t": "Yes, I'm an adult,", "s": "small" },
+      { "t": "but in the same way a", "s": "tiny" },
+      { "t": "folding chair", "s": "big" },
+      { "t": "is furniture.", "s": "medium" },
+      { "t": "Technically... sure, but nobody's impressed and I'm not all that stable.", "s": "tiny" }
+    ],
+    "icon": "folding_chair",
+    "bg": "#F5EDD8",
+    "tags": []
+  },
+  {
+    "id": 4,
+    "name": "Bali Margarita",
+    "parts": [
+      { "t": "Physically, I am here.", "s": "medium" },
+      { "t": "Mentally,", "s": "small" },
+      { "t": "I'm in Bali", "s": "big" },
+      { "t": "ordering my third margarita.", "s": "small" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#E8C547",
+    "tags": ["weekday"]
+  },
+  {
+    "id": 5,
+    "name": "Alcohol",
+    "parts": [
+      { "t": "Step aside, coffee.", "s": "small" },
+      { "t": "This job is for", "s": "small" },
+      { "t": "alcohol.", "s": "big" }
+    ],
+    "icon": "wine_glass",
+    "bg": "#C4956A",
+    "tags": ["monday"]
+  },
+  {
+    "id": 6,
+    "name": "I Do Care",
+    "parts": [
+      { "t": "I do care.", "s": "big" },
+      { "t": "I just don't", "s": "small" },
+      { "t": "give a fuck.", "s": "medium" }
+    ],
+    "icon": "face_plain",
+    "bg": "#F8F4EC",
+    "tags": []
+  },
+  {
+    "id": 7,
+    "name": "Born An Idiot",
+    "parts": [
+      { "t": "Sometimes the first step towards", "s": "small" },
+      { "t": "forgiveness", "s": "big" },
+      { "t": "is realising the other person", "s": "tiny" },
+      { "t": "was born an idiot.", "s": "medium" }
+    ],
+    "icon": "face_curly",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 8,
+    "name": "Halloween Nightmare",
+    "parts": [
+      { "t": "For Halloween, I'm dressing up as my life —", "s": "small" },
+      { "t": "a fucking nightmare.", "s": "big" }
+    ],
+    "icon": "jack_o_lantern",
+    "bg": "#1A1A1A",
+    "tags": ["halloween"]
+  }
+]

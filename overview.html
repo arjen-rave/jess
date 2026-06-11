@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just For Jess — Card Overview</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sans: -apple-system, 'Segoe UI', Arial, sans-serif;
+  --serif: Georgia, 'Times New Roman', serif;
+  --bg: #1a1a1a;
+  --surface: #242424;
+  --border: rgba(255,255,255,0.07);
+  --mustard: #E8C547;
+  --cream: #F5EDD8;
+  --text-muted: rgba(245,237,216,0.4);
+  --text-dim: rgba(245,237,216,0.6);
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--cream);
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 32px 32px 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.header-left h1 {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.header-left p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.stat {
+  text-align: center;
+}
+.stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--mustard);
+  font-family: var(--serif);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ── FILTERS ── */
+.filters {
+  padding: 0 32px 24px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+.filter-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: all 0.15s;
+}
+.filter-btn:hover { background: rgba(255,255,255,0.1); }
+.filter-btn.active {
+  background: rgba(232,197,71,0.2);
+  border-color: rgba(232,197,71,0.4);
+  color: var(--mustard);
+}
+
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 32px;
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(2, 1fr); padding: 0 16px; gap: 12px; }
+  header { padding: 20px 16px 16px; }
+  .filters { padding: 0 16px 16px; }
+}
+
+/* ── CARD WRAPPER ── */
+.card-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+.card-wrap.hidden { display: none; }
+
+/* ── CARD ── */
+.card {
+  border-radius: 16px;
+  padding: 20px 16px 24px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.75;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+.card-icon svg { width: 100%; height: 100%; }
+
+.placeholder-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed rgba(255,255,255,0.25);
+  border-radius: 8px;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+.placeholder-icon svg { width: 28px; height: 28px; opacity: 0.35; }
+
+.card-body {
+  font-family: var(--serif);
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  gap: 3px;
+  line-height: 1.3;
+  width: 100%;
+}
+.t-small  { font-size: 13px; display: block; }
+.t-medium { font-size: 17px; font-weight: bold; display: block; }
+.t-big    { font-size: 24px; font-weight: 900; line-height: 1.05; display: block; }
+.t-tiny   { font-size: 11px; font-style: italic; opacity: 0.8; display: block; }
+
+/* ── CARD META ── */
+.card-meta {
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.meta-id {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-family: var(--sans);
+}
+.meta-name {
+  font-size: 12px;
+  color: var(--cream);
+  font-family: var(--serif);
+  font-style: italic;
+}
+.meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.meta-tag {
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 2px 7px;
+  font-family: var(--sans);
+}
+.meta-tag.special  { background: rgba(200,100,100,0.2); border: 1px solid rgba(200,100,100,0.35); color: #e8a0a0; }
+.meta-tag.dow      { background: rgba(232,197,71,0.15); border: 1px solid rgba(232,197,71,0.3); color: var(--mustard); }
+.meta-tag.weektype { background: rgba(160,200,160,0.15); border: 1px solid rgba(160,200,160,0.3); color: #a0d0a0; }
+.meta-tag.any      { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); }
+.meta-icon {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: monospace;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  padding: 2px 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.meta-icon.missing { color: #e8a0a0; border: 1px dashed rgba(200,100,100,0.3); }
+.meta-bg {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+/* ── EMPTY STATE ── */
+.empty {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ── LOADING ── */
+.loading {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(16px);
+  background: var(--mustard); color: #222; padding: 9px 18px; border-radius: 20px;
+  font-size: 13px; font-weight: 600; opacity: 0; transition: all 0.28s;
+  pointer-events: none; z-index: 999; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>just for jess ✦ — card overview</h1>
+    <p>All cards in the library. Click any card to copy its JSON.</p>
+  </div>
+  <div class="header-right">
+    <div class="stat">
+      <div class="stat-num" id="stat-total">—</div>
+      <div class="stat-label">Cards</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="stat-tagged">—</div>
+      <div class="stat-label">Tagged</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="stat-icons-missing">—</div>
+      <div class="stat-label">Icons needed</div>
+    </div>
+  </div>
+</header>
+
+<div class="filters">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" onclick="setFilter('all')">All</button>
+  <button class="filter-btn" onclick="setFilter('any')">Any day</button>
+  <button class="filter-btn" onclick="setFilter('dow')">Day of week</button>
+  <button class="filter-btn" onclick="setFilter('weektype')">Weekday type</button>
+  <button class="filter-btn" onclick="setFilter('special')">Special days</button>
+  <button class="filter-btn" onclick="setFilter('missing-icon')">Missing icons</button>
+</div>
+
+<div class="grid" id="grid">
+  <div class="loading">Loading cards…</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+// ICONS — built-in SVGs
+// Add new icons here as they are created
+// ══════════════════════════════════════════════
+const ICONS = {
+  bed: `<svg viewBox="0 0 72 72" fill="none"><path d="M10 46 L10 32 Q10 28 14 28 L58 28 Q62 28 62 32 L62 46" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M8 46 L64 46" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M12 50 L12 58 M60 50 L60 58" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="14" y="18" width="17" height="12" rx="3" stroke="currentColor" stroke-width="1.8" opacity=".55"/><rect x="41" y="18" width="17" height="12" rx="3" stroke="currentColor" stroke-width="1.8" opacity=".55"/></svg>`,
+  sunrise: `<svg viewBox="0 0 72 72" fill="none"><path d="M14 50 Q24 37 36 37 Q48 37 58 50" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="36" cy="37" r="8" stroke="currentColor" stroke-width="1.8" opacity=".65"/><path d="M36 20 L36 26 M20 24 L24 28 M52 24 L48 28 M14 37 L20 37 M52 37 L58 37" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".5"/><path d="M8 54 L64 54" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".35"/></svg>`,
+  folding_chair: `<svg viewBox="0 0 72 72" fill="none"><path d="M22 10 L26 36 L46 36 L50 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 10 L50 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M25 22 L47 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/><path d="M26 36 L20 62 M46 36 L52 62" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M23 50 L49 50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/></svg>`,
+  face_sunglasses: `<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="40" r="22" stroke="currentColor" stroke-width="2" opacity=".6"/><rect x="19" y="32" width="13" height="9" rx="4.5" fill="currentColor" opacity=".75"/><rect x="40" y="32" width="13" height="9" rx="4.5" fill="currentColor" opacity=".75"/><path d="M32 36.5 L40 36.5" stroke="currentColor" stroke-width="1.5"/><path d="M17 36 L19 36 M53 36 L55 36" stroke="currentColor" stroke-width="1.5"/><path d="M28 50 Q36 55 44 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M26 20 Q36 13 46 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/></svg>`,
+  wine_glass: `<svg viewBox="0 0 72 72" fill="none"><path d="M23 12 L49 12 L43 34 Q42 44 36 46 Q30 44 29 34 Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M36 46 L36 60" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M27 60 L45 60" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M27 21 Q32 27 36 21 Q40 27 45 21" stroke="currentColor" stroke-width="1.2" opacity=".3"/></svg>`,
+  face_plain: `<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="40" r="22" stroke="currentColor" stroke-width="2" opacity=".6"/><ellipse cx="28" cy="37" rx="2.5" ry="3" fill="currentColor" opacity=".7"/><ellipse cx="44" cy="37" rx="2.5" ry="3" fill="currentColor" opacity=".7"/><path d="M28 49 Q36 53 44 49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M28 20 Q36 13 44 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/></svg>`,
+  face_curly: `<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="42" r="20" stroke="currentColor" stroke-width="2" opacity=".6"/><ellipse cx="29" cy="39" rx="2" ry="2.5" fill="currentColor" opacity=".7"/><ellipse cx="43" cy="39" rx="2" ry="2.5" fill="currentColor" opacity=".7"/><path d="M29 50 Q36 54 43 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 30 Q20 17 28 17 Q24 13 26 9 Q32 13 30 19 Q38 15 42 21 Q46 15 50 19 Q52 13 54 17 Q54 25 50 30" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".6"/></svg>`,
+  jack_o_lantern: `<svg viewBox="0 0 72 72" fill="none"><path d="M26 20 Q28 12 36 12 Q44 12 46 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".6"/><rect x="14" y="20" width="44" height="36" rx="12" stroke="currentColor" stroke-width="2.2" opacity=".8"/><path d="M24 32 L28 36 L24 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 32 L44 36 L48 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 46 Q30 52 36 50 Q42 52 46 46" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M32 46 L32 50 M40 46 L40 50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  coffee_cup: `<svg viewBox="0 0 72 72" fill="none"><path d="M17 26 L55 26 L51 56 Q50 60 36 60 Q22 60 21 56 Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M55 32 Q64 32 64 41 Q64 50 55 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/><path d="M28 17 Q28 10 33 10 Q33 15 28 17 M36 15 Q36 8 41 8 Q41 13 36 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/></svg>`,
+  moon: `<svg viewBox="0 0 72 72" fill="none"><path d="M44 16 Q28 20 26 36 Q24 52 40 58 Q22 58 16 44 Q10 30 22 18 Q32 8 44 16Z" stroke="currentColor" stroke-width="2" opacity=".7"/><circle cx="50" cy="18" r="2" fill="currentColor" opacity=".4"/><circle cx="56" cy="28" r="1.5" fill="currentColor" opacity=".3"/></svg>`
+};
+
+// Placeholder SVG for unknown icons
+const PLACEHOLDER_SVG = `<svg viewBox="0 0 72 72" fill="none"><rect x="10" y="14" width="52" height="44" rx="6" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="28" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M10 42 L22 30 L34 42 L46 32 L62 46" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+// ══════════════════════════════════════════════
+// TAG HELPERS
+// ══════════════════════════════════════════════
+const SPECIAL_KEYS = ['halloween','christmas','nye','valentine','birthday'];
+const DOW_KEYS     = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+const WEEKTYPE_KEYS= ['weekday','weekend'];
+
+function tagCategory(tags){
+  if(!tags||!tags.length) return 'any';
+  if(tags.some(t=>SPECIAL_KEYS.includes(t)))  return 'special';
+  if(tags.some(t=>DOW_KEYS.includes(t)))       return 'dow';
+  if(tags.some(t=>WEEKTYPE_KEYS.includes(t)))  return 'weektype';
+  return 'any';
+}
+
+function tagClass(tag){
+  if(SPECIAL_KEYS.includes(tag))  return 'special';
+  if(DOW_KEYS.includes(tag))      return 'dow';
+  if(WEEKTYPE_KEYS.includes(tag)) return 'weektype';
+  return 'any';
+}
+
+// ══════════════════════════════════════════════
+// COLOUR HELPERS
+// ══════════════════════════════════════════════
+function isDark(hex){
+  try {
+    const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+    return (r*299+g*587+b*114)/1000 < 140;
+  } catch { return true; }
+}
+
+function darken(hex, amt=20){
+  try {
+    let r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
+    r=Math.max(0,r-amt); g=Math.max(0,g-amt); b=Math.max(0,b-amt);
+    return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+  } catch { return hex; }
+}
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let allCards = [];
+let currentFilter = 'all';
+
+// ══════════════════════════════════════════════
+// LOAD CARDS
+// ══════════════════════════════════════════════
+async function loadCards(){
+  try {
+    const res = await fetch('cards.json');
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    allCards = await res.json();
+    render();
+    updateStats();
+  } catch(e) {
+    document.getElementById('grid').innerHTML =
+      `<div class="loading" style="color:#e88">Failed to load cards.json — make sure it's in the same folder.<br><small>${e.message}</small></div>`;
+  }
+}
+
+// ══════════════════════════════════════════════
+// STATS
+// ══════════════════════════════════════════════
+function updateStats(){
+  document.getElementById('stat-total').textContent = allCards.length;
+  document.getElementById('stat-tagged').textContent = allCards.filter(c=>c.tags&&c.tags.length).length;
+  document.getElementById('stat-icons-missing').textContent = allCards.filter(c=>!ICONS[c.icon]).length;
+}
+
+// ══════════════════════════════════════════════
+// FILTER
+// ══════════════════════════════════════════════
+function setFilter(f){
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.toLowerCase().replace(/\s+/g,'-') === f ||
+      (f==='all' && b.textContent==='All'));
+  });
+  render();
+}
+
+function cardMatchesFilter(card){
+  if(currentFilter==='all') return true;
+  const cat = tagCategory(card.tags);
+  if(currentFilter==='missing-icon') return !ICONS[card.icon];
+  return cat === currentFilter;
+}
+
+// ══════════════════════════════════════════════
+// RENDER
+// ══════════════════════════════════════════════
+function render(){
+  const grid = document.getElementById('grid');
+  const visible = allCards.filter(cardMatchesFilter);
+
+  if(!visible.length){
+    grid.innerHTML = `<div class="empty">No cards match this filter.</div>`;
+    return;
+  }
+
+  grid.innerHTML = visible.map(card => renderCardWrap(card)).join('');
+}
+
+function renderCardWrap(card){
+  const textCol = isDark(card.bg) ? '#F5EDD8' : '#2A2A2A';
+  const iconSVG = ICONS[card.icon] || PLACEHOLDER_SVG;
+  const hasIcon = !!ICONS[card.icon];
+  const cat = tagCategory(card.tags);
+
+  const parts = card.parts.map(p =>
+    `<span class="t-${p.s}" style="color:${textCol}">${p.t}</span>`
+  ).join('');
+
+  const tagPills = card.tags && card.tags.length
+    ? card.tags.map(t=>`<span class="meta-tag ${tagClass(t)}">${t}</span>`).join('')
+    : `<span class="meta-tag any">any day</span>`;
+
+  return `
+    <div class="card-wrap" onclick="copyCard(${card.id})">
+      <div class="card" style="background:linear-gradient(150deg,${card.bg},${darken(card.bg)})">
+        <div class="${hasIcon?'card-icon':'placeholder-icon'}" style="color:${textCol}">
+          ${iconSVG}
+        </div>
+        <div class="card-body">${parts}</div>
+      </div>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-id">#${card.id}</span>
+          <span class="meta-name">${card.name||'—'}</span>
+        </div>
+        <div class="meta-row">
+          <div class="meta-tags">${tagPills}</div>
+          <div class="meta-icon${hasIcon?'':' missing'}" title="${card.icon}">
+            ${hasIcon?'':'⚠ '}${card.icon}
+          </div>
+        </div>
+        <div class="meta-row">
+          <div class="meta-bg" style="background:${card.bg}" title="${card.bg}"></div>
+          <span style="font-size:10px;color:var(--text-muted);font-family:monospace">${card.bg}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════
+// COPY CARD JSON
+// ══════════════════════════════════════════════
+function copyCard(id){
+  const card = allCards.find(c=>c.id===id);
+  if(!card) return;
+  navigator.clipboard.writeText(JSON.stringify(card, null, 2))
+    .then(()=>showToast(`Card #${id} copied ✦`))
+    .catch(()=>showToast('Copy failed — try a different browser'));
+}
+
+// ══════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+// ══════════════════════════════════════════════
+// BOOT
+// ══════════════════════════════════════════════
+loadCards();
+</script>
+</body>
+</html>
