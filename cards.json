@@ -637,5 +637,674 @@
   "icon": "queen",
   "bg": "#4A2A3A",
   "tags": []
-}
+},
+[
+  {
+    "id": 51,
+    "name": "Have You Met People",
+    "parts": [
+      { "t": "Stop worrying about what other people think.", "s": "small" },
+      { "t": "Have you met other people?", "s": "medium" },
+      { "t": "They're awful.", "s": "big" }
+    ],
+    "icon": "face_curly",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 52,
+    "name": "Hate Everyone Else",
+    "parts": [
+      { "t": "Today, work on not hating yourself.", "s": "small" },
+      { "t": "Hate everyone else", "s": "big" },
+      { "t": "instead.", "s": "medium" }
+    ],
+    "icon": "face_plain",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 53,
+    "name": "Say Yes To No",
+    "parts": [
+      { "t": "Only say yes to things that spark joy.", "s": "small" },
+      { "t": "Like saying", "s": "small" },
+      { "t": "no.", "s": "big" }
+    ],
+    "icon": "wand",
+    "bg": "#C8A0B8",
+    "tags": []
+  },
+  {
+    "id": 54,
+    "name": "Diet You",
+    "parts": [
+      { "t": "Just be yourself.", "s": "small" },
+      { "t": "But less you.", "s": "medium" },
+      { "t": "Diet You.", "s": "big" }
+    ],
+    "icon": "soda_can",
+    "bg": "#B8D4E8",
+    "tags": []
+  },
+  {
+    "id": 55,
+    "name": "Self Sabotage Win",
+    "parts": [
+      { "t": "Every failure is a success", "s": "small" },
+      { "t": "when you", "s": "tiny" },
+      { "t": "self-sabotage.", "s": "big" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#4A5A4A",
+    "tags": []
+  },
+  {
+    "id": 56,
+    "name": "Never Pleased",
+    "parts": [
+      { "t": "No reason to be a people pleaser.", "s": "small" },
+      { "t": "People are", "s": "small" },
+      { "t": "never pleased.", "s": "big" }
+    ],
+    "icon": "face_plain",
+    "bg": "#C8B8A2",
+    "tags": []
+  },
+  {
+    "id": 57,
+    "name": "Smol Steppy",
+    "parts": [
+      { "t": "Smol steppy", "s": "big" },
+      { "t": "is better than", "s": "small" },
+      { "t": "no steppy.", "s": "medium" }
+    ],
+    "icon": "puppy",
+    "bg": "#E8D5B0",
+    "tags": []
+  },
+  {
+    "id": 58,
+    "name": "Stable For Horses",
+    "parts": [
+      { "t": "Stable?", "s": "big" },
+      { "t": "That's for", "s": "small" },
+      { "t": "horses.", "s": "medium" }
+    ],
+    "icon": "horse",
+    "bg": "#C4956A",
+    "tags": []
+  },
+  {
+    "id": 59,
+    "name": "Punch Themselves",
+    "parts": [
+      { "t": "No inspirational quote today.", "s": "small" },
+      { "t": "Just punch", "s": "small" },
+      { "t": "themselves.", "s": "big" }
+    ],
+    "icon": "boxing",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 60,
+    "name": "Dead Inside Go Outside",
+    "parts": [
+      { "t": "If you're dead inside,", "s": "small" },
+      { "t": "go", "s": "small" },
+      { "t": "outside.", "s": "big" }
+    ],
+    "icon": "mountain",
+    "bg": "#6A8A6A",
+    "tags": []
+  },
+  {
+    "id": 61,
+    "name": "Delulu Trululu",
+    "parts": [
+      { "t": "May all your", "s": "small" },
+      { "t": "delulu", "s": "big" },
+      { "t": "become trululu.", "s": "medium" }
+    ],
+    "icon": "wand",
+    "bg": "#C8A0B8",
+    "tags": []
+  },
+  {
+    "id": 62,
+    "name": "Brain Laundry",
+    "parts": [
+      { "t": "Today is for brain laundry:", "s": "small" },
+      { "t": "separating", "s": "small" },
+      { "t": "lights and darks.", "s": "big" }
+    ],
+    "icon": "washing_machine",
+    "bg": "#B8D4E8",
+    "tags": []
+  },
+  {
+    "id": 63,
+    "name": "Chill Gurl",
+    "parts": [
+      { "t": "Chill gurl.", "s": "big" },
+      { "t": "Not everything", "s": "small" },
+      { "t": "needs a reaction.", "s": "medium" }
+    ],
+    "icon": "margarita",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 64,
+    "name": "Majestic Unicorn",
+    "parts": [
+      { "t": "You're a majestic unicorn", "s": "small" },
+      { "t": "in a world full of", "s": "tiny" },
+      { "t": "donkeys.", "s": "big" }
+    ],
+    "icon": "unicorn",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 65,
+    "name": "Big Gurl Job",
+    "parts": [
+      { "t": "Another day", "s": "small" },
+      { "t": "as a big gurl", "s": "medium" },
+      { "t": "at her big gurl job.", "s": "big" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#C4455A",
+    "tags": ["weekday"]
+  },
+  {
+    "id": 66,
+    "name": "Trip And Create",
+    "parts": [
+      { "t": "Don't follow paths.", "s": "small" },
+      { "t": "Trip, fall,", "s": "medium" },
+      { "t": "and create new ones.", "s": "big" }
+    ],
+    "icon": "boot",
+    "bg": "#C4956A",
+    "tags": []
+  },
+  {
+    "id": 67,
+    "name": "Not Dramatic",
+    "parts": [
+      { "t": "What if you're not dramatic?", "s": "small" },
+      { "t": "What if they're just", "s": "small" },
+      { "t": "a cunt?", "s": "big" }
+    ],
+    "icon": "face_curly",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 68,
+    "name": "What Is Fuckening",
+    "parts": [
+      { "t": "Mood:", "s": "tiny" },
+      { "t": "I have no idea", "s": "small" },
+      { "t": "what the hap", "s": "medium" },
+      { "t": "is fuckening.", "s": "big" }
+    ],
+    "icon": "face_plain",
+    "bg": "#2A3A4A",
+    "tags": []
+  },
+  {
+    "id": 69,
+    "name": "Shine Bright",
+    "parts": [
+      { "t": "Shine so bright", "s": "small" },
+      { "t": "that those bitches", "s": "medium" },
+      { "t": "need sunglasses.", "s": "big" }
+    ],
+    "icon": "sun",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 70,
+    "name": "Be Difficulter",
+    "parts": [
+      { "t": "Things are difficult.", "s": "small" },
+      { "t": "Be", "s": "small" },
+      { "t": "difficulter.", "s": "big" }
+    ],
+    "icon": "boxing",
+    "bg": "#4A2A3A",
+    "tags": []
+  },
+  {
+    "id": 71,
+    "name": "Pelican",
+    "parts": [
+      { "t": "Just because you pelican,", "s": "small" },
+      { "t": "doesn't mean you", "s": "tiny" },
+      { "t": "pelishould.", "s": "big" }
+    ],
+    "icon": "pelican",
+    "bg": "#B8D4E8",
+    "tags": []
+  },
+  {
+    "id": 72,
+    "name": "Done Healing",
+    "parts": [
+      { "t": "Get on babe,", "s": "small" },
+      { "t": "we're done healing.", "s": "medium" },
+      { "t": "Let's try delusion.", "s": "big" }
+    ],
+    "icon": "unicorn",
+    "bg": "#C8A0B8",
+    "tags": []
+  },
+  {
+    "id": 73,
+    "name": "Get Up Yell Fuck",
+    "parts": [
+      { "t": "Get up. Dust off.", "s": "small" },
+      { "t": "Yell", "s": "small" },
+      { "t": "fuck.", "s": "big" },
+      { "t": "Start again.", "s": "medium" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 74,
+    "name": "Tiny Void",
+    "parts": [
+      { "t": "I made you a tiny void", "s": "small" },
+      { "t": "to scream into", "s": "medium" },
+      { "t": "as a treat.", "s": "big" }
+    ],
+    "icon": "moon",
+    "bg": "#1A1A2E",
+    "tags": []
+  },
+  {
+    "id": 75,
+    "name": "Favourite Dinosaur",
+    "parts": [
+      { "t": "The worst part about being an adult?", "s": "tiny" },
+      { "t": "No one cares what your", "s": "small" },
+      { "t": "favourite dinosaur", "s": "big" },
+      { "t": "is.", "s": "small" }
+    ],
+    "icon": "dinosaur",
+    "bg": "#4A5A4A",
+    "tags": []
+  },
+  {
+    "id": 76,
+    "name": "Line Of Lunatics",
+    "parts": [
+      { "t": "You are going to be fine.", "s": "small" },
+      { "t": "You come from a strong line of", "s": "tiny" },
+      { "t": "lunatics.", "s": "big" }
+    ],
+    "icon": "plant",
+    "bg": "#C8D8C0",
+    "tags": []
+  },
+  {
+    "id": 77,
+    "name": "Scooting On",
+    "parts": [
+      { "t": "Today's mood:", "s": "tiny" },
+      { "t": "Don't care.", "s": "medium" },
+      { "t": "Not bothered. Fuck it.", "s": "small" },
+      { "t": "Scooting on.", "s": "big" }
+    ],
+    "icon": "scooter",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 78,
+    "name": "Whimsical Mistakes",
+    "parts": [
+      { "t": "No regrets.", "s": "big" },
+      { "t": "Only", "s": "small" },
+      { "t": "whimsical mistakes.", "s": "medium" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#C8A0B8",
+    "tags": []
+  },
+  {
+    "id": 79,
+    "name": "Don't Understand Everything",
+    "parts": [
+      { "t": "For the sake of your mental health,", "s": "tiny" },
+      { "t": "don't try to understand", "s": "small" },
+      { "t": "everything.", "s": "big" }
+    ],
+    "icon": "brain",
+    "bg": "#F5EDD8",
+    "tags": []
+  },
+  {
+    "id": 80,
+    "name": "Pose For The Villain",
+    "parts": [
+      { "t": "If they want to paint you", "s": "small" },
+      { "t": "as the villain,", "s": "medium" },
+      { "t": "then pose.", "s": "big" }
+    ],
+    "icon": "queen",
+    "bg": "#1A1A1A",
+    "tags": []
+  },
+  {
+    "id": 81,
+    "name": "Take A Nap",
+    "parts": [
+      { "t": "It's ok.", "s": "medium" },
+      { "t": "Take a", "s": "small" },
+      { "t": "nap.", "s": "big" }
+    ],
+    "icon": "bed",
+    "bg": "#2A2A4A",
+    "tags": []
+  },
+  {
+    "id": 82,
+    "name": "Too Powerful",
+    "parts": [
+      { "t": "They know you'd be too powerful", "s": "tiny" },
+      { "t": "if you could", "s": "small" },
+      { "t": "sleep at night.", "s": "big" }
+    ],
+    "icon": "bed",
+    "bg": "#1A1A2E",
+    "tags": []
+  },
+  {
+    "id": 83,
+    "name": "You Look Fly",
+    "parts": [
+      { "t": "Today's affirmation:", "s": "tiny" },
+      { "t": "on your momma, on your hood,", "s": "tiny" },
+      { "t": "you look fly,", "s": "big" },
+      { "t": "you look good.", "s": "medium" }
+    ],
+    "icon": "mirror",
+    "bg": "#C4455A",
+    "tags": []
+  },
+  {
+    "id": 84,
+    "name": "Fuck Off Wingman",
+    "parts": [
+      { "t": "Kindness is my go-to,", "s": "small" },
+      { "t": "but", "s": "tiny" },
+      { "t": "fuck off", "s": "big" },
+      { "t": "is my wingman.", "s": "small" }
+    ],
+    "icon": "helmet",
+    "bg": "#3C3C3C",
+    "tags": []
+  },
+  {
+    "id": 85,
+    "name": "Finger Guns",
+    "parts": [
+      { "t": "Do finger guns in the mirror.", "s": "small" },
+      { "t": "You're the", "s": "small" },
+      { "t": "weapon.", "s": "big" }
+    ],
+    "icon": "plug_shooter",
+    "bg": "#4A2A3A",
+    "tags": []
+  },
+  {
+    "id": 86,
+    "name": "A Fucking Break",
+    "parts": [
+      { "t": "And for the lady,", "s": "small" },
+      { "t": "perhaps a", "s": "small" },
+      { "t": "fucking break?", "s": "big" }
+    ],
+    "icon": "coffee_cup",
+    "bg": "#C4956A",
+    "tags": ["weekend"]
+  },
+  {
+    "id": 87,
+    "name": "Stay Hydrated",
+    "parts": [
+      { "t": "Drinking 3L of water daily helps you avoid drama.", "s": "tiny" },
+      { "t": "You're too busy", "s": "small" },
+      { "t": "peeing.", "s": "big" },
+      { "t": "Stay hydrated.", "s": "small" }
+    ],
+    "icon": "face_plain",
+    "bg": "#B8D4E8",
+    "tags": []
+  },
+  {
+    "id": 88,
+    "name": "Kick Today",
+    "parts": [
+      { "t": "Kick today", "s": "big" },
+      { "t": "in the dick.", "s": "medium" }
+    ],
+    "icon": "boot",
+    "bg": "#3C3C3C",
+    "tags": ["weekday"]
+  },
+  {
+    "id": 89,
+    "name": "They're Wrong Though",
+    "parts": [
+      { "t": "Not everyone will think you're funny or pretty.", "s": "tiny" },
+      { "t": "That's ok.", "s": "small" },
+      { "t": "They're wrong though.", "s": "big" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 90,
+    "name": "Best Alarm Clock",
+    "parts": [
+      { "t": "The best alarm clock", "s": "small" },
+      { "t": "has fur, a wagging tail,", "s": "tiny" },
+      { "t": "and a wet nose.", "s": "medium" }
+    ],
+    "icon": "puppy",
+    "bg": "#E8D5B0",
+    "tags": ["weekday"]
+  },
+  {
+    "id": 91,
+    "name": "Universe Not On Budget",
+    "parts": [
+      { "t": "Ask for more.", "s": "big" },
+      { "t": "The universe", "s": "small" },
+      { "t": "isn't on a budget.", "s": "medium" }
+    ],
+    "icon": "moon",
+    "bg": "#1A1A2E",
+    "tags": []
+  },
+  {
+    "id": 92,
+    "name": "See Beauty",
+    "parts": [
+      { "t": "If you see beauty in something,", "s": "small" },
+      { "t": "don't wait for others", "s": "small" },
+      { "t": "to agree.", "s": "big" }
+    ],
+    "icon": "sun",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 93,
+    "name": "You're So Back",
+    "parts": [
+      { "t": "You can always just decide", "s": "small" },
+      { "t": "that you're", "s": "small" },
+      { "t": "so back.", "s": "big" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#C4455A",
+    "tags": []
+  },
+  {
+    "id": 94,
+    "name": "Not As Scary",
+    "parts": [
+      { "t": "Don't worry.", "s": "small" },
+      { "t": "It's not as big and scary", "s": "small" },
+      { "t": "as it feels", "s": "tiny" },
+      { "t": "in your head.", "s": "big" }
+    ],
+    "icon": "brain",
+    "bg": "#C8D8C0",
+    "tags": []
+  },
+  {
+    "id": 95,
+    "name": "Not A Half",
+    "parts": [
+      { "t": "You're not searching for your other half,", "s": "tiny" },
+      { "t": "because you're", "s": "small" },
+      { "t": "not a half.", "s": "big" }
+    ],
+    "icon": "fixed_heart",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 96,
+    "name": "Let Them Judge",
+    "parts": [
+      { "t": "Explaining yourself", "s": "small" },
+      { "t": "is too much work.", "s": "medium" },
+      { "t": "Let them judge.", "s": "big" }
+    ],
+    "icon": "peace",
+    "bg": "#6A8A6A",
+    "tags": []
+  },
+  {
+    "id": 97,
+    "name": "Don't Analyse",
+    "parts": [
+      { "t": "Don't analyse life", "s": "small" },
+      { "t": "more than you", "s": "small" },
+      { "t": "live it.", "s": "big" }
+    ],
+    "icon": "brain",
+    "bg": "#F5EDD8",
+    "tags": []
+  },
+  {
+    "id": 98,
+    "name": "Reconnect With Nature",
+    "parts": [
+      { "t": "Reconnect with nature", "s": "small" },
+      { "t": "after whatever tf", "s": "tiny" },
+      { "t": "that week was.", "s": "big" }
+    ],
+    "icon": "mountain",
+    "bg": "#6A8A6A",
+    "tags": ["weekend"]
+  },
+  {
+    "id": 99,
+    "name": "Museum Of Love",
+    "parts": [
+      { "t": "You are a museum", "s": "small" },
+      { "t": "of everything", "s": "small" },
+      { "t": "you ever loved.", "s": "big" }
+    ],
+    "icon": "fixed_heart",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 100,
+    "name": "Weird And Free",
+    "parts": [
+      { "t": "Born to be", "s": "small" },
+      { "t": "so weird and cringe", "s": "medium" },
+      { "t": "and wild and free.", "s": "big" }
+    ],
+    "icon": "unicorn",
+    "bg": "#C8A0B8",
+    "tags": []
+  },
+  {
+    "id": 101,
+    "name": "Taking More Time",
+    "parts": [
+      { "t": "It's ok if it's taking", "s": "small" },
+      { "t": "more time", "s": "big" },
+      { "t": "than you thought.", "s": "small" }
+    ],
+    "icon": "hourglass",
+    "bg": "#C8B8A2",
+    "tags": []
+  },
+  {
+    "id": 102,
+    "name": "Feel Alive",
+    "parts": [
+      { "t": "Always find time for the things", "s": "tiny" },
+      { "t": "that make you feel", "s": "small" },
+      { "t": "alive.", "s": "big" }
+    ],
+    "icon": "coffee_cup",
+    "bg": "#C4956A",
+    "tags": ["weekend"]
+  },
+  {
+    "id": 103,
+    "name": "Not Normal",
+    "parts": [
+      { "t": "Being normal is not a virtue.", "s": "small" },
+      { "t": "It rather denotes a", "s": "tiny" },
+      { "t": "lack of courage.", "s": "big" }
+    ],
+    "icon": "queen",
+    "bg": "#4A2A3A",
+    "tags": []
+  },
+  {
+    "id": 104,
+    "name": "Don't Settle",
+    "parts": [
+      { "t": "What you want exists.", "s": "medium" },
+      { "t": "Don't settle", "s": "big" },
+      { "t": "until you get it.", "s": "small" }
+    ],
+    "icon": "face_sunglasses",
+    "bg": "#1A3A5A",
+    "tags": []
+  },
+  {
+    "id": 105,
+    "name": "Mood Poisoning",
+    "parts": [
+      { "t": "I think you should stay home today.", "s": "small" },
+      { "t": "I think you have", "s": "small" },
+      { "t": "mood poisoning.", "s": "big" }
+    ],
+    "icon": "bed",
+    "bg": "#2A3A4A",
+    "tags": []
+  }
+]
 ]  
