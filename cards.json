@@ -499,145 +499,145 @@
   "icon": "dinosaur",
   "bg": "#C4455A",
   "tags": []
-},
-{
-  "id": 40,
-  "name": "Game Show Host",
-  "parts": [
-    { "t": "If you were happy every day of your life,", "s": "tiny" },
-    { "t": "you wouldn't be a human being.", "s": "small" },
-    { "t": "You'd be a", "s": "small" },
-    { "t": "game-show host.", "s": "big" }
-  ],
-  "icon": "prize_wheel",
-  "bg": "#E8C547",
-  "tags": []
-},
-{
-  "id": 41,
-  "name": "Treated Like Humans",
-  "parts": [
-    { "t": "When people complain about being treated", "s": "tiny" },
-    { "t": "like human beings,", "s": "small" },
-    { "t": "it's usually because", "s": "small" },
-    { "t": "they are.", "s": "big" }
-  ],
-  "icon": "face_plain",
-  "bg": "#C8D8C0",
-  "tags": []
-},
-{
-  "id": 42,
-  "name": "Chainsaw",
-  "parts": [
-    { "t": "Well,", "s": "small" },
-    { "t": "fuck me gently", "s": "big" },
-    { "t": "with a chainsaw.", "s": "medium" }
-  ],
-  "icon": "chainsaw",
-  "bg": "#1A1A1A",
-  "tags": []
-},
-{
-  "id": 43,
-  "name": "The Mythic Bitch",
-  "parts": [
-    { "t": "The icon.", "s": "small" },
-    { "t": "The almighty.", "s": "medium" },
-    { "t": "The mythic bitch", "s": "big" }
-  ],
-  "icon": "queen",
-  "bg": "#4A2A3A",
-  "tags": ["birthday"]
-},
-{
-  "id": 44,
-  "name": "Freeze Your Brain",
-  "parts": [
-    { "t": "Freeze your brain.", "s": "big" },
-    { "t": "Suck on that straw.", "s": "medium" },
-    { "t": "Happiness comes", "s": "small" },
-    { "t": "when everything numbs.", "s": "tiny" }
-  ],
-  "icon": "slushy",
-  "bg": "#B8D4E8",
-  "tags": []
-},
-{
-  "id": 45,
-  "name": "We're All Freaks",
-  "parts": [
-    { "t": "We're all damaged.", "s": "small" },
-    { "t": "We're all fragile.", "s": "small" },
-    { "t": "We're all freaks.", "s": "big" },
-    { "t": "But that's alright.", "s": "medium" }
-  ],
-  "icon": "fixed_heart",
-  "bg": "#F0C8C8",
-  "tags": []
-},
-{
-  "id": 46,
-  "name": "Wherever They Go",
-  "parts": [
-    { "t": "Some people bring happiness", "s": "small" },
-    { "t": "wherever they go.", "s": "medium" },
-    { "t": "Others,", "s": "small" },
-    { "t": "whenever", "s": "big" },
-    { "t": "they go.", "s": "medium" }
-  ],
-  "icon": "running",
-  "bg": "#F5EDD8",
-  "tags": []
-},
-{
-  "id": 47,
-  "name": "Radiate Positivity",
-  "parts": [
-    { "t": "Radiate positivity", "s": "small" },
-    { "t": "like fucking", "s": "medium" },
-    { "t": "sunshine.", "s": "big" }
-  ],
-  "icon": "sun",
-  "bg": "#E8C547",
-  "tags": []
-},
-{
-  "id": 48,
-  "name": "Breathe The Good Shit",
-  "parts": [
-    { "t": "Breathe in the good shit.", "s": "medium" },
-    { "t": "Breathe out", "s": "small" },
-    { "t": "the bullshit.", "s": "big" }
-  ],
-  "icon": "air",
-  "bg": "#C8D8C0",
-  "tags": []
-},
-{
-  "id": 49,
-  "name": "Light Up The Room",
-  "parts": [
-    { "t": "You light up", "s": "small" },
-    { "t": "any fucking room", "s": "big" },
-    { "t": "you walk into.", "s": "small" }
-  ],
-  "icon": "sun",
-  "bg": "#E8C547",
-  "tags": []
-},
-{
-  "id": 50,
-  "name": "Trust Your Gut",
-  "parts": [
-    { "t": "Your gut knows what's up.", "s": "small" },
-    { "t": "Trust that", "s": "small" },
-    { "t": "fucking bitch.", "s": "big" }
-  ],
-  "icon": "queen",
-  "bg": "#4A2A3A",
-  "tags": []
-},
+  },
+  {
+    "id": 40,
+    "name": "Game Show Host",
+    "parts": [
+      { "t": "If you were happy every day of your life,", "s": "tiny" },
+      { "t": "you wouldn't be a human being.", "s": "small" },
+      { "t": "You'd be a", "s": "small" },
+      { "t": "game-show host.", "s": "big" }
+    ],
+    "icon": "prize_wheel",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 41,
+    "name": "Treated Like Humans",
+    "parts": [
+      { "t": "When people complain about being treated", "s": "tiny" },
+      { "t": "like human beings,", "s": "small" },
+      { "t": "it's usually because", "s": "small" },
+      { "t": "they are.", "s": "big" }
+    ],
+    "icon": "face_plain",
+    "bg": "#C8D8C0",
+    "tags": []
+  },
+  {
+    "id": 42,
+    "name": "Chainsaw",
+    "parts": [
+      { "t": "Well,", "s": "small" },
+      { "t": "fuck me gently", "s": "big" },
+      { "t": "with a chainsaw.", "s": "medium" }
+    ],
+    "icon": "chainsaw",
+    "bg": "#1A1A1A",
+    "tags": []
+  },
+  {
+    "id": 43,
+    "name": "The Mythic Bitch",
+    "parts": [
+      { "t": "The icon.", "s": "small" },
+      { "t": "The almighty.", "s": "medium" },
+      { "t": "The mythic bitch", "s": "big" }
+    ],
+    "icon": "queen",
+    "bg": "#4A2A3A",
+    "tags": ["birthday"]
+  },
+  {
+    "id": 44,
+    "name": "Freeze Your Brain",
+    "parts": [
+      { "t": "Freeze your brain.", "s": "big" },
+      { "t": "Suck on that straw.", "s": "medium" },
+      { "t": "Happiness comes", "s": "small" },
+      { "t": "when everything numbs.", "s": "tiny" }
+    ],
+    "icon": "slushy",
+    "bg": "#B8D4E8",
+    "tags": []
+  },
+  {
+    "id": 45,
+    "name": "We're All Freaks",
+    "parts": [
+      { "t": "We're all damaged.", "s": "small" },
+      { "t": "We're all fragile.", "s": "small" },
+      { "t": "We're all freaks.", "s": "big" },
+      { "t": "But that's alright.", "s": "medium" }
+    ],
+    "icon": "fixed_heart",
+    "bg": "#F0C8C8",
+    "tags": []
+  },
+  {
+    "id": 46,
+    "name": "Wherever They Go",
+    "parts": [
+      { "t": "Some people bring happiness", "s": "small" },
+      { "t": "wherever they go.", "s": "medium" },
+      { "t": "Others,", "s": "small" },
+      { "t": "whenever", "s": "big" },
+      { "t": "they go.", "s": "medium" }
+    ],
+    "icon": "running",
+    "bg": "#F5EDD8",
+    "tags": []
+  },
+  {
+    "id": 47,
+    "name": "Radiate Positivity",
+    "parts": [
+      { "t": "Radiate positivity", "s": "small" },
+      { "t": "like fucking", "s": "medium" },
+      { "t": "sunshine.", "s": "big" }
+    ],
+    "icon": "sun",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 48,
+    "name": "Breathe The Good Shit",
+    "parts": [
+      { "t": "Breathe in the good shit.", "s": "medium" },
+      { "t": "Breathe out", "s": "small" },
+      { "t": "the bullshit.", "s": "big" }
+    ],
+    "icon": "air",
+    "bg": "#C8D8C0",
+    "tags": []
+  },
+  {
+    "id": 49,
+    "name": "Light Up The Room",
+    "parts": [
+      { "t": "You light up", "s": "small" },
+      { "t": "any fucking room", "s": "big" },
+      { "t": "you walk into.", "s": "small" }
+    ],
+    "icon": "sun",
+    "bg": "#E8C547",
+    "tags": []
+  },
+  {
+    "id": 50,
+    "name": "Trust Your Gut",
+    "parts": [
+      { "t": "Your gut knows what's up.", "s": "small" },
+      { "t": "Trust that", "s": "small" },
+      { "t": "fucking bitch.", "s": "big" }
+    ],
+    "icon": "queen",
+    "bg": "#4A2A3A",
+    "tags": []
+  },
   {
     "id": 51,
     "name": "Have You Met People",
@@ -646,7 +646,7 @@
       { "t": "Have you met other people?", "s": "medium" },
       { "t": "They're awful.", "s": "big" }
     ],
-    "icon": "face_curly",
+    "icon": "placeholder",
     "bg": "#F0C8C8",
     "tags": []
   },
@@ -658,7 +658,7 @@
       { "t": "Hate everyone else", "s": "big" },
       { "t": "instead.", "s": "medium" }
     ],
-    "icon": "face_plain",
+    "icon": "placeholder",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -694,7 +694,7 @@
       { "t": "when you", "s": "tiny" },
       { "t": "self-sabotage.", "s": "big" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "placeholder",
     "bg": "#4A5A4A",
     "tags": []
   },
@@ -706,7 +706,7 @@
       { "t": "People are", "s": "small" },
       { "t": "never pleased.", "s": "big" }
     ],
-    "icon": "face_plain",
+    "icon": "placeholder",
     "bg": "#C8B8A2",
     "tags": []
   },
@@ -814,7 +814,7 @@
       { "t": "as a big gurl", "s": "medium" },
       { "t": "at her big gurl job.", "s": "big" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "placeholder",
     "bg": "#C4455A",
     "tags": ["weekday"]
   },
@@ -838,7 +838,7 @@
       { "t": "What if they're just", "s": "small" },
       { "t": "a cunt?", "s": "big" }
     ],
-    "icon": "face_curly",
+    "icon": "placeholder",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -851,7 +851,7 @@
       { "t": "what the hap", "s": "medium" },
       { "t": "is fuckening.", "s": "big" }
     ],
-    "icon": "face_plain",
+    "icon": "placeholder",
     "bg": "#2A3A4A",
     "tags": []
   },
@@ -875,7 +875,7 @@
       { "t": "Be", "s": "small" },
       { "t": "difficulter.", "s": "big" }
     ],
-    "icon": "boxing",
+    "icon": "placeholder",
     "bg": "#4A2A3A",
     "tags": []
   },
@@ -912,7 +912,7 @@
       { "t": "fuck.", "s": "big" },
       { "t": "Start again.", "s": "medium" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "placeholder",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -924,7 +924,7 @@
       { "t": "to scream into", "s": "medium" },
       { "t": "as a treat.", "s": "big" }
     ],
-    "icon": "moon",
+    "icon": "placeholder",
     "bg": "#1A1A2E",
     "tags": []
   },
@@ -974,7 +974,7 @@
       { "t": "Only", "s": "small" },
       { "t": "whimsical mistakes.", "s": "medium" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "placeholder",
     "bg": "#C8A0B8",
     "tags": []
   },
@@ -998,7 +998,7 @@
       { "t": "as the villain,", "s": "medium" },
       { "t": "then pose.", "s": "big" }
     ],
-    "icon": "queen",
+    "icon": "placeholder",
     "bg": "#1A1A1A",
     "tags": []
   },
@@ -1085,7 +1085,7 @@
       { "t": "peeing.", "s": "big" },
       { "t": "Stay hydrated.", "s": "small" }
     ],
-    "icon": "face_plain",
+    "icon": "placeholder",
     "bg": "#B8D4E8",
     "tags": []
   },
@@ -1108,7 +1108,7 @@
       { "t": "That's ok.", "s": "small" },
       { "t": "They're wrong though.", "s": "big" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "placeholder",
     "bg": "#F0C8C8",
     "tags": []
   },
@@ -1132,7 +1132,7 @@
       { "t": "The universe", "s": "small" },
       { "t": "isn't on a budget.", "s": "medium" }
     ],
-    "icon": "moon",
+    "icon": "placeholder",
     "bg": "#1A1A2E",
     "tags": []
   },
@@ -1144,7 +1144,7 @@
       { "t": "don't wait for others", "s": "small" },
       { "t": "to agree.", "s": "big" }
     ],
-    "icon": "sun",
+    "icon": "placeholder",
     "bg": "#E8C547",
     "tags": []
   },
@@ -1156,7 +1156,7 @@
       { "t": "that you're", "s": "small" },
       { "t": "so back.", "s": "big" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "placeholder",
     "bg": "#C4455A",
     "tags": []
   },
@@ -1193,7 +1193,7 @@
       { "t": "is too much work.", "s": "medium" },
       { "t": "Let them judge.", "s": "big" }
     ],
-    "icon": "peace",
+    "icon": "placeholder",
     "bg": "#6A8A6A",
     "tags": []
   },
@@ -1205,7 +1205,7 @@
       { "t": "more than you", "s": "small" },
       { "t": "live it.", "s": "big" }
     ],
-    "icon": "brain",
+    "icon": "placeholder",
     "bg": "#F5EDD8",
     "tags": []
   },
@@ -1217,7 +1217,7 @@
       { "t": "after whatever tf", "s": "tiny" },
       { "t": "that week was.", "s": "big" }
     ],
-    "icon": "mountain",
+    "icon": "placeholder",
     "bg": "#6A8A6A",
     "tags": ["weekend"]
   },
@@ -1277,7 +1277,7 @@
       { "t": "It rather denotes a", "s": "tiny" },
       { "t": "lack of courage.", "s": "big" }
     ],
-    "icon": "queen",
+    "icon": "placeholder",
     "bg": "#4A2A3A",
     "tags": []
   },
@@ -1289,7 +1289,7 @@
       { "t": "Don't settle", "s": "big" },
       { "t": "until you get it.", "s": "small" }
     ],
-    "icon": "face_sunglasses",
+    "icon": "placeholder",
     "bg": "#1A3A5A",
     "tags": []
   },
@@ -1301,7 +1301,7 @@
       { "t": "I think you have", "s": "small" },
       { "t": "mood poisoning.", "s": "big" }
     ],
-    "icon": "bed",
+    "icon": "placeholder",
     "bg": "#2A3A4A",
     "tags": []
   }
