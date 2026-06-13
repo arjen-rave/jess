@@ -646,7 +646,7 @@
       { "t": "Have you met other people?", "s": "medium" },
       { "t": "They're awful.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "people",
     "bg": "#F0C8C8",
     "tags": []
   },
@@ -658,7 +658,7 @@
       { "t": "Hate everyone else", "s": "big" },
       { "t": "instead.", "s": "medium" }
     ],
-    "icon": "placeholder",
+    "icon": "people",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -694,7 +694,7 @@
       { "t": "when you", "s": "tiny" },
       { "t": "self-sabotage.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "broken_bottle",
     "bg": "#4A5A4A",
     "tags": []
   },
@@ -706,7 +706,7 @@
       { "t": "People are", "s": "small" },
       { "t": "never pleased.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "crowd_happy",
     "bg": "#C8B8A2",
     "tags": []
   },
@@ -778,7 +778,7 @@
       { "t": "separating", "s": "small" },
       { "t": "lights and darks.", "s": "big" }
     ],
-    "icon": "washing_machine",
+    "icon": "laundry",
     "bg": "#B8D4E8",
     "tags": []
   },
@@ -814,7 +814,7 @@
       { "t": "as a big gurl", "s": "medium" },
       { "t": "at her big gurl job.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "laptop",
     "bg": "#C4455A",
     "tags": ["weekday"]
   },
@@ -838,7 +838,7 @@
       { "t": "What if they're just", "s": "small" },
       { "t": "a cunt?", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "vagina",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -851,7 +851,7 @@
       { "t": "what the hap", "s": "medium" },
       { "t": "is fuckening.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "frog",
     "bg": "#2A3A4A",
     "tags": []
   },
@@ -875,7 +875,7 @@
       { "t": "Be", "s": "small" },
       { "t": "difficulter.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "unicorn",
     "bg": "#4A2A3A",
     "tags": []
   },
@@ -912,7 +912,7 @@
       { "t": "fuck.", "s": "big" },
       { "t": "Start again.", "s": "medium" }
     ],
-    "icon": "placeholder",
+    "icon": "broken_bottle",
     "bg": "#3C3C3C",
     "tags": []
   },
@@ -924,7 +924,7 @@
       { "t": "to scream into", "s": "medium" },
       { "t": "as a treat.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "black_hole",
     "bg": "#1A1A2E",
     "tags": []
   },
@@ -974,7 +974,7 @@
       { "t": "Only", "s": "small" },
       { "t": "whimsical mistakes.", "s": "medium" }
     ],
-    "icon": "placeholder",
+    "icon": "wand",
     "bg": "#C8A0B8",
     "tags": []
   },
@@ -998,7 +998,7 @@
       { "t": "as the villain,", "s": "medium" },
       { "t": "then pose.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "pose",
     "bg": "#1A1A1A",
     "tags": []
   },
@@ -1085,7 +1085,7 @@
       { "t": "peeing.", "s": "big" },
       { "t": "Stay hydrated.", "s": "small" }
     ],
-    "icon": "placeholder",
+    "icon": "droplet",
     "bg": "#B8D4E8",
     "tags": []
   },
@@ -1108,7 +1108,7 @@
       { "t": "That's ok.", "s": "small" },
       { "t": "They're wrong though.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "heart_hands",
     "bg": "#F0C8C8",
     "tags": []
   },
@@ -1132,7 +1132,7 @@
       { "t": "The universe", "s": "small" },
       { "t": "isn't on a budget.", "s": "medium" }
     ],
-    "icon": "placeholder",
+    "icon": "black_hole",
     "bg": "#1A1A2E",
     "tags": []
   },
@@ -1144,7 +1144,7 @@
       { "t": "don't wait for others", "s": "small" },
       { "t": "to agree.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "heart_hands",
     "bg": "#E8C547",
     "tags": []
   },
@@ -1156,7 +1156,7 @@
       { "t": "that you're", "s": "small" },
       { "t": "so back.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "pose",
     "bg": "#C4455A",
     "tags": []
   },
@@ -1193,7 +1193,7 @@
       { "t": "is too much work.", "s": "medium" },
       { "t": "Let them judge.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "crowd_happy",
     "bg": "#6A8A6A",
     "tags": []
   },
@@ -1205,7 +1205,7 @@
       { "t": "more than you", "s": "small" },
       { "t": "live it.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "brain",
     "bg": "#F5EDD8",
     "tags": []
   },
@@ -1217,7 +1217,7 @@
       { "t": "after whatever tf", "s": "tiny" },
       { "t": "that week was.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "mountain",
     "bg": "#6A8A6A",
     "tags": ["weekend"]
   },
@@ -1277,7 +1277,7 @@
       { "t": "It rather denotes a", "s": "tiny" },
       { "t": "lack of courage.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "pose",
     "bg": "#4A2A3A",
     "tags": []
   },
@@ -1289,7 +1289,7 @@
       { "t": "Don't settle", "s": "big" },
       { "t": "until you get it.", "s": "small" }
     ],
-    "icon": "placeholder",
+    "icon": "puppy",
     "bg": "#1A3A5A",
     "tags": []
   },
@@ -1301,7 +1301,7 @@
       { "t": "I think you have", "s": "small" },
       { "t": "mood poisoning.", "s": "big" }
     ],
-    "icon": "placeholder",
+    "icon": "skull",
     "bg": "#2A3A4A",
     "tags": []
   }
