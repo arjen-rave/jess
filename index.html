@@ -1011,20 +1011,10 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
 
 <script>
 // ═══════════════════════════════════════════════
-// ICONS  (main app)
+// ICONS + CARDS  (loaded from cards.json at boot)
 // ═══════════════════════════════════════════════
-const ICONS = {
-  bed:`<svg viewBox="0 0 72 72" fill="none"><path d="M10 46 L10 32 Q10 28 14 28 L58 28 Q62 28 62 32 L62 46" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M8 46 L64 46" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M12 50 L12 58 M60 50 L60 58" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="14" y="18" width="17" height="12" rx="3" stroke="currentColor" stroke-width="1.8" opacity=".55"/><rect x="41" y="18" width="17" height="12" rx="3" stroke="currentColor" stroke-width="1.8" opacity=".55"/></svg>`,
-  sunrise:`<svg viewBox="0 0 72 72" fill="none"><path d="M14 50 Q24 37 36 37 Q48 37 58 50" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="36" cy="37" r="8" stroke="currentColor" stroke-width="1.8" opacity=".65"/><path d="M36 20 L36 26 M20 24 L24 28 M52 24 L48 28 M14 37 L20 37 M52 37 L58 37" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".5"/><path d="M8 54 L64 54" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".35"/><path d="M20 60 L52 60" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".18"/></svg>`,
-  folding_chair:`<svg viewBox="0 0 72 72" fill="none"><path d="M22 10 L26 36 L46 36 L50 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 10 L50 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M25 22 L47 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/><path d="M26 36 L20 62 M46 36 L52 62" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M23 50 L49 50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/></svg>`,
-  face_sunglasses:`<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="40" r="22" stroke="currentColor" stroke-width="2" opacity=".6"/><rect x="19" y="32" width="13" height="9" rx="4.5" fill="currentColor" opacity=".75"/><rect x="40" y="32" width="13" height="9" rx="4.5" fill="currentColor" opacity=".75"/><path d="M32 36.5 L40 36.5" stroke="currentColor" stroke-width="1.5"/><path d="M17 36 L19 36 M53 36 L55 36" stroke="currentColor" stroke-width="1.5"/><path d="M28 50 Q36 55 44 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M26 20 Q36 13 46 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/></svg>`,
-  wine_glass:`<svg viewBox="0 0 72 72" fill="none"><path d="M23 12 L49 12 L43 34 Q42 44 36 46 Q30 44 29 34 Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M36 46 L36 60" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M27 60 L45 60" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M27 21 Q32 27 36 21 Q40 27 45 21" stroke="currentColor" stroke-width="1.2" opacity=".3"/></svg>`,
-  coffee_cup:`<svg viewBox="0 0 72 72" fill="none"><path d="M17 26 L55 26 L51 56 Q50 60 36 60 Q22 60 21 56 Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M55 32 Q64 32 64 41 Q64 50 55 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/><path d="M28 17 Q28 10 33 10 Q33 15 28 17 M36 15 Q36 8 41 8 Q41 13 36 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/></svg>`,
-  face_plain:`<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="40" r="22" stroke="currentColor" stroke-width="2" opacity=".6"/><ellipse cx="28" cy="37" rx="2.5" ry="3" fill="currentColor" opacity=".7"/><ellipse cx="44" cy="37" rx="2.5" ry="3" fill="currentColor" opacity=".7"/><path d="M28 49 Q36 53 44 49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M28 20 Q36 13 44 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/></svg>`,
-  face_curly:`<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="42" r="20" stroke="currentColor" stroke-width="2" opacity=".6"/><ellipse cx="29" cy="39" rx="2" ry="2.5" fill="currentColor" opacity=".7"/><ellipse cx="43" cy="39" rx="2" ry="2.5" fill="currentColor" opacity=".7"/><path d="M29 50 Q36 54 43 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 30 Q20 17 28 17 Q24 13 26 9 Q32 13 30 19 Q38 15 42 21 Q46 15 50 19 Q52 13 54 17 Q54 25 50 30" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".6"/></svg>`,
-  face_antlers:`<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="44" r="20" stroke="currentColor" stroke-width="2" opacity=".6"/><ellipse cx="29" cy="41" rx="2" ry="2.5" fill="currentColor" opacity=".7"/><ellipse cx="43" cy="41" rx="2" ry="2.5" fill="currentColor" opacity=".7"/><path d="M29 52 Q36 56 43 52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M26 26 L24 13 M24 13 L19 9 M24 13 L28 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".7"/><path d="M46 26 L48 13 M48 13 L53 9 M48 13 L44 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".7"/></svg>`,
-  moon:`<svg viewBox="0 0 72 72" fill="none"><path d="M44 16 Q28 20 26 36 Q24 52 40 58 Q22 58 16 44 Q10 30 22 18 Q32 8 44 16Z" stroke="currentColor" stroke-width="2" opacity=".7"/><circle cx="50" cy="18" r="2" fill="currentColor" opacity=".4"/><circle cx="56" cy="28" r="1.5" fill="currentColor" opacity=".3"/></svg>`
-};
+let ICONS = {};
+let CARDS = [];
 
 // ═══════════════════════════════════════════════
 // SPECIAL DATES CONFIG
@@ -1062,19 +1052,9 @@ function buildSpecialMap(){
   return map;
 }
 
-// ═══════════════════════════════════════════════
-// CARD DATA
-// ═══════════════════════════════════════════════
-let CARDS = [
-  { id:1, parts:[{t:"My morning routine is simple.",s:"small"},{t:"I wake up and",s:"small"},{t:"hate everyone.",s:"big"}],                icon:"bed",            bg:"charcoal",    tags:["monday"] },
-  { id:2, parts:[{t:"hopefully tomorrow",s:"big"},{t:"is Friday",s:"medium"}],                                                             icon:"sunrise",        bg:"pastel-blue", tags:["thursday"] },
-  { id:3, parts:[{t:"Yes, I'm an adult,",s:"small"},{t:"but in the same way a",s:"tiny"},{t:"folding chair",s:"big"},{t:"is furniture.",s:"medium"},{t:"Technically... sure, but nobody's impressed and I'm not all that stable.",s:"tiny"}], icon:"folding_chair", bg:"cream", tags:[] },
-  { id:4, parts:[{t:"Physically, I am here.",s:"medium"},{t:"Mentally,",s:"small"},{t:"I'm in Bali",s:"big"},{t:"ordering my third margarita.",s:"small"}], icon:"face_sunglasses", bg:"mustard", tags:["weekday"] },
-  { id:5, parts:[{t:"Step aside, coffee.",s:"small"},{t:"This job is for",s:"small"},{t:"alcohol.",s:"big"}],                              icon:"wine_glass",     bg:"kraft",       tags:["monday"] },
-  { id:6, parts:[{t:"I do care.",s:"big"},{t:"I just don't",s:"small"},{t:"give a fuck.",s:"medium"}],                                    icon:"face_plain",     bg:"offwhite",    tags:[] },
-  { id:7, parts:[{t:"Sometimes the first step towards",s:"small"},{t:"forgiveness",s:"big"},{t:"is realising the other person",s:"tiny"},{t:"was born an idiot.",s:"medium"}], icon:"face_curly", bg:"pastel-pink", tags:[] },
-  { id:8, parts:[{t:"For Halloween, I'm dressing up as my life —",s:"small"},{t:"a fucking nightmare.",s:"big"}],                         icon:"face_antlers",   bg:"black",       tags:["halloween"] }
-];
+
+
+
 
 const DOW_TAGS     = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
 const WEEKTYPE_TAGS= ['weekday','weekend'];
@@ -1207,11 +1187,22 @@ function cardForDate(date){
 // ═══════════════════════════════════════════════
 // RENDER CARD
 // ═══════════════════════════════════════════════
-function icColor(bg){ return ['kraft','charcoal','black'].includes(bg)?'rgba(245,237,216,0.8)':'rgba(42,42,42,0.8)'; }
+function cardIsDark(hex){
+  if(!hex||!hex.startsWith('#')) return true;
+  try{ const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16); return (r*299+g*587+b*114)/1000<145; }catch{ return true; }
+}
+function darkenHex(hex,amt=18){
+  if(!hex||!hex.startsWith('#')) return hex;
+  try{ let r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16); r=Math.max(0,r-amt);g=Math.max(0,g-amt);b=Math.max(0,b-amt); return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`; }catch{ return hex; }
+}
 function renderCard(card,mini=false){
+  const hex=BG_SWATCHES[card.bg]||card.bg||'#3C3C3C';
+  const dark=cardIsDark(hex);
+  const textCol=dark?'#F5EDD8':'#2A2A2A';
+  const iconCol=dark?'rgba(245,237,216,0.8)':'rgba(42,42,42,0.8)';
   const parts=card.parts.map(p=>`<span class="t-${p.s}" style="display:block">${p.t}</span>`).join('');
-  return `<div class="card bg-${card.bg}${mini?' card-mini':''}">
-    <div class="card-icon" style="color:${icColor(card.bg)}">${ICONS[card.icon]||ICONS.face_plain}</div>
+  return `<div class="card${mini?' card-mini':''}" style="background:linear-gradient(150deg,${hex},${darkenHex(hex)});color:${textCol}">
+    <div class="card-icon" style="color:${iconCol}">${ICONS[card.icon]||CF_PLACEHOLDER_SVG}</div>
     <div class="card-body">${parts}</div>
   </div>`;
 }
@@ -1417,7 +1408,7 @@ function renderDeckRow(card){
   const tagsHtml=card.tags.length
     ? card.tags.map(t=>`<span class="${tagDisplayClass(t)}">${t}</span>`).join('')
     : `<span class="deck-tag tag-none">any</span>`;
-  const dot=`<div class="deck-bg-dot" style="background:${BG_SWATCHES[card.bg]||'#888'}"></div>`;
+  const dot=`<div class="deck-bg-dot" style="background:${BG_SWATCHES[card.bg]||card.bg||'#888'}"></div>`;
   const isExp=expandedDeckId===card.id;
 
   // Dev-mode: show which date this card is assigned to in the current schedule
@@ -1692,13 +1683,28 @@ function closeHelp() { document.getElementById('help-overlay').classList.remove(
 // ═══════════════════════════════════════════════
 // BOOT
 // ═══════════════════════════════════════════════
-try {
-  renderToday();
-} catch(e) {
-  document.getElementById('card-wrap').innerHTML=
-    `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Error: ${e.message}<br><small>${e.stack}</small></div>`;
-  console.error(e);
+document.getElementById('card-wrap').innerHTML=
+  `<div style="text-align:center;padding:60px 20px;color:var(--text-muted);font-family:var(--serif);font-size:16px;font-style:italic">Loading…</div>`;
+
+async function loadData(){
+  try {
+    const res=await fetch('cards.json');
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data=await res.json();
+    ICONS=data.icons||{};
+    CARDS=data.cards||[];
+    try { renderToday(); } catch(e){
+      document.getElementById('card-wrap').innerHTML=
+        `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Error: ${e.message}<br><small>${e.stack}</small></div>`;
+      console.error(e);
+    }
+  } catch(e){
+    document.getElementById('card-wrap').innerHTML=
+      `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Failed to load cards: ${e.message}</div>`;
+    console.error(e);
+  }
 }
+loadData();
 
 // ═══════════════════════════════════════════════════════════
 // CARD FORM OVERLAY
