@@ -2494,6 +2494,1024 @@
       "icon": "skull",
       "bg": "#2A3A4A",
       "tags": []
+    },
+    {
+      "id": 106,
+      "name": "Own Your Weird",
+      "parts": [
+        { "t": "Own your weird.", "s": "big" },
+        { "t": "Bland people are forgettable.", "s": "small" },
+        { "t": "That's their burden,", "s": "tiny" },
+        { "t": "not yours.", "s": "medium" }
+      ],
+      "icon": "unicorn",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 107,
+      "name": "Confidence Is Practice",
+      "parts": [
+        { "t": "Confidence is practice.", "s": "big" },
+        { "t": "Walk in, try, act normal.", "s": "small" },
+        { "t": "Repeat until it starts feeling true.", "s": "tiny" }
+      ],
+      "icon": "placeholder",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 108,
+      "name": "Do It Scared",
+      "parts": [
+        { "t": "Do it scared.", "s": "big" },
+        { "t": "Most confident people are just anxious", "s": "tiny" },
+        { "t": "with better posture.", "s": "medium" }
+      ],
+      "icon": "placeholder",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 109,
+      "name": "Be A Bit Delusional",
+      "parts": [
+        { "t": "Be a bit delusional.", "s": "big" },
+        { "t": "Not dangerously.", "s": "small" },
+        { "t": "Just enough to believe you might actually", "s": "tiny" },
+        { "t": "pull it off.", "s": "medium" }
+      ],
+      "icon": "wand",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 110,
+      "name": "Do Not Shrink",
+      "parts": [
+        { "t": "Do not shrink yourself", "s": "medium" },
+        { "t": "to make other people", "s": "small" },
+        { "t": "comfortable.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#C4455A",
+      "tags": []
+    },
+    {
+      "id": 111,
+      "name": "Nobody Is Ready",
+      "parts": [
+        { "t": "Stop waiting until you feel ready.", "s": "small" },
+        { "t": "Nobody is ready.", "s": "big" },
+        { "t": "Some people are just louder", "s": "tiny" },
+        { "t": "and wear better shoes.", "s": "small" }
+      ],
+      "icon": "boot",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 112,
+      "name": "Walk In Like You Belong",
+      "parts": [
+        { "t": "Walk in like you belong there.", "s": "medium" },
+        { "t": "Even if you have no idea what's happening.", "s": "tiny" },
+        { "t": "That's basically", "s": "small" },
+        { "t": "adulthood.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#1A3A5A",
+      "tags": ["Monday"]
+    },
+    {
+      "id": 113,
+      "name": "Doggy Style",
+      "parts": [
+        { "t": "I thought doggy style was", "s": "small" },
+        { "t": "being loyal to each other.", "s": "medium" },
+        { "t": "You guys are gross.", "s": "big" }
+      ],
+      "icon": "puppy",
+      "bg": "#F5EDD8",
+      "tags": []
+    },
+    {
+      "id": 114,
+      "name": "Five Year Plan",
+      "parts": [
+        { "t": "'What's your 5 year plan?'", "s": "small" },
+        { "t": "Laugh with my friends.", "s": "medium" },
+        { "t": "Maintain a childlike whimsy.", "s": "small" },
+        { "t": "Just have a good time.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 115,
+      "name": "Rebellion",
+      "parts": [
+        { "t": "My mom says we can start a rebellion", "s": "small" },
+        { "t": "if it's ok", "s": "small" },
+        { "t": "with your mom.", "s": "big" }
+      ],
+      "icon": "broken_bottle",
+      "bg": "#C4455A",
+      "tags": []
+    },
+    {
+      "id": 116,
+      "name": "Prettier Every Time",
+      "parts": [
+        { "t": "You get prettier", "s": "small" },
+        { "t": "every time", "s": "medium" },
+        { "t": "I look at you.", "s": "big" }
+      ],
+      "icon": "mirror",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 117,
+      "name": "Curse Lifted",
+      "parts": [
+        { "t": "If you are seeing this,", "s": "small" },
+        { "t": "the curse", "s": "big" },
+        { "t": "is lifted.", "s": "medium" }
+      ],
+      "icon": "wand",
+      "bg": "#1A1A2E",
+      "tags": []
+    },
+    {
+      "id": 118,
+      "name": "Best Case Scenario",
+      "parts": [
+        { "t": "Don't forget to imagine", "s": "small" },
+        { "t": "the best case scenario", "s": "medium" },
+        { "t": "too.", "s": "big" }
+      ],
+      "icon": "brain",
+      "bg": "#B8D4E8",
+      "tags": []
+    },
+    {
+      "id": 119,
+      "name": "We Found It Fun",
+      "parts": [
+        { "t": "We found it fun.", "s": "medium" },
+        { "t": "They found it cringe.", "s": "small" },
+        { "t": "That's why we're", "s": "small" },
+        { "t": "happier than them.", "s": "big" }
+      ],
+      "icon": "peace",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 120,
+      "name": "Trash Sorted Itself",
+      "parts": [
+        { "t": "If someone dislikes you for being yourself,", "s": "tiny" },
+        { "t": "that's convenient.", "s": "small" },
+        { "t": "The trash", "s": "small" },
+        { "t": "sorted itself.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#4A5A4A",
+      "tags": []
+    },
+    {
+      "id": 121,
+      "name": "Black Pepper",
+      "parts": [
+        { "t": "Stop trying to impress people", "s": "small" },
+        { "t": "that think black pepper", "s": "small" },
+        { "t": "is spicy.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 122,
+      "name": "They Already Think You're Weird",
+      "parts": [
+        { "t": "They already think you're weird.", "s": "small" },
+        { "t": "Good.", "s": "big" },
+        { "t": "Saves time.", "s": "medium" }
+      ],
+      "icon": "unicorn",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 123,
+      "name": "Make It Worth The Group Chat",
+      "parts": [
+        { "t": "Someone will judge you", "s": "small" },
+        { "t": "no matter what you do.", "s": "tiny" },
+        { "t": "At least make it worth", "s": "small" },
+        { "t": "the group chat.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 124,
+      "name": "Let Them Talk",
+      "parts": [
+        { "t": "Let them talk.", "s": "big" },
+        { "t": "People with boring lives", "s": "small" },
+        { "t": "do not spend all day", "s": "tiny" },
+        { "t": "auditing yours.", "s": "medium" }
+      ],
+      "icon": "placeholder",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 125,
+      "name": "Confuse The Villagers",
+      "parts": [
+        { "t": "Do the weird thing. Post the thing.", "s": "tiny" },
+        { "t": "Wear the thing. Make the noise.", "s": "tiny" },
+        { "t": "Confuse the villagers.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 126,
+      "name": "Sofa Dent",
+      "parts": [
+        { "t": "Never take criticism from someone", "s": "tiny" },
+        { "t": "whose entire personality is", "s": "tiny" },
+        { "t": "commenting 'cringe'", "s": "medium" },
+        { "t": "from a sofa dent.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 127,
+      "name": "People Pleasing Is Over",
+      "parts": [
+        { "t": "People pleasing is over.", "s": "medium" },
+        { "t": "Become", "s": "small" },
+        { "t": "unacceptable.", "s": "big" }
+      ],
+      "icon": "queen",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 128,
+      "name": "Be A Cunt For A While",
+      "parts": [
+        { "t": "Take a break from your healing journey", "s": "tiny" },
+        { "t": "and focus on being", "s": "small" },
+        { "t": "a cunt", "s": "big" },
+        { "t": "for a while.", "s": "small" }
+      ],
+      "icon": "vagina",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 129,
+      "name": "Butt Plugs",
+      "parts": [
+        { "t": "Butt plugs are all fun and games…", "s": "small" },
+        { "t": "…until you fart and", "s": "small" },
+        { "t": "shoot the dog.", "s": "big" }
+      ],
+      "icon": "buttplug",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 130,
+      "name": "Unavailable",
+      "parts": [
+        { "t": "You're allowed to be unavailable.", "s": "small" },
+        { "t": "Even if you are just sat there", "s": "tiny" },
+        { "t": "doing absolutely", "s": "small" },
+        { "t": "nothing.", "s": "big" }
+      ],
+      "icon": "wave",
+      "bg": "#2A2A4A",
+      "tags": ["Sunday"]
+    },
+    {
+      "id": 131,
+      "name": "Soul Has Packed A Bag",
+      "parts": [
+        { "t": "Stop saying 'maybe'", "s": "small" },
+        { "t": "when your soul has already", "s": "small" },
+        { "t": "packed a bag.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#2A3A4A",
+      "tags": []
+    },
+    {
+      "id": 132,
+      "name": "Sounds Like A Them Problem",
+      "parts": [
+        { "t": "Some people are only upset", "s": "small" },
+        { "t": "because your boundaries", "s": "small" },
+        { "t": "are inconvenient for them.", "s": "tiny" },
+        { "t": "Sounds like a them problem.", "s": "big" }
+      ],
+      "icon": "peace",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 133,
+      "name": "If It Costs Your Peace",
+      "parts": [
+        { "t": "If it costs your peace,", "s": "small" },
+        { "t": "the answer is no.", "s": "big" },
+        { "t": "That's not rudeness,", "s": "small" },
+        { "t": "that's growth.", "s": "medium" }
+      ],
+      "icon": "peace",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 134,
+      "name": "Gods Sent You As Punishment",
+      "parts": [
+        { "t": "Walk into rooms", "s": "small" },
+        { "t": "like the Gods sent you", "s": "medium" },
+        { "t": "as a punishment.", "s": "big" }
+      ],
+      "icon": "flame",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 135,
+      "name": "Yule Cat",
+      "parts": [
+        { "t": "Your chances of being eaten", "s": "small" },
+        { "t": "by the Yule cat are low,", "s": "small" },
+        { "t": "but not zero.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#1A1A1A",
+      "tags": ["christmas"]
+    },
+    {
+      "id": 136,
+      "name": "Fun In Dysfunctional",
+      "parts": [
+        { "t": "You put the", "s": "small" },
+        { "t": "'fun'", "s": "big" },
+        { "t": "in dysfunctional.", "s": "medium" }
+      ],
+      "icon": "disco_ball",
+      "bg": "#1A1A2E",
+      "tags": []
+    },
+    {
+      "id": 137,
+      "name": "TED Talk Pillow",
+      "parts": [
+        { "t": "Your pillow is for sleeping,", "s": "small" },
+        { "t": "not hosting a TED Talk", "s": "medium" },
+        { "t": "by your worst thoughts.", "s": "big" }
+      ],
+      "icon": "bed",
+      "bg": "#2A2A4A",
+      "tags": []
+    },
+    {
+      "id": 138,
+      "name": "Stop Rehearsing",
+      "parts": [
+        { "t": "Stop rehearsing conversations", "s": "small" },
+        { "t": "that will never happen", "s": "medium" },
+        { "t": "with people you don't even like.", "s": "big" }
+      ],
+      "icon": "brain",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 139,
+      "name": "3am Problems",
+      "parts": [
+        { "t": "If you wake up at 3am,", "s": "small" },
+        { "t": "don't invent new problems.", "s": "medium" },
+        { "t": "The originals were enough.", "s": "big" }
+      ],
+      "icon": "moon",
+      "bg": "#1A1A2E",
+      "tags": []
+    },
+    {
+      "id": 140,
+      "name": "Less Doom Scrolling",
+      "parts": [
+        { "t": "You do not need a perfect routine.", "s": "small" },
+        { "t": "You need less doom scrolling", "s": "medium" },
+        { "t": "and a bit of self-respect.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 141,
+      "name": "Hold Grudges Responsibly",
+      "parts": [
+        { "t": "Life is short.", "s": "medium" },
+        { "t": "Hold grudges", "s": "big" },
+        { "t": "responsibly.", "s": "small" }
+      ],
+      "icon": "skull",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 142,
+      "name": "Some People Just Need To Go Away",
+      "parts": [
+        { "t": "Not every problem needs a solution.", "s": "small" },
+        { "t": "Some people just need", "s": "small" },
+        { "t": "to go away.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 143,
+      "name": "Inner Peace",
+      "parts": [
+        { "t": "Inner peace is important.", "s": "small" },
+        { "t": "So is", "s": "small" },
+        { "t": "personal space.", "s": "big" }
+      ],
+      "icon": "peace",
+      "bg": "#C8D8C0",
+      "tags": []
+    },
+    {
+      "id": 144,
+      "name": "Sunny Spot",
+      "parts": [
+        { "t": "If you're stressed,", "s": "small" },
+        { "t": "find a sunny spot", "s": "medium" },
+        { "t": "and pretend responsibilities aren't real.", "s": "big" }
+      ],
+      "icon": "sun",
+      "bg": "#E8C547",
+      "tags": ["weekend"]
+    },
+    {
+      "id": 145,
+      "name": "Warning Look",
+      "parts": [
+        { "t": "Not everyone deserves your energy.", "s": "small" },
+        { "t": "Some deserve", "s": "small" },
+        { "t": "a warning look.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 146,
+      "name": "Forgive Or Remember",
+      "parts": [
+        { "t": "Forgive and forget.", "s": "medium" },
+        { "t": "Or remember forever.", "s": "medium" },
+        { "t": "Your choice.", "s": "big" }
+      ],
+      "icon": "scales",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 147,
+      "name": "Stop Explaining Your Day Off",
+      "parts": [
+        { "t": "Stop explaining your day off", "s": "small" },
+        { "t": "to people who are not your boss", "s": "tiny" },
+        { "t": "and enjoy your rest.", "s": "big" }
+      ],
+      "icon": "coffee_cup",
+      "bg": "#C4956A",
+      "tags": ["weekend"]
+    },
+    {
+      "id": 148,
+      "name": "Anxiety Is A Lying Biatch",
+      "parts": [
+        { "t": "Your anxiety", "s": "small" },
+        { "t": "is a lying", "s": "small" },
+        { "t": "biatch.", "s": "big" }
+      ],
+      "icon": "brain",
+      "bg": "#F0C8C8",
+      "tags": []
+    },
+    {
+      "id": 149,
+      "name": "What Doesn't Kill You",
+      "parts": [
+        { "t": "What doesn't kill you", "s": "small" },
+        { "t": "makes you", "s": "small" },
+        { "t": "sarcastic.", "s": "big" }
+      ],
+      "icon": "skull",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 150,
+      "name": "Sometimes There's A Dog",
+      "parts": [
+        { "t": "The best part of being alive", "s": "small" },
+        { "t": "is that sometimes,", "s": "small" },
+        { "t": "there's a dog.", "s": "big" }
+      ],
+      "icon": "puppy",
+      "bg": "#E8D5B0",
+      "tags": []
+    },
+    {
+      "id": 151,
+      "name": "Do The Next Thing",
+      "parts": [
+        { "t": "Do the next thing.", "s": "big" },
+        { "t": "Then the next tiny thing.", "s": "small" },
+        { "t": "That's still moving forward.", "s": "medium" }
+      ],
+      "icon": "placeholder",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 152,
+      "name": "Drink Some Water",
+      "parts": [
+        { "t": "Drink some water.", "s": "big" },
+        { "t": "You're not a machine.", "s": "small" },
+        { "t": "You're a tired little creature", "s": "tiny" },
+        { "t": "with responsibilities.", "s": "small" }
+      ],
+      "icon": "glass",
+      "bg": "#B8D4E8",
+      "tags": []
+    },
+    {
+      "id": 153,
+      "name": "Get Dressed",
+      "parts": [
+        { "t": "Get dressed.", "s": "big" },
+        { "t": "Even if the outfit says", "s": "small" },
+        { "t": "'I have given up'.", "s": "medium" },
+        { "t": "It still counts.", "s": "small" }
+      ],
+      "icon": "dress",
+      "bg": "#C8A0B8",
+      "tags": ["weekend"]
+    },
+    {
+      "id": 154,
+      "name": "Eat Something",
+      "parts": [
+        { "t": "Eat something.", "s": "big" },
+        { "t": "Chips over nothing.", "s": "small" },
+        { "t": "Toast over spiralling.", "s": "small" },
+        { "t": "A banana if you're feeling organised.", "s": "tiny" }
+      ],
+      "icon": "banana",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 155,
+      "name": "Brain Is Buffering",
+      "parts": [
+        { "t": "Stop asking yourself why you feel like this.", "s": "tiny" },
+        { "t": "Sometimes the answer is just:", "s": "small" },
+        { "t": "life has been a lot", "s": "medium" },
+        { "t": "and your brain is buffering.", "s": "big" }
+      ],
+      "icon": "brain",
+      "bg": "#2A3A4A",
+      "tags": []
+    },
+    {
+      "id": 156,
+      "name": "Tiny Victories",
+      "parts": [
+        { "t": "Tiny victories still count.", "s": "small" },
+        { "t": "Even if you look confused doing them.", "s": "tiny" },
+        { "t": "Especially then.", "s": "big" }
+      ],
+      "icon": "trophy",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 157,
+      "name": "Don't Declare War On Yourself",
+      "parts": [
+        { "t": "You don't have to fix everything today.", "s": "small" },
+        { "t": "Just get through the day", "s": "small" },
+        { "t": "without declaring war", "s": "medium" },
+        { "t": "on yourself.", "s": "big" }
+      ],
+      "icon": "peace",
+      "bg": "#C8D8C0",
+      "tags": []
+    },
+    {
+      "id": 158,
+      "name": "Committee Of Unnecessary Worrying",
+      "parts": [
+        { "t": "Today's matters shall be referred to", "s": "tiny" },
+        { "t": "the Committee of", "s": "small" },
+        { "t": "Unnecessary Worrying.", "s": "big" }
+      ],
+      "icon": "scales",
+      "bg": "#F5EDD8",
+      "tags": []
+    },
+    {
+      "id": 159,
+      "name": "Character Building",
+      "parts": [
+        { "t": "Good heavens.", "s": "medium" },
+        { "t": "Not another", "s": "small" },
+        { "t": "character building experience.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#C8B8A2",
+      "tags": []
+    },
+    {
+      "id": 160,
+      "name": "Sideways In A Hedge",
+      "parts": [
+        { "t": "You are doing your best.", "s": "small" },
+        { "t": "Even if it looks like you're currently", "s": "tiny" },
+        { "t": "standing sideways", "s": "medium" },
+        { "t": "in a hedge.", "s": "big" }
+      ],
+      "icon": "fence",
+      "bg": "#4A5A4A",
+      "tags": []
+    },
+    {
+      "id": 161,
+      "name": "Not A Tax Return",
+      "parts": [
+        { "t": "You don't need your whole life sorted.", "s": "small" },
+        { "t": "You're not", "s": "small" },
+        { "t": "a tax return.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#F5EDD8",
+      "tags": []
+    },
+    {
+      "id": 162,
+      "name": "Rest Is Not Failure",
+      "parts": [
+        { "t": "Rest is not failure.", "s": "big" },
+        { "t": "Sometimes the most productive thing", "s": "tiny" },
+        { "t": "you can do is", "s": "small" },
+        { "t": "recover.", "s": "medium" }
+      ],
+      "icon": "bed",
+      "bg": "#2A2A4A",
+      "tags": ["weekend"]
+    },
+    {
+      "id": 163,
+      "name": "Average And Alive",
+      "parts": [
+        { "t": "You do not need to be perfect.", "s": "small" },
+        { "t": "Average and alive", "s": "big" },
+        { "t": "is a solid place to start.", "s": "small" }
+      ],
+      "icon": "placeholder",
+      "bg": "#C8D8C0",
+      "tags": []
+    },
+    {
+      "id": 164,
+      "name": "Being Hard On Yourself",
+      "parts": [
+        { "t": "Being hard on yourself", "s": "small" },
+        { "t": "won't make you", "s": "small" },
+        { "t": "heal faster.", "s": "big" }
+      ],
+      "icon": "fixed_heart",
+      "bg": "#F0C8C8",
+      "tags": []
+    },
+    {
+      "id": 165,
+      "name": "Your Own Path",
+      "parts": [
+        { "t": "You are not behind.", "s": "medium" },
+        { "t": "You are on", "s": "small" },
+        { "t": "your own path.", "s": "big" }
+      ],
+      "icon": "boot",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 166,
+      "name": "Healing Takes Time",
+      "parts": [
+        { "t": "Healing", "s": "big" },
+        { "t": "takes time.", "s": "medium" }
+      ],
+      "icon": "fixed_heart",
+      "bg": "#F0C8C8",
+      "tags": []
+    },
+    {
+      "id": 167,
+      "name": "Made It Through A Lot",
+      "parts": [
+        { "t": "You have made it through a lot already.", "s": "small" },
+        { "t": "That deserves credit.", "s": "big" },
+        { "t": "And possibly a sit down.", "s": "small" }
+      ],
+      "icon": "trophy",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 168,
+      "name": "Not While Hungry",
+      "parts": [
+        { "t": "Do not make life decisions", "s": "small" },
+        { "t": "while hungry, tired,", "s": "medium" },
+        { "t": "or standing dramatically in a doorway.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 169,
+      "name": "Just Need Toast",
+      "parts": [
+        { "t": "Sometimes it's not a breakdown.", "s": "small" },
+        { "t": "Sometimes you just", "s": "small" },
+        { "t": "need toast.", "s": "big" }
+      ],
+      "icon": "toast",
+      "bg": "#E8D5B0",
+      "tags": []
+    },
+    {
+      "id": 170,
+      "name": "Take A Deep Breath",
+      "parts": [
+        { "t": "Take a deep breath.", "s": "big" },
+        { "t": "Not a theatrical one.", "s": "small" },
+        { "t": "A real one.", "s": "medium" }
+      ],
+      "icon": "air",
+      "bg": "#C8D8C0",
+      "tags": []
+    },
+    {
+      "id": 171,
+      "name": "Real Problem Or Overthinking",
+      "parts": [
+        { "t": "Ask yourself:", "s": "tiny" },
+        { "t": "is this a real problem,", "s": "small" },
+        { "t": "or am I just emotionally", "s": "small" },
+        { "t": "overthinking?", "s": "big" }
+      ],
+      "icon": "brain",
+      "bg": "#B8D4E8",
+      "tags": []
+    },
+    {
+      "id": 172,
+      "name": "Disaster Documentary",
+      "parts": [
+        { "t": "Calm down. Drink water.", "s": "small" },
+        { "t": "Stop narrating your own", "s": "small" },
+        { "t": "disaster documentary.", "s": "big" }
+      ],
+      "icon": "glass",
+      "bg": "#B8D4E8",
+      "tags": []
+    },
+    {
+      "id": 173,
+      "name": "No Shrine To Inconvenience",
+      "parts": [
+        { "t": "You are allowed to feel things.", "s": "small" },
+        { "t": "Just maybe don't build a shrine", "s": "small" },
+        { "t": "to every inconvenience.", "s": "big" }
+      ],
+      "icon": "heart_hands",
+      "bg": "#F5EDD8",
+      "tags": []
+    },
+    {
+      "id": 174,
+      "name": "Voodoo Doll",
+      "parts": [
+        { "t": "'What do you bring to the table?'", "s": "tiny" },
+        { "t": "A black candle, a voodoo doll,", "s": "small" },
+        { "t": "and a hair of whoever wronged me", "s": "tiny" },
+        { "t": "this week.", "s": "big" }
+      ],
+      "icon": "voodoo",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 175,
+      "name": "We Like Your Edge",
+      "parts": [
+        { "t": "A little something to take the edge off?", "s": "tiny" },
+        { "t": "No thanks.", "s": "medium" },
+        { "t": "We like your edge.", "s": "big" },
+        { "t": "Don't take it off.", "s": "small" }
+      ],
+      "icon": "knife",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 176,
+      "name": "Not Annoyed At You",
+      "parts": [
+        { "t": "Not everyone is annoyed at you.", "s": "small" },
+        { "t": "Some people just", "s": "small" },
+        { "t": "wake up like that.", "s": "big" }
+      ],
+      "icon": "face_plain",
+      "bg": "#C8B8A2",
+      "tags": []
+    },
+    {
+      "id": 177,
+      "name": "Damp Cardboard",
+      "parts": [
+        { "t": "Not every weird tone is about you.", "s": "small" },
+        { "t": "Some people just talk like", "s": "small" },
+        { "t": "damp cardboard.", "s": "big" }
+      ],
+      "icon": "box",
+      "bg": "#C8B8A2",
+      "tags": []
+    },
+    {
+      "id": 178,
+      "name": "Looking Over The Fence",
+      "parts": [
+        { "t": "You are not behind.", "s": "small" },
+        { "t": "You are just looking over", "s": "small" },
+        { "t": "the fence too much.", "s": "big" }
+      ],
+      "icon": "fence",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 179,
+      "name": "Grass Is Edited",
+      "parts": [
+        { "t": "The grass is not greener.", "s": "small" },
+        { "t": "It's edited, filtered,", "s": "medium" },
+        { "t": "and probably rented.", "s": "big" }
+      ],
+      "icon": "plant",
+      "bg": "#4A5A4A",
+      "tags": []
+    },
+    {
+      "id": 180,
+      "name": "Iced Coffee And Sunlight",
+      "parts": [
+        { "t": "Maybe your life isn't ruined.", "s": "small" },
+        { "t": "Maybe you just need", "s": "small" },
+        { "t": "iced coffee and sunlight.", "s": "big" }
+      ],
+      "icon": "glass_ice",
+      "bg": "#E8C547",
+      "tags": ["Sunday"]
+    },
+    {
+      "id": 181,
+      "name": "Not Before Breakfast",
+      "parts": [
+        { "t": "You do not need to solve", "s": "small" },
+        { "t": "your entire life", "s": "medium" },
+        { "t": "before breakfast.", "s": "big" }
+      ],
+      "icon": "toast",
+      "bg": "#E8D5B0",
+      "tags": ["weekday"]
+    },
+    {
+      "id": 182,
+      "name": "Swish Hair Dramatically",
+      "parts": [
+        { "t": "Breathe.", "s": "big" },
+        { "t": "Swish your hair dramatically.", "s": "medium" },
+        { "t": "Continue.", "s": "small" }
+      ],
+      "icon": "air",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 183,
+      "name": "Snack And Lower Cortisol",
+      "parts": [
+        { "t": "You do not need closure.", "s": "small" },
+        { "t": "You need a snack", "s": "medium" },
+        { "t": "and lower cortisol.", "s": "big" }
+      ],
+      "icon": "fries",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 184,
+      "name": "Chew Your Food",
+      "parts": [
+        { "t": "Chew your food.", "s": "big" },
+        { "t": "Not the conversation", "s": "small" },
+        { "t": "from four years ago.", "s": "medium" }
+      ],
+      "icon": "toast",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 185,
+      "name": "Loud Not Reliable",
+      "parts": [
+        { "t": "Your brain is loud.", "s": "medium" },
+        { "t": "That doesn't make it", "s": "small" },
+        { "t": "a reliable narrator.", "s": "big" }
+      ],
+      "icon": "brain",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 186,
+      "name": "Slap Eight People",
+      "parts": [
+        { "t": "Sometimes I wish I was an octopus", "s": "small" },
+        { "t": "so I could slap", "s": "small" },
+        { "t": "8 people at once.", "s": "big" }
+      ],
+      "icon": "octopus",
+      "bg": "#1A3A5A",
+      "tags": []
+    },
+    {
+      "id": 187,
+      "name": "Potted Plant",
+      "parts": [
+        { "t": "Not to sound like a potted plant,", "s": "small" },
+        { "t": "but sunlight and fresh air", "s": "medium" },
+        { "t": "really makes a difference.", "s": "big" }
+      ],
+      "icon": "mountain",
+      "bg": "#6A8A6A",
+      "tags": ["weekend"]
+    },
+    {
+      "id": 188,
+      "name": "Huge Hellfire",
+      "parts": [
+        { "t": "That light at the end of the tunnel?", "s": "small" },
+        { "t": "Huge hellfire.", "s": "big" }
+      ],
+      "icon": "flame",
+      "bg": "#C4455A",
+      "tags": []
     }
-  ]
+  ]  
 }
