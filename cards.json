@@ -1944,7 +1944,7 @@
           "s": "big"
         }
       ],
-      "icon": "pose",
+      "icon": "mask",
       "bg": "#1A1A1A",
       "tags": []
     },
@@ -2189,7 +2189,7 @@
           "s": "medium"
         }
       ],
-      "icon": "black_hole",
+      "icon": "moon",
       "bg": "#1A1A2E",
       "tags": []
     },
@@ -2449,7 +2449,7 @@
           "s": "big"
         }
       ],
-      "icon": "pose",
+      "icon": "disco_ball",
       "bg": "#4A2A3A",
       "tags": []
     },
@@ -2516,7 +2516,7 @@
         { "t": "Walk in, try, act normal.", "s": "small" },
         { "t": "Repeat until it starts feeling true.", "s": "tiny" }
       ],
-      "icon": "placeholder",
+      "icon": "running",
       "bg": "#C4956A",
       "tags": []
     },
@@ -2553,7 +2553,7 @@
         { "t": "to make other people", "s": "small" },
         { "t": "comfortable.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "crowd_happy",
       "bg": "#C4455A",
       "tags": []
     },
@@ -2616,7 +2616,7 @@
         { "t": "if it's ok", "s": "small" },
         { "t": "with your mom.", "s": "big" }
       ],
-      "icon": "broken_bottle",
+      "icon": "flame",
       "bg": "#C4455A",
       "tags": []
     },
@@ -2678,7 +2678,7 @@
         { "t": "The trash", "s": "small" },
         { "t": "sorted itself.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "trash",
       "bg": "#4A5A4A",
       "tags": []
     },
@@ -2690,7 +2690,7 @@
         { "t": "that think black pepper", "s": "small" },
         { "t": "is spicy.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "people",
       "bg": "#3C3C3C",
       "tags": []
     },
@@ -2715,7 +2715,7 @@
         { "t": "At least make it worth", "s": "small" },
         { "t": "the group chat.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "phone",
       "bg": "#C8A0B8",
       "tags": []
     },
@@ -2728,7 +2728,7 @@
         { "t": "do not spend all day", "s": "tiny" },
         { "t": "auditing yours.", "s": "medium" }
       ],
-      "icon": "placeholder",
+      "icon": "crowd_happy",
       "bg": "#6A8A6A",
       "tags": []
     },
@@ -2753,7 +2753,7 @@
         { "t": "commenting 'cringe'", "s": "medium" },
         { "t": "from a sofa dent.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "phone",
       "bg": "#3C3C3C",
       "tags": []
     },
@@ -2815,7 +2815,7 @@
         { "t": "when your soul has already", "s": "small" },
         { "t": "packed a bag.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "suitcase",
       "bg": "#2A3A4A",
       "tags": []
     },
@@ -2828,7 +2828,7 @@
         { "t": "are inconvenient for them.", "s": "tiny" },
         { "t": "Sounds like a them problem.", "s": "big" }
       ],
-      "icon": "peace",
+      "icon": "fence",
       "bg": "#6A8A6A",
       "tags": []
     },
@@ -2865,7 +2865,7 @@
         { "t": "by the Yule cat are low,", "s": "small" },
         { "t": "but not zero.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "cat",
       "bg": "#1A1A1A",
       "tags": ["christmas"]
     },
@@ -2925,7 +2925,7 @@
         { "t": "You need less doom scrolling", "s": "medium" },
         { "t": "and a bit of self-respect.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "phone",
       "bg": "#3C3C3C",
       "tags": []
     },
@@ -2949,7 +2949,7 @@
         { "t": "Some people just need", "s": "small" },
         { "t": "to go away.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "running",
       "bg": "#6A8A6A",
       "tags": []
     },
@@ -2985,7 +2985,7 @@
         { "t": "Some deserve", "s": "small" },
         { "t": "a warning look.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "broken_bottle",
       "bg": "#3C3C3C",
       "tags": []
     },
@@ -3070,7 +3070,7 @@
         { "t": "You're a tired little creature", "s": "tiny" },
         { "t": "with responsibilities.", "s": "small" }
       ],
-      "icon": "glass",
+      "icon": "glass_ice",
       "bg": "#B8D4E8",
       "tags": []
     },
@@ -3267,7 +3267,7 @@
         { "t": "while hungry, tired,", "s": "medium" },
         { "t": "or standing dramatically in a doorway.", "s": "big" }
       ],
-      "icon": "placeholder",
+      "icon": "toast",
       "bg": "#3C3C3C",
       "tags": []
     },
@@ -3316,7 +3316,7 @@
         { "t": "Stop narrating your own", "s": "small" },
         { "t": "disaster documentary.", "s": "big" }
       ],
-      "icon": "glass",
+      "icon": "glass_ice",
       "bg": "#B8D4E8",
       "tags": []
     },
@@ -3462,7 +3462,7 @@
         { "t": "Not the conversation", "s": "small" },
         { "t": "from four years ago.", "s": "medium" }
       ],
-      "icon": "toast",
+      "icon": "fries",
       "bg": "#C4956A",
       "tags": []
     },
