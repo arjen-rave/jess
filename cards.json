@@ -3511,6 +3511,30 @@
       "icon": "flame",
       "bg": "#C4455A",
       "tags": []
+    },
+    {
+      "id": 189,
+      "name": "Selectively Polite",
+      "parts": [
+        { "t": "I'm not snarky.", "s": "medium" },
+        { "t": "I'm just", "s": "small" },
+        { "t": "selectively polite.", "s": "big" }
+      ],
+      "icon": "face_plain",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 190,
+      "name": "Functional Adult",
+      "parts": [
+        { "t": "Being a functional adult", "s": "small" },
+        { "t": "every day", "s": "medium" },
+        { "t": "seems a bit excessive.", "s": "big" }
+      ],
+      "icon": "coffee_cup",
+      "bg": "#C4956A",
+      "tags": ["weekday"]
     }
   ]  
 }
