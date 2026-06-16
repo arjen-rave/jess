@@ -27,24 +27,19 @@ self.addEventListener('fetch', e => {
   );
 });
 
-self.addEventListener('push', e => {
-  e.waitUntil(
-    self.registration.showNotification('Just For Jess ✦', {
-      body: 'Your card for today is waiting 💛',
-      icon: '/jess/icon-192.png',
-      badge: '/jess/icon-192.png'
+self.addEventListener('push', event => {
+  const data = event.data?.json() || {};
+  event.waitUntil(
+    self.registration.showNotification(data.title || 'Just For Jess ✦', {
+      body:  data.body  || 'Your card for today is waiting 💛',
+      icon:  '/jess/icon-192.png',
+      badge: '/jess/icon-192.png',
+      data:  { url: data.url || 'https://arjen-rave.github.io/jess' }
     })
   );
 });
 
-self.addEventListener('notificationclick', e => {
-  e.notification.close();
-  e.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
-      for (const client of list) {
-        if (client.url.includes('/jess') && 'focus' in client) return client.focus();
-      }
-      if (clients.openWindow) return clients.openWindow('/jess/');
-    })
-  );
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  event.waitUntil(clients.openWindow(event.notification.data.url));
 });

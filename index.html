@@ -599,6 +599,21 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
   transition:color 0.15s;
 }
 #ios-install-banner .install-dismiss:hover { color:var(--mustard); }
+
+/* ── NOTIFICATION TOGGLE ── */
+.toggle-switch { position:relative; display:inline-block; width:44px; height:26px; flex-shrink:0; }
+.toggle-switch input { opacity:0; width:0; height:0; position:absolute; }
+.toggle-track {
+  position:absolute; inset:0; border-radius:13px; cursor:pointer; transition:background 0.2s;
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.15);
+}
+.toggle-track::after {
+  content:''; position:absolute; top:3px; left:3px;
+  width:18px; height:18px; border-radius:50%; background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,0.4); transition:transform 0.2s;
+}
+.toggle-switch input:checked + .toggle-track { background:var(--mustard); border-color:var(--mustard); }
+.toggle-switch input:checked + .toggle-track::after { transform:translateX(18px); }
 </style>
 </head>
 <body>
@@ -675,6 +690,10 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
           <div class="help-icon">🎨</div>
           <div><strong>Design</strong><br>Help finalise the design by suggesting an icon (or upload a pic) and a background colour in the form. I'll collate and create a full list of cards as they come in.</div>
         </div>
+        <div class="help-block">
+          <div class="help-icon">🔔</div>
+          <div><strong>Notifications</strong><br>If you enable daily reminders, a notification token is stored on a private server run by Arjen. This is not personal data. You can turn notifications off at any time in Settings, which deletes your data from the server immediately.</div>
+        </div>
       </div>
 
       <button onclick="closeHelp()" style="
@@ -735,9 +754,16 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
       <h3>Notifications</h3>
       <div class="settings-row">
         <span>Daily reminder</span>
-        <input type="time" id="notif-time" value="08:00">
+        <label class="toggle-switch">
+          <input type="checkbox" id="notif-toggle" onchange="onNotifToggle(this.checked)">
+          <span class="toggle-track"></span>
+        </label>
       </div>
-      <p class="settings-note">Set a time to get a daily reminder. Works once installed on your iPhone.</p>
+      <div class="settings-row" id="notif-time-row" style="display:none">
+        <span>Reminder time</span>
+        <input type="time" id="notif-time" value="08:00" onchange="onNotifTimeChange(this.value)">
+      </div>
+      <p class="settings-note" id="notif-note" style="display:none">Sends a background push notification each day at the set time.</p>
     </div>
 
     <div class="settings-block">
@@ -1007,6 +1033,17 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
   </div>
 </div>
 
+<div class="overlay" id="modal-notif-consent">
+  <div class="modal">
+    <h3>Before we set up your daily reminder</h3>
+    <p>To send you notifications when the app is closed, we need to store a notification token on a small private server. This token is not personal data — it's a random code that lets us reach your phone. It's stored securely, used only to send your daily card reminder, and deleted the moment you turn notifications off.<br><br>This server is run by Arjen, not a third party.</p>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="onConsentDecline()">No thanks</button>
+      <button class="btn-confirm" style="background:var(--mustard);color:#222" onclick="onConsentAccept()">Turn on notifications</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1082,7 +1119,7 @@ function cardCategory(tags){
 // ═══════════════════════════════════════════════
 // DATE UTILS
 // ═══════════════════════════════════════════════
-function getStart(){ const s=localStorage.getItem('jj_start'); return s?new Date(s+'T00:00:00'):new Date('2026-07-01T00:00:00'); }
+function getStart(){ const s=localStorage.getItem('jj_start'); return s?new Date(s+'T00:00:00'):new Date('2025-07-01T00:00:00'); }
 function dk(d){ const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${day}`; }
 function mmdd(d){ return `${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 function today0(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
@@ -2188,55 +2225,161 @@ function cf_submitCard(){
 </script>
 
 <script>
-  // ── SERVICE WORKER ──────────────────────────────────────
+  // ── PUSH NOTIFICATION CONFIG ──────────────────────────────
+  const PUSH_SERVER_URL = 'https://your-server.railway.app'; // TODO: replace after deploy
+  const PUSH_SECRET = 'REPLACE_WITH_SECRET'; // TODO: replace with your chosen secret
+
+  // ── SERVICE WORKER ────────────────────────────────────────
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/jess/sw.js')
-        .then(reg => {
-          console.log('SW registered:', reg.scope);
-          window._swReg = reg;
-          const saved = localStorage.getItem('jj_notif_time');
-          if (saved && Notification.permission === 'granted') scheduleNotification(saved);
-        })
+        .then(reg => { console.log('SW registered:', reg.scope); })
         .catch(err => console.log('SW registration failed:', err));
     });
   }
 
-  // ── NOTIFICATIONS ────────────────────────────────────────
-  function scheduleNotification(time) {
-    const [h, m] = time.split(':').map(Number);
-    const next = new Date(); next.setHours(h, m, 0, 0);
-    if (next <= new Date()) next.setDate(next.getDate() + 1);
-    clearTimeout(window._notifTimer);
-    window._notifTimer = setTimeout(() => {
-      if (window._swReg) {
-        window._swReg.showNotification('Just For Jess ✦', {
-          body: 'Your card for today is waiting 💛',
-          icon: '/jess/icon-192.png',
-          badge: '/jess/icon-192.png'
-        });
-      }
-      scheduleNotification(time);
-    }, next - new Date());
+  // ── PUSH HELPERS ──────────────────────────────────────────
+  function urlBase64ToUint8Array(b64) {
+    const pad = '='.repeat((4 - b64.length % 4) % 4);
+    const raw = atob((b64 + pad).replace(/-/g, '+').replace(/_/g, '/'));
+    return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
   }
 
-  document.getElementById('notif-time').addEventListener('change', async function () {
-    const time = this.value; if (!time) return;
-    if (!('Notification' in window)) { showToast('Notifications not supported here'); return; }
-    let perm = Notification.permission;
-    if (perm === 'default') perm = await Notification.requestPermission();
-    if (perm !== 'granted') { showToast('Notifications blocked — check your browser settings'); return; }
-    localStorage.setItem('jj_notif_time', time);
-    scheduleNotification(time);
-    const [h, m] = time.split(':');
-    showToast(`Notifications set for ${h}:${m} ✦`);
-  });
+  async function subscribePush(time) {
+    try {
+      const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
+      if (!keyRes.ok) throw new Error('Could not reach notification server');
+      const { key } = await keyRes.json();
 
-  // Restore saved notification time into input on load
+      const perm = Notification.permission === 'default'
+        ? await Notification.requestPermission()
+        : Notification.permission;
+      if (perm !== 'granted') {
+        showToast('Notifications blocked — check your settings');
+        document.getElementById('notif-toggle').checked = false;
+        document.getElementById('notif-time-row').style.display = 'none';
+        document.getElementById('notif-note').style.display = 'none';
+        return;
+      }
+
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(key)
+      });
+
+      const res = await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
+        body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+      });
+      if (!res.ok) throw new Error('Failed to save subscription on server');
+
+      localStorage.setItem('jj_notif_enabled', 'true');
+      localStorage.setItem('jj_notif_time', time);
+      localStorage.setItem('jj_notif_consented', 'true');
+      const [h, m] = time.split(':');
+      showToast(`Notifications set for ${h}:${m} ✦`);
+    } catch (e) {
+      console.error('subscribePush error:', e);
+      showToast(`Could not set up notifications: ${e.message}`);
+      document.getElementById('notif-toggle').checked = false;
+      document.getElementById('notif-time-row').style.display = 'none';
+      document.getElementById('notif-note').style.display = 'none';
+      localStorage.setItem('jj_notif_enabled', 'false');
+    }
+  }
+
+  async function unsubscribePush() {
+    try {
+      await fetch(`${PUSH_SERVER_URL}/unsubscribe`, {
+        method: 'POST',
+        headers: { 'x-push-secret': PUSH_SECRET }
+      });
+    } catch (e) { console.warn('unsubscribe server error:', e); }
+    try {
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.getSubscription();
+      if (sub) await sub.unsubscribe();
+    } catch (e) { console.warn('local unsubscribe error:', e); }
+    localStorage.setItem('jj_notif_enabled', 'false');
+    showToast('Notifications turned off');
+  }
+
+  // ── TOGGLE HANDLERS ───────────────────────────────────────
+  async function onNotifToggle(enabled) {
+    if (enabled) {
+      const consented = localStorage.getItem('jj_notif_consented');
+      if (!consented) {
+        openModal('modal-notif-consent');
+        document.getElementById('notif-toggle').checked = false;
+        return;
+      }
+      const time = document.getElementById('notif-time').value || '08:00';
+      document.getElementById('notif-time-row').style.display = '';
+      document.getElementById('notif-note').style.display = '';
+      await subscribePush(time);
+    } else {
+      document.getElementById('notif-time-row').style.display = 'none';
+      document.getElementById('notif-note').style.display = 'none';
+      await unsubscribePush();
+    }
+  }
+
+  async function onNotifTimeChange(time) {
+    if (!time) return;
+    localStorage.setItem('jj_notif_time', time);
+    if (localStorage.getItem('jj_notif_enabled') === 'true') {
+      await subscribePush(time);
+    }
+  }
+
+  async function onConsentAccept() {
+    closeModal('modal-notif-consent');
+    document.getElementById('notif-toggle').checked = true;
+    document.getElementById('notif-time-row').style.display = '';
+    document.getElementById('notif-note').style.display = '';
+    const time = document.getElementById('notif-time').value || '08:00';
+    await subscribePush(time);
+  }
+
+  function onConsentDecline() {
+    closeModal('modal-notif-consent');
+    document.getElementById('notif-toggle').checked = false;
+  }
+
+  // ── BOOT — restore notification state ────────────────────
   (function () {
-    const saved = localStorage.getItem('jj_notif_time');
-    if (saved) document.getElementById('notif-time').value = saved;
+    const enabled = localStorage.getItem('jj_notif_enabled') === 'true';
+    const time    = localStorage.getItem('jj_notif_time') || '08:00';
+    const toggle  = document.getElementById('notif-toggle');
+    if (toggle) {
+      toggle.checked = enabled;
+      document.getElementById('notif-time').value = time;
+      if (enabled) {
+        document.getElementById('notif-time-row').style.display = '';
+        document.getElementById('notif-note').style.display = '';
+      }
+    }
+    // Silently re-register with server if enabled and subscription still exists
+    if (enabled && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(async reg => {
+        const sub = await reg.pushManager.getSubscription();
+        if (!sub) return;
+        try {
+          const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
+          const { key } = await keyRes.json();
+          // Re-subscribe if key matches; otherwise let it ride until user re-toggles
+          await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
+            body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+          });
+        } catch (e) { console.warn('Notification re-register failed:', e); }
+      }).catch(() => {});
+    }
   })();
+
 
   // ── iOS INSTALL BANNER ───────────────────────────────────
   (function () {
