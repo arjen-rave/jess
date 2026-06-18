@@ -1057,11 +1057,15 @@ let CARDS = [];
 // SPECIAL DATES CONFIG
 // ═══════════════════════════════════════════════
 const BUILTIN_SPECIALS = [
-  { key:'halloween',  label:'Halloween',       from:'10-31', to:'10-31', builtin:true },
-  { key:'christmas',  label:'Christmas',        from:'12-24', to:'12-26', builtin:true },
-  { key:'nye',        label:"New Year's Eve",   from:'12-31', to:'12-31', builtin:true },
-  { key:'valentine',  label:"Valentine's Day",  from:'02-14', to:'02-14', builtin:true },
-  { key:'birthday',   label:"Jess's Birthday",  from:'07-01', to:'07-01', builtin:true }
+  { key:'birthday',        label:"Jess's Birthday",        from:'07-01', to:'07-01', builtin:true },
+  { key:'thanksgiving',    label:'Canadian Thanksgiving',  from:'10-12', to:'10-12', builtin:true },
+  { key:'halloween',       label:'Halloween',              from:'10-31', to:'10-31', builtin:true },
+  { key:'birthday_arjen',  label:"Arjen's birthday",       from:'11-17', to:'11-17', builtin:true },
+  { key:'christmas',       label:'Christmas',              from:'12-24', to:'12-26', builtin:true },
+  { key:'nye',             label:"New Year's Eve",         from:'12-31', to:'12-31', builtin:true },
+  { key:'birthday_erika',  label:"Erika's birthday",       from:'01-01', to:'01-01', builtin:true },
+  { key:'valentine',       label:"Valentine's Day",        from:'02-14', to:'02-14', builtin:true },
+  { key:'birthday_sarah',  label:"Sarah's birthday",       from:'03-01', to:'03-01', builtin:true }
 ];
 
 function getCustomSpecials(){ try{ return JSON.parse(localStorage.getItem('jj_specials')||'[]'); }catch{ return []; } }
