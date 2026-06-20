@@ -3979,6 +3979,715 @@
       "icon": "turkey",
       "bg": "#C4956A",
       "tags": ["thanksgiving"]
+    },
+    {
+      "id": 226,
+      "name": "FOCUS",
+      "parts": [
+        { "t": "The next time someone upsets you,", "s": "small" },
+        { "t": "tell them to", "s": "medium" },
+        { "t": "F.O.C.U.S.", "s": "big" },
+        { "t": "Fuck Off Caus' yoU Stupid.", "s": "tiny" }
+      ],
+      "icon": "frog",
+      "bg": "#4A5A4A",
+      "tags": []
+    },
+    {
+      "id": 227,
+      "name": "Revenge And Remember",
+      "parts": [
+        { "t": "Life's too short to", "s": "small" },
+        { "t": "forgive and forget.", "s": "medium" },
+        { "t": "It's time for revenge and remember.", "s": "big" }
+      ],
+      "icon": "broken_bottle",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 228,
+      "name": "A Boundary Just Stands There",
+      "parts": [
+        { "t": "A good boundary just stands there", "s": "small" },
+        { "t": "and lets people be", "s": "small" },
+        { "t": "annoyed.", "s": "big" }
+      ],
+      "icon": "fence",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 229,
+      "name": "Open Access To Your Field",
+      "parts": [
+        { "t": "Not everyone deserves", "s": "small" },
+        { "t": "open access to", "s": "small" },
+        { "t": "your field.", "s": "big" }
+      ],
+      "icon": "horse",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 230,
+      "name": "Don't Have To Move",
+      "parts": [
+        { "t": "You do not have to move", "s": "small" },
+        { "t": "for every", "s": "small" },
+        { "t": "loud person.", "s": "big" }
+      ],
+      "icon": "cat",
+      "bg": "#2A2A4A",
+      "tags": []
+    },
+    {
+      "id": 231,
+      "name": "Just Mud",
+      "parts": [
+        { "t": "Not every opinion deserves space in your head.", "s": "tiny" },
+        { "t": "Some of it is", "s": "small" },
+        { "t": "just mud.", "s": "big" }
+      ],
+      "icon": "unicorn",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 232,
+      "name": "Muddy Boots On Your Peace",
+      "parts": [
+        { "t": "Stay soft. Stay kind.", "s": "small" },
+        { "t": "But don't let people wipe their muddy boots", "s": "tiny" },
+        { "t": "on your peace.", "s": "big" }
+      ],
+      "icon": "boot",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 233,
+      "name": "Impatient Psychopath",
+      "parts": [
+        { "t": "One day at a time,", "s": "small" },
+        { "t": "you impatient", "s": "small" },
+        { "t": "psychopath.", "s": "big" }
+      ],
+      "icon": "hourglass",
+      "bg": "#C8B8A2",
+      "tags": []
+    },
+    {
+      "id": 234,
+      "name": "You Own The Prison",
+      "parts": [
+        { "t": "You live in a prison of your own making.", "s": "small" },
+        { "t": "But you own the prison,", "s": "small" },
+        { "t": "and you're in charge.", "s": "big" }
+      ],
+      "icon": "queen",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 235,
+      "name": "Not Even Yourself",
+      "parts": [
+        { "t": "Nothing can stop you.", "s": "small" },
+        { "t": "Not even yourself.", "s": "medium" },
+        { "t": "Not even if you tried.", "s": "big" }
+      ],
+      "icon": "star",
+      "bg": "#1A3A5A",
+      "tags": []
+    },
+    {
+      "id": 236,
+      "name": "You Are The Moment",
+      "parts": [
+        { "t": "You are", "s": "small" },
+        { "t": "the moment.", "s": "big" },
+        { "t": "Don't forget it.", "s": "small" }
+      ],
+      "icon": "unicorn",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 237,
+      "name": "Fucktangular",
+      "parts": [
+        { "t": "The word of the day is:", "s": "tiny" },
+        { "t": "fucktangular.", "s": "big" },
+        { "t": "When a situation is fucked", "s": "small" },
+        { "t": "from every angle.", "s": "medium" }
+      ],
+      "icon": "binoculars",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 238,
+      "name": "Self-Checkout",
+      "parts": [
+        { "t": "You do not need everyone to understand you.", "s": "tiny" },
+        { "t": "Some people still struggle", "s": "small" },
+        { "t": "with self-checkout.", "s": "big" }
+      ],
+      "icon": "star",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 239,
+      "name": "Discoveries On How Not To",
+      "parts": [
+        { "t": "Mistakes are just", "s": "small" },
+        { "t": "discoveries", "s": "big" },
+        { "t": "on how NOT to do something.", "s": "small" }
+      ],
+      "icon": "pelican",
+      "bg": "#B8D4E8",
+      "tags": []
+    },
+    {
+      "id": 240,
+      "name": "Avoid Getting Work Done",
+      "parts": [
+        { "t": "What a beautiful day", "s": "small" },
+        { "t": "to avoid getting", "s": "small" },
+        { "t": "any work done.", "s": "big" }
+      ],
+      "icon": "sun",
+      "bg": "#E8C547",
+      "tags": ["weekday"]
+    },
+    {
+      "id": 241,
+      "name": "Plans For The Day",
+      "parts": [
+        { "t": "Plans for the day:", "s": "small" },
+        { "t": "be hot.", "s": "big" }
+      ],
+      "icon": "butt",
+      "bg": "#C4455A",
+      "tags": []
+    },
+    {
+      "id": 242,
+      "name": "That's What She Said",
+      "parts": [
+        { "t": "[insert here]…", "s": "medium" },
+        { "t": "…that's what she said.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 243,
+      "name": "Stab Stab Stab",
+      "parts": [
+        { "t": "Live laugh love", "s": "small" },
+        { "t": "stab stab stab.", "s": "big" }
+      ],
+      "icon": "broken_bottle",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 244,
+      "name": "Cup Of Coffee",
+      "parts": [
+        { "t": "You don't have to be everyone's cup of tea.", "s": "tiny" },
+        { "t": "Be their cup of coffee.", "s": "small" },
+        { "t": "Wake them up, give them heart palpitations", "s": "tiny" },
+        { "t": "and anxiety.", "s": "big" }
+      ],
+      "icon": "coffee_cup",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 245,
+      "name": "Getting Lit",
+      "parts": [
+        { "t": "The tree isn't the only thing", "s": "small" },
+        { "t": "getting lit", "s": "big" },
+        { "t": "this year.", "s": "small" }
+      ],
+      "icon": "champagne",
+      "bg": "#6B3A5A",
+      "tags": ["christmas"]
+    },
+    {
+      "id": 246,
+      "name": "Santa's Naughty List",
+      "parts": [
+        { "t": "Santa should publish his naughty list.", "s": "small" },
+        { "t": "What a great way to", "s": "small" },
+        { "t": "meet people.", "s": "big" }
+      ],
+      "icon": "santa",
+      "bg": "#1A1A1A",
+      "tags": ["christmas"]
+    },
+    {
+      "id": 247,
+      "name": "Clap When The Plan Lands",
+      "parts": [
+        { "t": "Not everyone will choose you.", "s": "small" },
+        { "t": "Some people also clap", "s": "small" },
+        { "t": "when the plane lands.", "s": "big" }
+      ],
+      "icon": "plane",
+      "bg": "#B8D4E8",
+      "tags": []
+    },
+    {
+      "id": 248,
+      "name": "Stay And Waste Your Time",
+      "parts": [
+        { "t": "Some people leave.", "s": "small" },
+        { "t": "That is sad.", "s": "medium" },
+        { "t": "Some people stay and waste your time.", "s": "small" },
+        { "t": "That is worse.", "s": "big" }
+      ],
+      "icon": "trash",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 249,
+      "name": "Unconditional Tolerance",
+      "parts": [
+        { "t": "Unconditional love", "s": "small" },
+        { "t": "does not mean", "s": "small" },
+        { "t": "unconditional tolerance.", "s": "big" }
+      ],
+      "icon": "scales",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 250,
+      "name": "Karma Won't Do Everything",
+      "parts": [
+        { "t": "Karma won't do everything.", "s": "small" },
+        { "t": "Learn to", "s": "small" },
+        { "t": "insult people sometimes.", "s": "big" }
+      ],
+      "icon": "idiot_thought",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 251,
+      "name": "Act Like They Died",
+      "parts": [
+        { "t": "Act like they died.", "s": "big" },
+        { "t": "It helps.", "s": "medium" }
+      ],
+      "icon": "skull",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 252,
+      "name": "Love Yourself",
+      "parts": [
+        { "t": "Why not give some love to yourself", "s": "small" },
+        { "t": "if you're so", "s": "small" },
+        { "t": "full of it?", "s": "big" }
+      ],
+      "icon": "fixed_heart",
+      "bg": "#F0C8C8",
+      "tags": []
+    },
+    {
+      "id": 253,
+      "name": "Due To Personal Reasons",
+      "parts": [
+        { "t": "Due to personal reasons…", "s": "small" },
+        { "t": "…fuck this.", "s": "big" }
+      ],
+      "icon": "goose",
+      "bg": "#E8E0D0",
+      "tags": []
+    },
+    {
+      "id": 254,
+      "name": "You're The Prize",
+      "parts": [
+        { "t": "Remember:", "s": "small" },
+        { "t": "you're the", "s": "small" },
+        { "t": "prize.", "s": "big" }
+      ],
+      "icon": "trophy",
+      "bg": "#E8C547",
+      "tags": ["birthday"]
+    },
+    {
+      "id": 255,
+      "name": "Rest Is A Requirement",
+      "parts": [
+        { "t": "Rest isn't a reward.", "s": "small" },
+        { "t": "It's a", "s": "small" },
+        { "t": "requirement.", "s": "big" }
+      ],
+      "icon": "bed",
+      "bg": "#2A2A4A",
+      "tags": ["weekend"]
+    },
+    {
+      "id": 256,
+      "name": "Your Body Keeps The Score",
+      "parts": [
+        { "t": "Your health isn't negotiable.", "s": "small" },
+        { "t": "What you do matters.", "s": "medium" },
+        { "t": "Your body keeps the score.", "s": "big" }
+      ],
+      "icon": "unicorn",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 257,
+      "name": "Fourth And Fifth Ribs",
+      "parts": [
+        { "t": "The best way to a man's heart", "s": "small" },
+        { "t": "is through the", "s": "small" },
+        { "t": "fourth and fifth ribs.", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 258,
+      "name": "Not Tequila",
+      "parts": [
+        { "t": "You can't make everyone happy.", "s": "small" },
+        { "t": "You're not", "s": "small" },
+        { "t": "tequila.", "s": "big" }
+      ],
+      "icon": "shot_glasses",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 259,
+      "name": "Ice Cream In Each Hand",
+      "parts": [
+        { "t": "A balanced diet is", "s": "small" },
+        { "t": "an ice cream", "s": "medium" },
+        { "t": "in each hand.", "s": "big" }
+      ],
+      "icon": "ice_cream",
+      "bg": "#F0C8C8",
+      "tags": []
+    },
+    {
+      "id": 260,
+      "name": "Do Them Well",
+      "parts": [
+        { "t": "You do very bad things,", "s": "small" },
+        { "t": "and you do them", "s": "small" },
+        { "t": "well.", "s": "big" }
+      ],
+      "icon": "devil_heart",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 261,
+      "name": "Add Tax",
+      "parts": [
+        { "t": "Know your worth.", "s": "small" },
+        { "t": "Then", "s": "small" },
+        { "t": "add tax.", "s": "big" }
+      ],
+      "icon": "document",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 262,
+      "name": "Hold My Morals",
+      "parts": [
+        { "t": "Here, hold my morals.", "s": "medium" },
+        { "t": "I've got some", "s": "small" },
+        { "t": "sketchy shit to take care of.", "s": "big" }
+      ],
+      "icon": "cat",
+      "bg": "#2A2A4A",
+      "tags": []
+    },
+    {
+      "id": 263,
+      "name": "No Magic",
+      "parts": [
+        { "t": "It's always the people with no magic", "s": "small" },
+        { "t": "trying to tell you", "s": "small" },
+        { "t": "what to do with yours.", "s": "big" }
+      ],
+      "icon": "wand",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 264,
+      "name": "Be Kind Of A Bitch",
+      "parts": [
+        { "t": "Be Kind", "s": "big" },
+        { "t": "(of a bitch)", "s": "medium" }
+      ],
+      "icon": "queen",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 265,
+      "name": "All They Have Is Money",
+      "parts": [
+        { "t": "Some people are so poor,", "s": "small" },
+        { "t": "all they have", "s": "small" },
+        { "t": "is money.", "s": "big" }
+      ],
+      "icon": "money",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 266,
+      "name": "Quit For Evil",
+      "parts": [
+        { "t": "You should quit drinking", "s": "small" },
+        { "t": "for good.", "s": "medium" },
+        { "t": "Do it for evil.", "s": "big" }
+      ],
+      "icon": "devil_heart",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 267,
+      "name": "Eye Contact While Eating A Banana",
+      "parts": [
+        { "t": "Never make eye contact", "s": "small" },
+        { "t": "while eating", "s": "small" },
+        { "t": "a banana.", "s": "big" }
+      ],
+      "icon": "banana",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 268,
+      "name": "Stripping Ain't Easy",
+      "parts": [
+        { "t": "Don't quit your work today.", "s": "small" },
+        { "t": "Stripping", "s": "medium" },
+        { "t": "ain't easy.", "s": "big" }
+      ],
+      "icon": "boobs",
+      "bg": "#C4455A",
+      "tags": ["weekday"]
+    },
+    {
+      "id": 269,
+      "name": "How Can I Help You Fuck Off",
+      "parts": [
+        { "t": "Be kind.", "s": "small" },
+        { "t": "Instead of saying 'Fuck off!',", "s": "small" },
+        { "t": "ask 'How can I help you", "s": "tiny" },
+        { "t": "to fuck off?'", "s": "big" }
+      ],
+      "icon": "placeholder",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 270,
+      "name": "Should Have Been Swallowed",
+      "parts": [
+        { "t": "Don't argue with people", "s": "small" },
+        { "t": "who should have been", "s": "small" },
+        { "t": "swallowed.", "s": "big" }
+      ],
+      "icon": "drop",
+      "bg": "#B8D4E8",
+      "tags": []
+    },
+    {
+      "id": 271,
+      "name": "Wine In The Shower",
+      "parts": [
+        { "t": "Take a bath.", "s": "big" },
+        { "t": "It's hard to drink wine", "s": "small" },
+        { "t": "in the shower.", "s": "medium" }
+      ],
+      "icon": "champagne",
+      "bg": "#6B3A5A",
+      "tags": []
+    },
+    {
+      "id": 272,
+      "name": "Magnificent Sexy Bitch",
+      "parts": [
+        { "t": "Stop doubting yourself,", "s": "small" },
+        { "t": "you magnificent", "s": "medium" },
+        { "t": "sexy bitch.", "s": "big" }
+      ],
+      "icon": "pose",
+      "bg": "#C4455A",
+      "tags": []
+    },
+    {
+      "id": 273,
+      "name": "Tequila Doubles Vision",
+      "parts": [
+        { "t": "Carrots may improve your vision,", "s": "small" },
+        { "t": "but tequila", "s": "medium" },
+        { "t": "will double it.", "s": "big" }
+      ],
+      "icon": "shot_glasses",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 274,
+      "name": "Crazy Or Horny Enough",
+      "parts": [
+        { "t": "Everything can be a sign", "s": "small" },
+        { "t": "if you're crazy or horny", "s": "medium" },
+        { "t": "enough.", "s": "big" }
+      ],
+      "icon": "moon",
+      "bg": "#1A1A2E",
+      "tags": []
+    },
+    {
+      "id": 275,
+      "name": "Clever But Devastating",
+      "parts": [
+        { "t": "If you can't say something nice,", "s": "small" },
+        { "t": "say something clever", "s": "medium" },
+        { "t": "but devastating.", "s": "big" }
+      ],
+      "icon": "dinosaur",
+      "bg": "#4A5A4A",
+      "tags": []
+    },
+    {
+      "id": 276,
+      "name": "Wrong People",
+      "parts": [
+        { "t": "If you have to overexplain yourself,", "s": "small" },
+        { "t": "you are sitting with", "s": "small" },
+        { "t": "the wrong people.", "s": "big" }
+      ],
+      "icon": "text_bubble_yes",
+      "bg": "#E8D5B0",
+      "tags": []
+    },
+    {
+      "id": 277,
+      "name": "Most Spiritual Thing",
+      "parts": [
+        { "t": "Sometimes the most spiritual thing", "s": "small" },
+        { "t": "you can do is", "s": "small" },
+        { "t": "have coffee.", "s": "big" }
+      ],
+      "icon": "coffee_cup",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 278,
+      "name": "Not Complicated",
+      "parts": [
+        { "t": "You are not a complicated woman.", "s": "small" },
+        { "t": "You just know", "s": "small" },
+        { "t": "what you want.", "s": "big" }
+      ],
+      "icon": "queen",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 279,
+      "name": "Even Life Got Hard",
+      "parts": [
+        { "t": "You're so sexy,", "s": "small" },
+        { "t": "even life", "s": "small" },
+        { "t": "got hard.", "s": "big" }
+      ],
+      "icon": "dick",
+      "bg": "#C4455A",
+      "tags": []
+    },
+    {
+      "id": 280,
+      "name": "As Nice As Your Butt",
+      "parts": [
+        { "t": "I hope today is", "s": "small" },
+        { "t": "as nice as", "s": "small" },
+        { "t": "your butt.", "s": "big" }
+      ],
+      "icon": "butt",
+      "bg": "#C4455A",
+      "tags": ["birthday"]
+    },
+    {
+      "id": 281,
+      "name": "Dazzling Overachiever",
+      "parts": [
+        { "t": "Look at you. Upright, semi-functional,", "s": "tiny" },
+        { "t": "and only mildly feral this morning.", "s": "tiny" },
+        { "t": "Go reward yourself with a coffee,", "s": "small" },
+        { "t": "you dazzling overachiever.", "s": "big" }
+      ],
+      "icon": "coffee_cup",
+      "bg": "#C4956A",
+      "tags": ["weekday"]
+    },
+    {
+      "id": 282,
+      "name": "Liver Stronger Than Heart",
+      "parts": [
+        { "t": "Your liver is stronger", "s": "small" },
+        { "t": "than your heart.", "s": "medium" },
+        { "t": "It's safer to get drunk", "s": "small" },
+        { "t": "than to fall in love.", "s": "big" }
+      ],
+      "icon": "shot_glasses",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 283,
+      "name": "Very Very Patient",
+      "parts": [
+        { "t": "Dogs don't lick you because they love you.", "s": "tiny" },
+        { "t": "They lick you because you're full of bones", "s": "small" },
+        { "t": "and they're very very patient.", "s": "big" }
+      ],
+      "icon": "puppy",
+      "bg": "#E8D5B0",
+      "tags": []
+    },
+    {
+      "id": 284,
+      "name": "Running Out Of Fucks",
+      "parts": [
+        { "t": "Does running out of fucks", "s": "small" },
+        { "t": "count as", "s": "small" },
+        { "t": "cardio?", "s": "big" }
+      ],
+      "icon": "running",
+      "bg": "#4A5A4A",
+      "tags": []
     }
   ]  
 }
