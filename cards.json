@@ -4225,7 +4225,7 @@
         { "t": "and anxiety.", "s": "big" }
       ],
       "icon": "coffee_cup",
-      "bg": "#C4956A",
+      "bg": "#331c07",
       "tags": []
     },
     {
@@ -5046,6 +5046,29 @@
       ],
       "icon": "devil_heart",
       "bg": "#1A1A2E",
+      "tags": ["weekday"]
+    },
+    {
+    "id": 314,
+    "name": "Burn bridges",
+      "parts": [
+        { "t": "We'll burn that bridge,", "s": "big" },
+        { "t": "when we get there.", "s": "medium" }
+      ],
+      "icon": "bridge",
+      "bg": "#CF352E",
+      "tags": ["weekday"]
+    },
+    {
+    "id": 315,
+    "name": "Burn bridges",
+      "parts": [
+        { "t": "Good morning you beautiful ray of pitch black.", "s": "small" },
+        { "t": "Stay toxic enough to survive,", "s": "big" },
+        { "t": "but self-aware enough to make it funny.", "s": "small" }
+      ],
+      "icon": "unicorn",
+      "bg": "##2C2B2C",
       "tags": ["weekday"]
     }
   ]
