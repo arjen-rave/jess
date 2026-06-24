@@ -5069,7 +5069,7 @@
         { "t": "but self-aware enough to make it funny.", "s": "small" }
       ],
       "icon": "unicorn",
-      "bg": "##2C2B2C",
+      "bg": "#2C2B2C",
       "tags": ["weekday"]
     }
   ]
