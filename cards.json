@@ -4199,8 +4199,10 @@
       "id": 243,
       "name": "Stab Stab Stab",
       "parts": [
-        { "t": "<s>Live laugh love</s>", "s": "small" },
-        { "t": "stab stab stab.", "s": "big" }
+        { "t": "<s>Live</s>", "s": "small" },
+        { "t": "<s>Laugh</s>", "s": "small" },
+        { "t": "<s>Love</s>", "s": "small" },
+        { "t": "Stab Stab Stab.", "s": "big" }
       ],
       "icon": "knife",
       "bg": "#1A1A1A",
@@ -4418,7 +4420,7 @@
         { "t": "Then", "s": "small" },
         { "t": "add tax.", "s": "big" }
       ],
-      "icon": "document",
+      "icon": "money",
       "bg": "#3C3C3C",
       "tags": []
     },
