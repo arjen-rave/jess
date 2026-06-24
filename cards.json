@@ -5036,6 +5036,17 @@
       "icon": "scales",
       "bg": "#1A1A1A",
       "tags": []
+    },
+    {
+      "id": 313,
+      "name": "Be a Menace",
+      "parts": [
+        { "t": "Be a menace first,", "s": "big" },
+        { "t": "and a woman second.", "s": "small" }
+      ],
+      "icon": "devil_heart",
+      "bg": "#1A1A2E",
+      "tags": ["weekday"]
     }
   ]
 }
