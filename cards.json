@@ -5071,6 +5071,20 @@
       "icon": "unicorn",
       "bg": "#2C2B2C",
       "tags": ["weekday"]
+    },
+    {
+      "id": 316,
+      "name": "Don't be boring",
+      "parts": [
+        {"t": "“Imperfection is beauty,", "s": "small"},
+        {"t": "madness is genius,","s": "small"},
+        {"t": "and it's better to be","s": "small"},
+        {"t": "absolutely ridiculous","s": "big"},
+        {"t": "than absolutely boring.”","s": "tiny"}
+      ],
+      "icon": "woman",
+      "bg": "#F5F5DC",
+      "tags": []
     }
   ]
 }
