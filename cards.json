@@ -4207,7 +4207,9 @@
         { "t": "<s>Live</s>", "s": "small" },
         { "t": "<s>Laugh</s>", "s": "small" },
         { "t": "<s>Love</s>", "s": "small" },
-        { "t": "Stab Stab Stab.", "s": "big" }
+        { "t": "Stab", "s": "big" },
+        { "t": "Stab", "s": "big" },
+        { "t": "Stab", "s": "big" }
       ],
       "icon": "knife",
       "bg": "#1A1A1A",
