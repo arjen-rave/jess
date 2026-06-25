@@ -137,20 +137,12 @@
       "id": 2,
       "name": "Hopefully Friday",
       "parts": [
-        {
-          "t": "hopefully tomorrow",
-          "s": "big"
-        },
-        {
-          "t": "is Friday",
-          "s": "medium"
-        }
+        {"t": "Hopefully tomorrow","s": "big"},
+        {"t": "is Friday.","s": "medium"}
       ],
       "icon": "sunrise",
       "bg": "#B8D4E8",
-      "tags": [
-        "thursday"
-      ]
+      "tags": ["thursday"]
     },
     {
       "id": 3,
@@ -185,22 +177,10 @@
       "id": 4,
       "name": "Tequila",
       "parts": [
-        {
-          "t": "Physically, I am here.",
-          "s": "medium"
-        },
-        {
-          "t": "Mentally,",
-          "s": "small"
-        },
-        {
-          "t": "I'm in Mexico",
-          "s": "big"
-        },
-        {
-          "t": "ordering my third tequila.",
-          "s": "small"
-        }
+        {"t": "Physically, I am here.","s": "medium"},
+        {"t": "Mentally,","s": "small"},
+        {"t": "I'm in Mexico","s": "big"},
+        {"t": "ordering my third tequila.","s": "small"}
       ],
       "icon": "shot_glasses",
       "bg": "#E8C547",
@@ -983,18 +963,9 @@
       "id": 36,
       "name": "Say yes",
       "parts": [
-        {
-          "t": "Why did you say yes to things",
-          "s": "small"
-        },
-        {
-          "t": "you didn't want to do",
-          "s": "big"
-        },
-        {
-          "t": "at least three times this week",
-          "s": "small"
-        }
+        {"t": "Why did you say yes to things","s": "small"},
+        {"t": "you didn't want to do","s": "big"},
+        {"t": "at least three times this week?","s": "small"}
       ],
       "icon": "text_bubble_yes",
       "bg": "#E8D5B0",
@@ -1158,24 +1129,13 @@
       "id": 43,
       "name": "The Mythic Bitch",
       "parts": [
-        {
-          "t": "The icon.",
-          "s": "small"
-        },
-        {
-          "t": "The almighty.",
-          "s": "medium"
-        },
-        {
-          "t": "The mythic bitch",
-          "s": "big"
-        }
+        {"t": "The icon.","s": "small"},
+        {"t": "The almighty.","s": "medium"},
+        {"t": "The mythic bitch.","s": "big"}
       ],
       "icon": "queen",
       "bg": "#4A2A3A",
-      "tags": [
-        "birthday"
-      ]
+      "tags": ["birthday"]
     },
     {
       "id": 44,
@@ -3378,7 +3338,7 @@
       "parts": [
         { "t": "'What do you bring to the table?'", "s": "tiny" },
         { "t": "A black candle, a voodoo doll,", "s": "big" },
-        { "t": "and a hair of whoever wronged me this week", "s": "tiny" }
+        { "t": "and a hair of whoever wronged me this week.", "s": "tiny" }
       ],
       "icon": "voodoo",
       "bg": "#1A1A1A",
@@ -4937,7 +4897,7 @@
       "name": "Not Even Thursday",
       "parts": [
         { "t": "Not only is it not Friday,", "s": "small" },
-        { "t": "it's not even Thursday", "s": "medium" }
+        { "t": "it's not even Thursday.", "s": "medium" }
       ],
       "icon": "sunrise",
       "bg": "#2A3A4A",
@@ -5093,7 +5053,7 @@
         {"t": "Patience", "s": "medium"},
         {"t": "is what you have,","s": "small"},
         {"t": "when there are","s": "small"},
-        {"t": "too many witnesses","s": "big"}
+        {"t": "too many witnesses.","s": "big"}
       ],
       "icon": "people",
       "bg": "#756A5E",
