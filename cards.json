@@ -5109,7 +5109,7 @@
       ],
       "icon": "black_hole",
       "bg": "#FAFAD2",
-      "tags": [weekday]
+      "tags": ["weekday"]
     },
     {
       "id": 319,
@@ -5122,7 +5122,7 @@
       ],
       "icon": "devil_heart",
       "bg": "#860111",
-      "tags": []
+      "tags": ["weekend"]
     },
     {
       "id": 320,
