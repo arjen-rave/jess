@@ -5085,6 +5085,57 @@
       "icon": "woman",
       "bg": "#F5F5DC",
       "tags": []
+    },
+    {
+      "id": 317,
+      "name": "Patience for witnesses",
+      "parts": [
+        {"t": "Patience", "s": "medium"},
+        {"t": "is what you have,","s": "small"},
+        {"t": "when there are","s": "small},
+        {"t": "too many witnesses","s": "big"}
+      ],
+      "icon": "people",
+      "bg": "#756A5E",
+      "tags": []
+    },
+    {
+      "id": 318,
+      "name": "Infinite stupidity",
+      "parts": [
+        {"t": "Two things are infinite:", "s": "small"},
+        {"t": "the universe and human stupidity;","s": "small"},
+        {"t": "and I'm not sure about the universe.","s": "big"}
+      ],
+      "icon": "black_hole",
+      "bg": "#FAFAD2",
+      "tags": [weekday]
+    },
+    {
+      "id": 319,
+      "name": "What the Hell",
+      "parts": [
+        {"t": "Have you ever noticed that", "s": "small"},
+        {"t": "‘What the hell’","s": "big"},
+        {"t": "always","s": "big"},
+        {"t": "is the right decision to make?","s": "small"}
+      ],
+      "icon": "devil_heart",
+      "bg": "#860111",
+      "tags": []
+    },
+    {
+      "id": 320,
+      "name": "Style over sincerity",
+      "parts": [
+        {"t": "In matters of grave importance,", "s": "small"},
+        {"t": "style,","s": "big"},
+        {"t": "not sincerity,","s": "small"},
+        {"t": "is the vital thing.","s": "small"}
+      ],
+      "icon": "dress",
+      "bg": "#284F8F",
+      "tags": []
     }
   ]
 }
