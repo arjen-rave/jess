@@ -5139,9 +5139,9 @@
         { "t": "stop the bad habits", "s": "big" },
         { "t": "you said you'd quit in 2027…", "s": "small" }
       ],
-      "icon": "hny",
+      "icon": "fireworks",
       "bg": "#CCCECE",
-      "tags": [NYD]
+      "tags": ["nye"]
     },
     {
       "id": 325,
@@ -5155,6 +5155,19 @@
       "icon": "foot",
       "bg": "#E88E5A",
       "tags": []
+    },
+    {
+      "id": 326,
+      "name": "No New Year",
+      "parts": [
+        { "t": "I don't think I want a new year this year", "s": "medium" },
+        { "t": "Can we maybe get a gently used year", "s": "small" },
+        { "t": "Like 2006?", "s": "big" },
+        { "t": "Or maybe a 1998 if it's still in good condition…", "s": "tiny" }
+      ],
+      "icon": "hny",
+      "bg": "#FF4FA7",
+      "tags": ["nyee"]
     }
   ]
 }
