@@ -5111,7 +5111,7 @@
         {"t": "An apple a day", "s": "small"},
         {"t": "Keeps everyone away","s": "medium"},
         {"t": "If you","s": "small"},
-        {"t": "Throw it hard enough.","s": "big"},
+        {"t": "Throw it hard enough.","s": "big"}
       ],
       "icon": "apple",
       "bg": "#D5E751",
