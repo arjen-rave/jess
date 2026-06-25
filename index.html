@@ -337,254 +337,6 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
 }
 .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
-/* ══════════════════════════════════════════════════
-   CARD FORM OVERLAY
-══════════════════════════════════════════════════ */
-#card-form-overlay {
-  position:fixed; inset:0; background:rgba(0,0,0,0.88);
-  display:none; z-index:300; backdrop-filter:blur(6px); overflow-y:auto;
-}
-#card-form-overlay.open { display:block; }
-
-#card-form-panel {
-  max-width:420px; margin:0 auto; min-height:100vh;
-  background:#1e1e1e; padding-bottom:60px;
-  animation:cfSlideDown 0.38s cubic-bezier(0.34,1.1,0.64,1) forwards;
-}
-@keyframes cfSlideDown {
-  from { transform:translateY(-24px); opacity:0; }
-  to   { transform:translateY(0);     opacity:1; }
-}
-
-/* header */
-#cf-header {
-  position:sticky; top:0; z-index:10;
-  background:#1e1e1e; border-bottom:1px solid rgba(255,255,255,0.08);
-  padding:18px 20px 14px;
-  display:flex; justify-content:space-between; align-items:center;
-}
-#cf-header-text .cf-tag {
-  font-size:10px; letter-spacing:0.14em; text-transform:uppercase;
-  color:var(--mustard); margin-bottom:4px;
-}
-#cf-header-text .cf-title {
-  font-family:var(--serif); font-size:20px; font-style:italic; color:var(--cream);
-}
-#cf-close-btn {
-  background:none; border:none; color:rgba(245,237,216,0.35);
-  cursor:pointer; font-size:22px; line-height:1; padding:4px 6px;
-  transition:color 0.15s; flex-shrink:0;
-}
-#cf-close-btn:hover { color:var(--cream); }
-
-/* body padding */
-#cf-body { padding:20px 18px 0; }
-
-/* form sections */
-.cf-form-section {
-  background:#2a2a2a; border-radius:16px; padding:22px;
-  margin-bottom:14px; border:1px solid rgba(255,255,255,0.07);
-}
-.cf-section-title {
-  font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
-  color:var(--mustard); margin-bottom:16px;
-}
-
-/* fields */
-.cf-field { margin-bottom:14px; }
-.cf-field:last-child { margin-bottom:0; }
-.cf-field label {
-  display:block; font-size:12px; color:rgba(245,237,216,0.6);
-  margin-bottom:6px; letter-spacing:0.04em;
-}
-.cf-field textarea,
-.cf-field input[type="text"] {
-  width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-  border-radius:10px; color:var(--cream); font-family:var(--sans); font-size:14px;
-  padding:10px 14px; resize:vertical; transition:border-color 0.2s; outline:none;
-}
-.cf-field textarea:focus,
-.cf-field input[type="text"]:focus { border-color:rgba(232,197,71,0.5); }
-.cf-field textarea { min-height:72px; }
-.cf-field-note { font-size:11px; color:rgba(245,237,216,0.35); margin-top:5px; font-style:italic; }
-
-/* emphasis words */
-.cf-emphasis-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
-.cf-emphasis-word {
-  background:rgba(232,197,71,0.15); border:1px solid rgba(232,197,71,0.3);
-  color:var(--mustard); border-radius:20px; padding:3px 10px;
-  font-size:12px; cursor:pointer; transition:all 0.15s; user-select:none;
-}
-.cf-emphasis-word.selected { background:var(--mustard); color:#222; font-weight:600; }
-.cf-emphasis-hint { font-size:11px; color:rgba(245,237,216,0.35); margin-top:6px; font-style:italic; }
-
-/* tag groups */
-.cf-tag-group {
-  margin-bottom:10px; padding:12px;
-  background:rgba(255,255,255,0.03); border-radius:10px; border:1px solid rgba(255,255,255,0.06);
-}
-.cf-tag-group.disabled { opacity:0.3; pointer-events:none; }
-.cf-tag-group-title {
-  font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
-  color:rgba(245,237,216,0.45); margin-bottom:8px;
-}
-.cf-tag-pills { display:flex; flex-wrap:wrap; gap:6px; }
-.cf-tag-pill {
-  font-size:11px; border-radius:20px; padding:4px 12px; cursor:pointer;
-  border:1px solid rgba(255,255,255,0.12); color:rgba(245,237,216,0.5);
-  background:rgba(255,255,255,0.05); transition:all 0.15s; font-family:var(--sans); user-select:none;
-}
-.cf-tag-pill.selected { background:rgba(232,197,71,0.2); border-color:rgba(232,197,71,0.5); color:var(--mustard); }
-.cf-tag-pill.selected.special { background:rgba(200,100,100,0.2); border-color:rgba(200,100,100,0.4); color:#e8a0a0; }
-.cf-tag-none-note { font-size:11px; color:rgba(245,237,216,0.35); margin-top:8px; font-style:italic; }
-
-/* custom special date row */
-.cf-custom-date-row {
-  display:flex; gap:8px; align-items:center; flex-wrap:wrap;
-  margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.07);
-}
-.cf-custom-date-row input[type="text"] {
-  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-  color:var(--cream); border-radius:8px; padding:5px 8px;
-  font-size:12px; font-family:var(--sans); flex:1; min-width:100px;
-}
-.cf-custom-date-row input[type="date"] {
-  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-  color:var(--cream); border-radius:8px; padding:5px 8px;
-  font-size:12px; font-family:var(--sans);
-}
-.cf-add-custom-btn {
-  background:rgba(232,197,71,0.15); border:1px solid rgba(232,197,71,0.3);
-  color:var(--mustard); border-radius:8px; padding:5px 12px;
-  cursor:pointer; font-size:12px; font-weight:600; white-space:nowrap;
-}
-
-/* colours */
-.cf-colour-grid { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
-.cf-colour-swatch {
-  width:38px; height:38px; border-radius:10px; cursor:pointer;
-  border:2px solid transparent; transition:all 0.15s;
-  display:flex; align-items:center; justify-content:center; flex-shrink:0;
-}
-.cf-colour-swatch:hover { transform:scale(1.1); }
-.cf-colour-swatch.selected { border-color:white; transform:scale(1.15); }
-.cf-colour-swatch svg { width:14px; height:14px; }
-/* Custom HSV colour picker */
-.cf-hue-row { display:flex; align-items:center; gap:8px; margin-top:6px; margin-bottom:10px; }
-.cf-hue-row label { font-size:11px; color:rgba(245,237,216,0.5); white-space:nowrap; }
-#cf-hue-slider {
-  -webkit-appearance:none; appearance:none; flex:1;
-  height:14px; border-radius:7px; outline:none; cursor:pointer; border:none;
-  background:linear-gradient(to right,#f00 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,#f00 100%);
-}
-#cf-hue-slider::-webkit-slider-thumb {
-  -webkit-appearance:none; width:20px; height:20px; border-radius:50%;
-  background:#fff; border:2px solid rgba(0,0,0,0.25); cursor:pointer;
-  box-shadow:0 1px 4px rgba(0,0,0,0.5);
-}
-#cf-hue-slider::-moz-range-thumb {
-  width:20px; height:20px; border-radius:50%; border:2px solid rgba(0,0,0,0.25);
-  background:#fff; cursor:pointer; box-shadow:0 1px 4px rgba(0,0,0,0.5);
-}
-.cf-sl-wrap {
-  position:relative; height:140px; border-radius:10px;
-  cursor:crosshair; touch-action:none; overflow:hidden; margin-bottom:10px; user-select:none;
-}
-.cf-sl-base { position:absolute; inset:0; }
-.cf-sl-white { position:absolute; inset:0; background:linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0)); }
-.cf-sl-black { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1)); }
-#cf-sl-cursor {
-  position:absolute; width:14px; height:14px; border-radius:50%;
-  border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,0.35),0 1px 4px rgba(0,0,0,0.5);
-  transform:translate(-50%,-50%); pointer-events:none;
-}
-.cf-picker-footer { display:flex; gap:10px; align-items:center; margin-bottom:4px; }
-#cf-colour-swatch-preview {
-  width:36px; height:36px; border-radius:8px; flex-shrink:0;
-  border:2px solid rgba(255,255,255,0.2); background:#E8C547;
-}
-#cf-custom-colour-hex {
-  flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-  color:var(--cream); border-radius:8px; padding:7px 10px; font-size:13px;
-  font-family:monospace; outline:none; transition:border-color 0.2s;
-}
-#cf-custom-colour-hex:focus { border-color:rgba(232,197,71,0.5); }
-
-/* icon grid */
-.cf-icon-section-label {
-  display:block; font-size:12px; color:rgba(245,237,216,0.6);
-  margin-bottom:8px; letter-spacing:0.04em;
-}
-.cf-icon-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:14px;
-}
-.cf-icon-option {
-  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07);
-  border-radius:10px; padding:10px 6px; text-align:center; cursor:pointer; transition:all 0.15s;
-}
-.cf-icon-option:hover { background:rgba(255,255,255,0.08); }
-.cf-icon-option.selected { background:rgba(232,197,71,0.15); border-color:rgba(232,197,71,0.4); }
-.cf-icon-option svg { width:32px; height:32px; color:rgba(245,237,216,0.6); display:block; margin:0 auto 4px; }
-.cf-icon-option.selected svg { color:var(--mustard); }
-.cf-icon-lbl { font-size:10px; color:rgba(245,237,216,0.4); font-family:var(--sans); }
-.cf-icon-option.selected .cf-icon-lbl { color:var(--mustard); }
-
-/* upload area */
-.cf-upload-wrap { position:relative; margin-bottom:10px; }
-.cf-icon-upload-area {
-  border:1.5px dashed rgba(255,255,255,0.15); border-radius:10px;
-  padding:16px; text-align:center; cursor:pointer; transition:all 0.2s;
-}
-.cf-icon-upload-area:hover,
-.cf-icon-upload-area.dragover { border-color:rgba(232,197,71,0.4); background:rgba(232,197,71,0.05); }
-.cf-icon-upload-area input { display:none; }
-.cf-upload-preview { max-width:80px; max-height:80px; border-radius:8px; margin:0 auto 6px; display:block; }
-.cf-upload-label { font-size:12px; color:rgba(245,237,216,0.4); }
-.cf-upload-label span { color:var(--mustard); cursor:pointer; }
-.cf-upload-clear-btn {
-  display:none; position:absolute; top:7px; right:7px;
-  background:rgba(20,20,20,0.82); border:1px solid rgba(255,255,255,0.22);
-  color:rgba(245,237,216,0.7); cursor:pointer; border-radius:50%;
-  width:22px; height:22px; font-size:12px; line-height:1; padding:0;
-  transition:all 0.15s;
-}
-.cf-upload-clear-btn:hover { color:var(--cream); border-color:rgba(255,255,255,0.5); }
-
-/* preview card inside form */
-.cf-preview-label {
-  font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
-  color:var(--mustard); margin-bottom:12px;
-}
-.cf-preview-card {
-  border-radius:20px; padding:28px 24px 32px; min-height:320px;
-  display:flex; flex-direction:column; align-items:center; justify-content:space-between;
-  box-shadow:0 16px 48px rgba(0,0,0,0.5); transition:background 0.3s;
-}
-.cf-card-icon { width:60px; height:60px; opacity:0.75; flex-shrink:0; }
-.cf-card-body {
-  font-family:var(--serif); text-align:center; flex:1;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  padding:12px 4px; gap:4px; line-height:1.35; width:100%;
-}
-.cf-word { cursor:pointer; transition:all 0.15s; border-radius:4px; padding:0 2px; }
-.cf-word:hover { background:rgba(255,255,255,0.15); }
-.cf-word.emphasis { font-size:1.7em; font-weight:900; line-height:1.05; display:block; margin:2px 0; }
-.cf-word.normal { font-size:0.95em; }
-.cf-preview-hint {
-  font-size:11px; color:rgba(245,237,216,0.35); text-align:center;
-  margin-top:10px; font-style:italic; line-height:1.5;
-}
-
-/* submit */
-.cf-submit-btn {
-  width:100%; background:var(--mustard); border:none; color:#222;
-  border-radius:12px; padding:16px; cursor:pointer; font-size:15px; font-weight:700;
-  font-family:var(--sans); transition:background 0.2s;
-  display:flex; align-items:center; justify-content:center; gap:8px;
-}
-.cf-submit-btn:hover { background:var(--mustard-dark); }
-.cf-submit-note { font-size:11px; color:rgba(245,237,216,0.35); text-align:center; margin-top:8px; font-style:italic; }
-
 /* ── iOS INSTALL BANNER ── */
 #ios-install-banner {
   background:rgba(232,197,71,0.12); border:1px solid rgba(232,197,71,0.32);
@@ -635,10 +387,11 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
       width:100%; max-width:420px; max-height:90vh; overflow-y:auto;
       border-bottom:1px solid rgba(255,255,255,0.09); border-left:1px solid rgba(255,255,255,0.06); border-right:1px solid rgba(255,255,255,0.06);
     ">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
         <span style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--cream)">How it works</span>
         <button onclick="closeHelp()" style="background:none;border:none;color:rgba(245,237,216,0.35);cursor:pointer;font-size:20px;line-height:1;padding:2px 4px">✕</button>
       </div>
+      <p style="font-size:13px;color:rgba(245,237,216,0.5);font-style:italic;margin-bottom:20px;line-height:1.55">A little something for every day of your year. Here's how it works.</p>
 
       <!-- For Jess -->
       <div style="margin-bottom:24px">
@@ -662,37 +415,6 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
         <div class="help-block">
           <div class="help-icon">🔀</div>
           <div><strong>Reshuffle</strong><br>If you want to mix things up, you can reshuffle your future cards in Settings. Your past cards stay exactly as they were.</div>
-        </div>
-      </div>
-
-      <div style="height:1px;background:rgba(255,255,255,0.07);margin-bottom:24px"></div>
-
-      <!-- For contributors -->
-      <div>
-        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mustard);margin-bottom:12px">For contributors ✍️</div>
-        <div class="help-block">
-          <div class="help-icon">🃏</div>
-          <div><strong>What is this?</strong><br>This is an alpha version of a birthday app being built for Jess. Each card is an affirmation — funny, sarcastic, or surprisingly real. Jess gets one per day.</div>
-        </div>
-        <div class="help-block">
-          <div class="help-icon">✍️</div>
-          <div><strong>How to contribute</strong><br><button onclick="closeHelp();openCardForm()" style="background:none;border:none;color:var(--mustard);cursor:pointer;text-decoration:underline;font-size:13px;font-family:var(--sans);padding:0;display:inline">Use this link to submit a card.</button> Write a quote, pick a vibe and a look. That's it. Submit one at a time, but as many as you like — the goal is 365+.</div>
-        </div>
-        <div class="help-block">
-          <div class="help-icon">💡</div>
-          <div><strong>What makes a good card?</strong><br>Something that sounds like Jess, or sounds like something someone would say to Jess. Sarcastic, self-aware, funny, caring, upbeat. Bonus points if it's embarrassingly relatable.</div>
-        </div>
-        <div class="help-block">
-          <div class="help-icon">🏷️</div>
-          <div><strong>Tags</strong><br>Some cards fit a specific moment — Monday dread, Friday relief, Halloween chaos. If yours does, tag it. Otherwise "any day" is fine.</div>
-        </div>
-        <div class="help-block">
-          <div class="help-icon">🎨</div>
-          <div><strong>Design</strong><br>Help finalise the design by suggesting an icon (or upload a pic) and a background colour in the form. I'll collate and create a full list of cards as they come in.</div>
-        </div>
-        <div class="help-block">
-          <div class="help-icon">🔔</div>
-          <div><strong>Notifications</strong><br>If you enable daily reminders, a notification token is stored on a private server run by Arjen. This is not personal data. You can turn notifications off at any time in Settings, which deletes your data from the server immediately.</div>
         </div>
       </div>
 
@@ -737,13 +459,6 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
       <button class="dirty-reshuffle" onclick="doReshuffle();hideDirtyBanner()">Reshuffle now</button>
     </div>
     <div id="deck-list"></div>
-    <!-- Dev-mode submit button -->
-    <div class="dev-only" id="deck-submit-wrap" style="display:none;padding:20px 0 4px;margin-top:4px;border-top:1px solid var(--border)">
-      <button onclick="openCardForm()" style="width:100%;background:rgba(232,197,71,0.1);border:1px solid rgba(232,197,71,0.28);color:var(--mustard);border-radius:12px;padding:13px;cursor:pointer;font-size:14px;font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s" onmouseover="this.style.background='rgba(232,197,71,0.18)'" onmouseout="this.style.background='rgba(232,197,71,0.1)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Submit a card
-      </button>
-    </div>
   </div>
 
   <!-- SETTINGS -->
@@ -832,170 +547,6 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
     </button>
   </nav>
 
-  <!-- ══════════════════════════════════════════════════
-       CARD FORM OVERLAY
-  ══════════════════════════════════════════════════ -->
-  <div id="card-form-overlay" onclick="if(event.target===this)cf_closeForm()">
-    <div id="card-form-panel">
-
-      <!-- Sticky header -->
-      <div id="cf-header">
-        <div id="cf-header-text">
-          <div class="cf-tag">Just For Jess — Birthday App</div>
-          <div class="cf-title">Submit a card ✦</div>
-        </div>
-        <button id="cf-close-btn" onclick="cf_closeForm()" title="Close">✕</button>
-      </div>
-
-      <div id="cf-body">
-
-        <!-- Intro text -->
-        <p style="font-size:13px;color:rgba(245,237,216,0.55);line-height:1.65;margin-bottom:20px">
-          Help build Jess's daily affirmation app. Write something funny, sarcastic, or surprisingly real. She gets one card per day — make it count.
-        </p>
-
-        <!-- STEP 1: The quote -->
-        <div class="cf-form-section">
-          <div class="cf-section-title">1 · The quote</div>
-          <div class="cf-field">
-            <label>Write the affirmation</label>
-            <textarea id="cf-quote-input" placeholder="e.g. My morning routine is simple. I wake up and hate everyone." oninput="cf_updatePreview()"></textarea>
-            <div class="cf-field-note">Don't overthink it. The best ones are embarrassingly relatable.</div>
-          </div>
-          <div class="cf-field">
-            <label>Tap the words that should be big and punchy</label>
-            <div class="cf-emphasis-tags" id="cf-emphasis-tags"></div>
-            <div class="cf-emphasis-hint">Tap to toggle emphasis. Big words carry the punchline.</div>
-          </div>
-        </div>
-
-        <!-- STEP 2: Tags — order: Week type → Day of week → Special day -->
-        <div class="cf-form-section">
-          <div class="cf-section-title">2 · When should this card appear?</div>
-
-          <!-- Week type (broadest — top) -->
-          <div class="cf-tag-group" id="cf-tg-weektype">
-            <div class="cf-tag-group-title">Weekday type <span style="opacity:0.5;font-style:italic;text-transform:none">(single select)</span></div>
-            <div class="cf-tag-pills" id="cf-weektype-pills"></div>
-          </div>
-
-          <!-- Day of week (middle) -->
-          <div class="cf-tag-group" id="cf-tg-dow">
-            <div class="cf-tag-group-title">Specific day(s) of the week <span style="opacity:0.5;font-style:italic;text-transform:none">(multi-select)</span></div>
-            <div class="cf-tag-pills" id="cf-dow-pills"></div>
-          </div>
-
-          <!-- Special day (narrowest — bottom) -->
-          <div class="cf-tag-group" id="cf-tg-special">
-            <div class="cf-tag-group-title">Special day <span style="opacity:0.5;font-style:italic;text-transform:none">(single select — clears other tags)</span></div>
-            <div class="cf-tag-pills" id="cf-special-pills"></div>
-            <div class="cf-custom-date-row">
-              <span style="font-size:11px;color:rgba(245,237,216,0.35)">Other date:</span>
-              <input type="text" id="cf-custom-special-name" placeholder="Name (e.g. International Women's Day)">
-              <input type="date" id="cf-custom-special-from">
-              <span style="font-size:11px;color:rgba(245,237,216,0.35)">to</span>
-              <input type="date" id="cf-custom-special-to">
-              <button class="cf-add-custom-btn" onclick="cf_addCustomSpecial()">Add</button>
-            </div>
-          </div>
-
-          <div class="cf-tag-none-note" id="cf-tag-none-note">✓ No tag selected — this card is eligible for any day.</div>
-        </div>
-
-        <!-- STEP 3: Background colour -->
-        <div class="cf-form-section">
-          <div class="cf-section-title">3 · Background colour</div>
-          <div class="cf-colour-grid" id="cf-colour-grid"></div>
-          <div class="cf-hue-row">
-            <label>Hue</label>
-            <input type="range" id="cf-hue-slider" min="0" max="359" value="47" oninput="cf_onHueSlider(this.value)">
-          </div>
-          <div class="cf-sl-wrap" id="cf-sl-wrap" onmousedown="cf_slOnMouseDown(event)" ontouchstart="cf_slOnTouchStart(event)">
-            <div class="cf-sl-base" id="cf-sl-base"></div>
-            <div class="cf-sl-white"></div>
-            <div class="cf-sl-black"></div>
-            <div id="cf-sl-cursor"></div>
-          </div>
-          <div class="cf-picker-footer">
-            <div id="cf-colour-swatch-preview"></div>
-            <input type="text" id="cf-custom-colour-hex" placeholder="#E8C547" oninput="cf_hexInput(this.value)" maxlength="7">
-            <span style="font-size:11px;color:rgba(245,237,216,0.4)">custom hex</span>
-          </div>
-        </div>
-
-        <!-- STEP 4: Icon -->
-        <div class="cf-form-section">
-          <div class="cf-section-title">4 · Icon</div>
-
-          <!-- Standard icon grid with label -->
-          <label class="cf-icon-section-label">Select a standard icon</label>
-          <div class="cf-icon-grid" id="cf-icon-grid"></div>
-
-          <!-- "or suggest your own" label (matches field label style) -->
-          <label class="cf-icon-section-label" style="margin-bottom:10px">Or suggest your own</label>
-
-          <!-- Upload area with ✕ clear button -->
-          <div class="cf-upload-wrap">
-            <div class="cf-icon-upload-area" id="cf-upload-area"
-              onclick="document.getElementById('cf-icon-file').click()"
-              ondragover="event.preventDefault();this.classList.add('dragover')"
-              ondragleave="this.classList.remove('dragover')"
-              ondrop="cf_handleDrop(event)">
-              <input type="file" id="cf-icon-file" accept="image/*" onchange="cf_handleUpload(this.files[0])">
-              <img id="cf-upload-preview" class="cf-upload-preview" style="display:none" alt="">
-              <div class="cf-upload-label" id="cf-upload-label">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(245,237,216,0.3)" stroke-width="1.5" style="margin:0 auto 6px;display:block"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                <span>Upload a picture or screenshot</span> for the icon
-              </div>
-            </div>
-            <button class="cf-upload-clear-btn" id="cf-upload-clear-btn" onclick="event.stopPropagation();cf_clearUpload()" title="Remove image">✕</button>
-          </div>
-
-          <div class="cf-field">
-            <label>Or describe the icon you have in mind</label>
-            <textarea id="cf-icon-description" placeholder="e.g. A small martini glass with an olive, simple line art style" rows="2" style="min-height:60px" oninput="cf_onDescriptionInput()"></textarea>
-            <div class="cf-field-note">We'll use this to generate a custom illustration.</div>
-          </div>
-        </div>
-
-        <!-- Live preview -->
-        <div class="cf-form-section">
-          <div class="cf-preview-label">Live preview</div>
-          <div class="cf-preview-card" id="cf-preview-card" style="background:linear-gradient(150deg,#E8C547,#D4A820);color:#2A2A2A">
-            <div class="cf-card-icon" id="cf-preview-icon"></div>
-            <div class="cf-card-body" id="cf-preview-body">
-              <span style="font-size:15px;opacity:0.4;font-style:italic">Start typing your quote…</span>
-            </div>
-          </div>
-          <div class="cf-preview-hint">Tap words above to toggle big emphasis. Tap again to undo.</div>
-        </div>
-
-        <!-- STEP 5: Who's this from? -->
-        <div class="cf-form-section">
-          <div class="cf-section-title">5 · Who's this from?</div>
-          <div class="cf-field">
-            <label>Your name</label>
-            <input type="text" id="cf-contributor-name" placeholder="e.g. Arjen">
-            <div class="cf-field-note">So Arjen knows who to credit (or blame) for this one.</div>
-          </div>
-        </div>
-
-        <!-- Upload notice — shown when an image has been attached -->
-        <div id="cf-upload-notice" style="display:none;background:rgba(232,197,71,0.1);border:1px solid rgba(232,197,71,0.3);border-radius:10px;padding:12px 14px;margin-bottom:12px;font-size:12px;color:var(--mustard);line-height:1.5">
-          📎 You've uploaded an image — don't forget to attach it on the next page.
-        </div>
-        <!-- Submit -->
-        <div style="margin-bottom:8px">
-          <button class="cf-submit-btn" onclick="cf_submitCard()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Submit this card
-          </button>
-          <div class="cf-submit-note">Opens Google Forms with your card pre-filled. Just hit Submit there and you're done.</div>
-        </div>
-
-      </div><!-- /#cf-body -->
-    </div><!-- /#card-form-panel -->
-  </div><!-- /#card-form-overlay -->
 
 </div><!-- /#app -->
 
@@ -1044,6 +595,21 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
   </div>
 </div>
 
+<div class="overlay" id="modal-devpassword">
+  <div class="modal">
+    <h3>Dev Mode</h3>
+    <p>Enter the password to unlock Dev Mode.</p>
+    <input type="password" id="devpassword-input"
+      placeholder="Password"
+      style="width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:var(--cream);border-radius:10px;padding:11px 14px;font-size:14px;font-family:var(--sans);margin-bottom:16px;outline:none;box-sizing:border-box"
+      onkeydown="if(event.key==='Enter')checkDevPassword()">
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal('modal-devpassword');document.getElementById('devpassword-input').value=''">Cancel</button>
+      <button class="btn-confirm green" onclick="checkDevPassword()">Unlock</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1052,6 +618,8 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
 // ═══════════════════════════════════════════════
 let ICONS = {};
 let CARDS = [];
+
+const CF_PLACEHOLDER_SVG = `<svg viewBox="0 0 72 72" fill="none"><path d="M8 56 L26 28 L38 46 L48 32 L64 56 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/><circle cx="54" cy="18" r="7" stroke="currentColor" stroke-width="2" opacity=".5"/><path d="M54 8 L54 12 M44 12 L47 15 M64 12 L61 15 M40 18 L44 18 M64 18 L68 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/></svg>`;
 
 // ═══════════════════════════════════════════════
 // SPECIAL DATES CONFIG
@@ -1549,7 +1117,6 @@ function renderDeckRow(card){
 
   return `<div class="deck-card" onclick="toggleDeckCard(${card.id})">
     <div class="deck-card-header">
-      <span class="deck-id">#${card.id}</span>
       <div class="deck-tags">${tagsHtml}</div>
     </div>
     <div class="deck-preview-text">${preview.length>80?preview.slice(0,80)+'…':preview}</div>
@@ -1685,15 +1252,34 @@ function discardStartDate(){
 // ═══════════════════════════════════════════════
 // DEV MODE
 // ═══════════════════════════════════════════════
+const DEV_PASSWORD = 'Alohomora';
+
 function toggleDevMode(){
-  const isNowDev=!document.body.classList.contains('dev-mode');
-  document.body.classList.toggle('dev-mode',isNowDev);
-  document.querySelectorAll('.dev-only').forEach(el=>el.style.display=isNowDev?'':'none');
-  const cur=document.querySelector('.screen.active');
-  if(!isNowDev&&cur&&cur.id==='screen-deck') showScreen('today');
-  document.getElementById('reset-note').style.display=isNowDev?'none':'';
-  if(isNowDev){ renderSpecialDates(); }
-  showToast(isNowDev?'Dev mode on ✦':'Dev mode off');
+  if(document.body.classList.contains('dev-mode')){
+    document.body.classList.remove('dev-mode');
+    document.querySelectorAll('.dev-only').forEach(el=>el.style.display='none');
+    const cur=document.querySelector('.screen.active');
+    if(cur&&cur.id==='screen-deck') showScreen('today');
+    document.getElementById('reset-note').style.display='';
+    showToast('Dev mode off');
+  } else {
+    document.getElementById('devpassword-input').value='';
+    openModal('modal-devpassword');
+  }
+}
+
+function checkDevPassword(){
+  if(document.getElementById('devpassword-input').value !== DEV_PASSWORD){
+    showToast('Incorrect password — say the magic word');
+    return;
+  }
+  closeModal('modal-devpassword');
+  document.getElementById('devpassword-input').value='';
+  document.body.classList.add('dev-mode');
+  document.querySelectorAll('.dev-only').forEach(el=>el.style.display='');
+  document.getElementById('reset-note').style.display='none';
+  renderSpecialDates();
+  showToast('Dev mode on ✦');
 }
 
 // ═══════════════════════════════════════════════
@@ -1747,485 +1333,6 @@ async function loadData(){
 }
 loadData();
 
-// ═══════════════════════════════════════════════════════════
-// CARD FORM OVERLAY
-// ═══════════════════════════════════════════════════════════
-
-// Google Form config — replace IDs once form is created
-const CF_GFORM = {
-  url: 'https://docs.google.com/forms/d/e/1FAIpQLSfcxeTbdKOm78J3SgTrB_BeC-2YijM2MdmkjzOmQjGYUWJAqg/viewform',
-  fields: {
-    quote:       'entry.1451448216',
-    emphasis:    'entry.1037303101',
-    tag:         'entry.33519726',
-    background:  'entry.1442524228',
-    icon:        'entry.980459428',
-    iconDesc:    'entry.7869656',
-    contributor: 'entry.956792000'
-  }
-};
-
-// Icons for the form (face_antlers replaced with jack_o_lantern)
-const CF_ICONS = {
-  bed:            { label:'Bed',       svg:`<svg viewBox="0 0 72 72" fill="none"><path d="M10 46 L10 32 Q10 28 14 28 L58 28 Q62 28 62 32 L62 46" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M8 46 L64 46" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M12 50 L12 58 M60 50 L60 58" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/><rect x="14" y="18" width="17" height="12" rx="3" stroke="currentColor" stroke-width="1.8" opacity=".55"/><rect x="41" y="18" width="17" height="12" rx="3" stroke="currentColor" stroke-width="1.8" opacity=".55"/></svg>` },
-  sunrise:        { label:'Sunrise',   svg:`<svg viewBox="0 0 72 72" fill="none"><path d="M14 50 Q24 37 36 37 Q48 37 58 50" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="36" cy="37" r="8" stroke="currentColor" stroke-width="1.8" opacity=".65"/><path d="M36 20 L36 26 M20 24 L24 28 M52 24 L48 28 M14 37 L20 37 M52 37 L58 37" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".5"/><path d="M8 54 L64 54" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".35"/></svg>` },
-  wine_glass:     { label:'Wine',      svg:`<svg viewBox="0 0 72 72" fill="none"><path d="M23 12 L49 12 L43 34 Q42 44 36 46 Q30 44 29 34 Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M36 46 L36 60" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M27 60 L45 60" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>` },
-  coffee_cup:     { label:'Coffee',    svg:`<svg viewBox="0 0 72 72" fill="none"><path d="M17 26 L55 26 L51 56 Q50 60 36 60 Q22 60 21 56 Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M55 32 Q64 32 64 41 Q64 50 55 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg>` },
-  face_plain:     { label:'Face',      svg:`<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="40" r="22" stroke="currentColor" stroke-width="2" opacity=".6"/><ellipse cx="28" cy="37" rx="2.5" ry="3" fill="currentColor" opacity=".7"/><ellipse cx="44" cy="37" rx="2.5" ry="3" fill="currentColor" opacity=".7"/><path d="M28 49 Q36 53 44 49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M28 20 Q36 13 44 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/></svg>` },
-  face_sunglasses:{ label:'Cool face', svg:`<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="40" r="22" stroke="currentColor" stroke-width="2" opacity=".6"/><rect x="19" y="32" width="13" height="9" rx="4.5" fill="currentColor" opacity=".75"/><rect x="40" y="32" width="13" height="9" rx="4.5" fill="currentColor" opacity=".75"/><path d="M32 36.5 L40 36.5" stroke="currentColor" stroke-width="1.5"/><path d="M28 50 Q36 55 44 50" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>` },
-  moon:           { label:'Moon',      svg:`<svg viewBox="0 0 72 72" fill="none"><path d="M44 16 Q28 20 26 36 Q24 52 40 58 Q22 58 16 44 Q10 30 22 18 Q32 8 44 16Z" stroke="currentColor" stroke-width="2" opacity=".7"/><circle cx="50" cy="18" r="2" fill="currentColor" opacity=".4"/></svg>` },
-  jack_o_lantern: { label:'Halloween', svg:`<svg viewBox="0 0 72 72" fill="none"><path d="M22 44 Q20 30 36 28 Q52 30 50 44 Q50 58 36 60 Q22 58 22 44Z" stroke="currentColor" stroke-width="2" opacity=".75"/><path d="M36 28 L35 20 Q34 14 38 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M26 40 L30 36 L34 40 Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M38 40 L42 36 L46 40 Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/><path d="M25 49 L29 47 L33 51 L36 47 L39 51 L43 47 L47 49" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/></svg>` }
-};
-
-// Generic image placeholder (mountain + sun) — shown when description typed but no icon/file
-const CF_PLACEHOLDER_SVG = `<svg viewBox="0 0 72 72" fill="none"><path d="M8 56 L26 28 L38 46 L48 32 L64 56 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/><circle cx="54" cy="18" r="7" stroke="currentColor" stroke-width="2" opacity=".5"/><path d="M54 8 L54 12 M44 12 L47 15 M64 12 L61 15 M40 18 L44 18 M64 18 L68 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/></svg>`;
-
-const CF_COLOURS = [
-  { key:'mustard',     hex:'#E8C547', label:'Mustard'     },
-  { key:'kraft',       hex:'#C4956A', label:'Kraft'       },
-  { key:'cream',       hex:'#F5EDD8', label:'Cream'       },
-  { key:'offwhite',    hex:'#F0E8D8', label:'Off-white'   },
-  { key:'pastel-blue', hex:'#B8D4E8', label:'Pastel blue' },
-  { key:'pastel-pink', hex:'#F0C8C8', label:'Pastel pink' },
-  { key:'sage',        hex:'#B8C8A8', label:'Sage'        },
-  { key:'charcoal',    hex:'#3C3C3C', label:'Charcoal'    },
-  { key:'black',       hex:'#222222', label:'Black'       }
-];
-
-// Form-local special dates (mirrors app built-ins; contributors can add custom)
-let cf_specialDates = [
-  { key:'halloween', label:'Halloween',       from:'10-31', to:'10-31' },
-  { key:'christmas', label:'Christmas',       from:'12-24', to:'12-26' },
-  { key:'nye',       label:"New Year's Eve",  from:'12-31', to:'12-31' },
-  { key:'valentine', label:"Valentine's",     from:'02-14', to:'02-14' },
-  { key:'birthday',  label:"Jess's Birthday", from:'07-01', to:'07-01' }
-];
-
-const CF_DOW      = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-const CF_WEEKTYPE = ['weekday','weekend'];
-
-// Form state
-let cf_selectedTags     = [];
-let cf_selectedColour   = { key:'mustard', hex:'#E8C547', label:'Mustard' };
-let cf_selectedIcon     = 'face_plain';
-let cf_uploadedImageSrc = null;
-let cf_emphasisWords    = new Set();
-
-// ── Open / Close ──────────────────────────────
-function openCardForm(){
-  // Reset state
-  cf_selectedTags     = [];
-  cf_selectedColour   = { key:'mustard', hex:'#E8C547', label:'Mustard' };
-  cf_selectedIcon     = 'face_plain';
-  cf_uploadedImageSrc = null;
-  cf_emphasisWords    = new Set();
-
-  // Reset inputs
-  document.getElementById('cf-quote-input').value      = '';
-  document.getElementById('cf-icon-description').value = '';
-  document.getElementById('cf-contributor-name').value = '';
-  document.getElementById('cf-icon-file').value        = '';
-  const prev = document.getElementById('cf-upload-preview');
-  const lbl  = document.getElementById('cf-upload-label');
-  const clr  = document.getElementById('cf-upload-clear-btn');
-  prev.style.display = 'none'; lbl.style.display = ''; clr.style.display = 'none';
-  document.getElementById('cf-emphasis-tags').innerHTML = '';
-  document.getElementById('cf-upload-notice').style.display = 'none';
-
-  // Build UI
-  cf_buildColourGrid();
-  cf_buildIconGrid();
-  cf_buildTagPills();
-  cf_updatePreview();
-  cf_syncPickerVisual('#E8C547');
-
-  // Show overlay and scroll to top
-  const overlay = document.getElementById('card-form-overlay');
-  overlay.classList.add('open');
-  overlay.scrollTop = 0;
-}
-
-function cf_closeForm(){
-  document.getElementById('card-form-overlay').classList.remove('open');
-}
-
-// ── Colour ────────────────────────────────────
-function cf_buildColourGrid(){
-  const grid = document.getElementById('cf-colour-grid');
-  grid.innerHTML = CF_COLOURS.map(c => {
-    const isDark = ['charcoal','black'].includes(c.key);
-    const chk    = isDark ? '#fff' : '#333';
-    return `<div class="cf-colour-swatch${c.key===cf_selectedColour.key?' selected':''}"
-      style="background:${c.hex}" title="${c.label}"
-      onclick="cf_selectColour('${c.key}','${c.hex}','${c.label}')">
-      ${c.key===cf_selectedColour.key?`<svg viewBox="0 0 24 24" fill="none" stroke="${chk}" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>`:''}
-    </div>`;
-  }).join('');
-}
-
-function cf_selectColour(key, hex, label){
-  cf_selectedColour = { key, hex, label };
-  cf_buildColourGrid();
-  cf_updatePreview();
-  cf_syncPickerVisual(hex);
-}
-
-function cf_selectCustomColour(hex){
-  cf_selectedColour = { key:'custom', hex, label:hex };
-  cf_buildColourGrid();
-  cf_updatePreview();
-}
-
-function cf_hexInput(val){
-  if(/^#[0-9a-fA-F]{6}$/.test(val)){
-    cf_syncPickerVisual(val);
-    cf_selectCustomColour(val);
-  }
-}
-
-// ── Custom HSV colour picker ───────────────────
-let cf_hue = 47, cf_sat = 0.70, cf_val = 0.91; // ≈ mustard #E8C547
-
-function cf_hsvToHex(h, s, v){
-  const c=v*s, x=c*(1-Math.abs((h/60)%2-1)), m=v-c;
-  let r=0,g=0,b=0;
-  if(h<60){r=c;g=x;}else if(h<120){r=x;g=c;}
-  else if(h<180){g=c;b=x;}else if(h<240){g=x;b=c;}
-  else if(h<300){r=x;b=c;}else{r=c;b=x;}
-  const toH=n=>Math.round((n+m)*255).toString(16).padStart(2,'0');
-  return '#'+toH(r)+toH(g)+toH(b);
-}
-
-function cf_hexToHsv(hex){
-  const r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255;
-  const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;
-  let h=0,s=max?d/max:0,v=max;
-  if(d){
-    if(max===r) h=((g-b)/d+6)%6;
-    else if(max===g) h=(b-r)/d+2;
-    else h=(r-g)/d+4;
-    h*=60;
-  }
-  return {h,s,v};
-}
-
-function cf_syncPickerVisual(hex){
-  const hsv=cf_hexToHsv(hex);
-  cf_hue=hsv.h; cf_sat=hsv.s; cf_val=hsv.v;
-  const slider=document.getElementById('cf-hue-slider');
-  if(slider) slider.value=Math.round(cf_hue);
-  cf_paintSlPicker();
-  cf_updateSlCursor();
-  const sw=document.getElementById('cf-colour-swatch-preview');
-  if(sw) sw.style.background=hex;
-  const hx=document.getElementById('cf-custom-colour-hex');
-  if(hx) hx.value=hex;
-}
-
-function cf_paintSlPicker(){
-  const base=document.getElementById('cf-sl-base');
-  if(base) base.style.background=`hsl(${Math.round(cf_hue)},100%,50%)`;
-}
-
-function cf_updateSlCursor(){
-  const wrap=document.getElementById('cf-sl-wrap');
-  const cursor=document.getElementById('cf-sl-cursor');
-  if(!wrap||!cursor) return;
-  cursor.style.left=Math.round(cf_sat*wrap.clientWidth)+'px';
-  cursor.style.top=Math.round((1-cf_val)*wrap.clientHeight)+'px';
-}
-
-function cf_applyHsv(){
-  const hex=cf_hsvToHex(cf_hue,cf_sat,cf_val);
-  const sw=document.getElementById('cf-colour-swatch-preview');
-  if(sw) sw.style.background=hex;
-  const hx=document.getElementById('cf-custom-colour-hex');
-  if(hx) hx.value=hex;
-  cf_selectCustomColour(hex);
-}
-
-function cf_onHueSlider(val){
-  cf_hue=parseFloat(val);
-  cf_paintSlPicker();
-  cf_applyHsv();
-}
-
-function cf_slPointerAt(clientX,clientY){
-  const wrap=document.getElementById('cf-sl-wrap');
-  if(!wrap) return;
-  const r=wrap.getBoundingClientRect();
-  cf_sat=Math.max(0,Math.min(1,(clientX-r.left)/r.width));
-  cf_val=Math.max(0,Math.min(1,1-(clientY-r.top)/r.height));
-  cf_updateSlCursor();
-  cf_applyHsv();
-}
-
-function cf_slOnMouseDown(e){
-  cf_slPointerAt(e.clientX,e.clientY);
-  const onMove=ev=>cf_slPointerAt(ev.clientX,ev.clientY);
-  const onUp=()=>{document.removeEventListener('mousemove',onMove);document.removeEventListener('mouseup',onUp);};
-  document.addEventListener('mousemove',onMove);
-  document.addEventListener('mouseup',onUp);
-}
-
-function cf_slOnTouchStart(e){
-  e.preventDefault();
-  const t=e.touches[0];
-  cf_slPointerAt(t.clientX,t.clientY);
-  const onMove=ev=>{ev.preventDefault();const t2=ev.touches[0];cf_slPointerAt(t2.clientX,t2.clientY);};
-  const onEnd=()=>{e.currentTarget.removeEventListener('touchmove',onMove);e.currentTarget.removeEventListener('touchend',onEnd);};
-  e.currentTarget.addEventListener('touchmove',onMove,{passive:false});
-  e.currentTarget.addEventListener('touchend',onEnd);
-}
-
-// ── Icons ─────────────────────────────────────
-function cf_buildIconGrid(){
-  const grid = document.getElementById('cf-icon-grid');
-  grid.innerHTML = Object.entries(CF_ICONS).map(([key, ic]) => `
-    <div class="cf-icon-option${key===cf_selectedIcon?' selected':''}" onclick="cf_selectIcon('${key}')">
-      ${ic.svg}
-      <div class="cf-icon-lbl">${ic.label}</div>
-    </div>`).join('');
-}
-
-function cf_selectIcon(key){
-  cf_selectedIcon = key;
-  cf_uploadedImageSrc = null;
-  document.getElementById('cf-upload-preview').style.display = 'none';
-  document.getElementById('cf-upload-label').style.display   = '';
-  document.getElementById('cf-upload-clear-btn').style.display = 'none';
-  document.getElementById('cf-icon-file').value = '';
-  cf_buildIconGrid();
-  cf_updatePreview();
-}
-
-function cf_onDescriptionInput(){
-  if(document.getElementById('cf-icon-description').value.trim()){
-    cf_selectedIcon = null;
-    cf_uploadedImageSrc = null;
-    document.getElementById('cf-upload-preview').style.display  = 'none';
-    document.getElementById('cf-upload-label').style.display    = '';
-    document.getElementById('cf-upload-clear-btn').style.display = 'none';
-    document.getElementById('cf-icon-file').value = '';
-    document.getElementById('cf-upload-notice').style.display   = 'none';
-    cf_buildIconGrid();
-  }
-  cf_updatePreview();
-}
-
-function cf_handleUpload(file){
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    cf_uploadedImageSrc = e.target.result;
-    cf_selectedIcon     = null;
-    document.getElementById('cf-upload-preview').src          = cf_uploadedImageSrc;
-    document.getElementById('cf-upload-preview').style.display = 'block';
-    document.getElementById('cf-upload-label').style.display  = 'none';
-    document.getElementById('cf-upload-clear-btn').style.display = 'block';
-    cf_buildIconGrid();
-    cf_updatePreview();
-    document.getElementById('cf-upload-notice').style.display = '';
-  };
-  reader.readAsDataURL(file);
-}
-
-function cf_handleDrop(e){
-  e.preventDefault();
-  document.getElementById('cf-upload-area').classList.remove('dragover');
-  const file = e.dataTransfer.files[0];
-  if(file && file.type.startsWith('image/')) cf_handleUpload(file);
-}
-
-function cf_clearUpload(){
-  cf_uploadedImageSrc = null;
-  cf_selectedIcon     = 'face_plain';
-  document.getElementById('cf-icon-file').value              = '';
-  document.getElementById('cf-upload-preview').style.display = 'none';
-  document.getElementById('cf-upload-label').style.display   = '';
-  document.getElementById('cf-upload-clear-btn').style.display = 'none';
-  document.getElementById('cf-upload-notice').style.display    = 'none';
-  cf_buildIconGrid();
-  cf_updatePreview();
-}
-
-// ── Tags ──────────────────────────────────────
-function cf_buildTagPills(){
-  const specialKeys = cf_specialDates.map(s => s.key);
-  const hasSpecial  = cf_selectedTags.some(t => specialKeys.includes(t));
-  const hasDow      = cf_selectedTags.some(t => CF_DOW.includes(t));
-
-  // Special pills
-  document.getElementById('cf-special-pills').innerHTML =
-    cf_specialDates.map(sp => `
-      <span class="cf-tag-pill${cf_selectedTags.includes(sp.key)?' selected special':''}"
-        onclick="cf_setSpecialTag('${sp.key}')">${sp.label}</span>`).join('');
-
-  // DOW — disabled if special selected
-  document.getElementById('cf-tg-dow').classList.toggle('disabled', hasSpecial);
-  document.getElementById('cf-dow-pills').innerHTML = CF_DOW.map(t => `
-    <span class="cf-tag-pill${cf_selectedTags.includes(t)?' selected':''}"
-      onclick="cf_toggleDowTag('${t}')">${t.charAt(0).toUpperCase()+t.slice(1)}</span>`).join('');
-
-  // Week type — disabled if special OR DOW selected
-  document.getElementById('cf-tg-weektype').classList.toggle('disabled', hasSpecial || hasDow);
-  document.getElementById('cf-weektype-pills').innerHTML = CF_WEEKTYPE.map(t => `
-    <span class="cf-tag-pill${cf_selectedTags.includes(t)?' selected':''}"
-      onclick="cf_setWeekTypeTag('${t}')">${t.charAt(0).toUpperCase()+t.slice(1)}</span>`).join('');
-
-  // "any day" note
-  document.getElementById('cf-tag-none-note').style.display = cf_selectedTags.length ? 'none' : '';
-}
-
-function cf_setSpecialTag(key){
-  const already = cf_selectedTags.includes(key);
-  if(already){ cf_selectedTags = []; }
-  else {
-    if(cf_selectedTags.length) showToast('Other tags cleared — special day takes priority');
-    cf_selectedTags = [key];
-  }
-  cf_buildTagPills(); cf_updatePreview();
-}
-
-function cf_toggleDowTag(tag){
-  const hadWeektype = cf_selectedTags.some(t => CF_WEEKTYPE.includes(t));
-  cf_selectedTags   = cf_selectedTags.filter(t => !CF_WEEKTYPE.includes(t));
-  const i = cf_selectedTags.indexOf(tag);
-  if(i >= 0) cf_selectedTags.splice(i, 1); else cf_selectedTags.push(tag);
-  if(hadWeektype) showToast('Weekday type cleared — specific day takes priority');
-  cf_buildTagPills(); cf_updatePreview();
-}
-
-function cf_setWeekTypeTag(tag){
-  const hadDow    = cf_selectedTags.some(t => CF_DOW.includes(t));
-  const alreadySet = cf_selectedTags.includes(tag);
-  if(alreadySet){ cf_selectedTags = cf_selectedTags.filter(t => t !== tag); }
-  else {
-    cf_selectedTags = [...cf_selectedTags.filter(t => !CF_DOW.includes(t) && !CF_WEEKTYPE.includes(t)), tag];
-    if(hadDow) showToast('Day tags cleared');
-  }
-  cf_buildTagPills(); cf_updatePreview();
-}
-
-function cf_addCustomSpecial(){
-  const name = document.getElementById('cf-custom-special-name').value.trim();
-  const from = document.getElementById('cf-custom-special-from').value;
-  const to   = document.getElementById('cf-custom-special-to').value || from;
-  if(!name || !from){ showToast('Name and date required'); return; }
-  const key = name.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'');
-  if(cf_specialDates.find(s => s.key === key)){ showToast('Already exists'); return; }
-  cf_specialDates.push({ key, label:name, from:from.slice(5), to:to.slice(5), custom:true });
-  document.getElementById('cf-custom-special-name').value = '';
-  document.getElementById('cf-custom-special-from').value = '';
-  document.getElementById('cf-custom-special-to').value   = '';
-  cf_buildTagPills();
-  showToast(`Added: ${name} ✦`);
-}
-
-// ── Emphasis ──────────────────────────────────
-function cf_buildEmphasisTags(){
-  const quote     = document.getElementById('cf-quote-input').value.trim();
-  const container = document.getElementById('cf-emphasis-tags');
-  if(!quote){ container.innerHTML = ''; return; }
-  const words = [...new Set(quote.replace(/[^\w\s']/g,' ').split(/\s+/).filter(w => w.length > 1))];
-  container.innerHTML = words.map(w => `
-    <span class="cf-emphasis-word${cf_emphasisWords.has(w.toLowerCase()) ? ' selected' : ''}"
-      onclick="cf_toggleEmphasis('${w.replace(/'/g,"\\'")}')">
-      ${w}
-    </span>`).join('');
-}
-
-function cf_toggleEmphasis(word){
-  const key = word.toLowerCase();
-  if(cf_emphasisWords.has(key)) cf_emphasisWords.delete(key); else cf_emphasisWords.add(key);
-  cf_buildEmphasisTags();
-  cf_updatePreview();
-}
-
-// ── Preview ───────────────────────────────────
-function cf_isDarkHex(hex){
-  const r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
-  return (r*299+g*587+b*114)/1000 < 128;
-}
-
-function cf_darken(hex, pct){
-  try {
-    let r=parseInt(hex.slice(1,3),16), g=parseInt(hex.slice(3,5),16), b=parseInt(hex.slice(5,7),16);
-    r=Math.max(0,r-pct); g=Math.max(0,g-pct); b=Math.max(0,b-pct);
-    return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
-  } catch{ return hex; }
-}
-
-function cf_updatePreview(){
-  cf_buildEmphasisTags();
-
-  const quote   = document.getElementById('cf-quote-input').value.trim();
-  const desc    = document.getElementById('cf-icon-description').value.trim();
-  const card    = document.getElementById('cf-preview-card');
-  const body    = document.getElementById('cf-preview-body');
-  const iconEl  = document.getElementById('cf-preview-icon');
-
-  // Background
-  const isDark = ['charcoal','black'].includes(cf_selectedColour.key) ||
-    (cf_selectedColour.key === 'custom' && cf_isDarkHex(cf_selectedColour.hex));
-  const textCol = isDark ? '#F5EDD8' : '#2A2A2A';
-  card.style.background = `linear-gradient(150deg, ${cf_selectedColour.hex}, ${cf_darken(cf_selectedColour.hex, 15)})`;
-  card.style.color = textCol;
-
-  // Icon: uploaded > standard > description placeholder > blank
-  if(cf_uploadedImageSrc){
-    iconEl.innerHTML = `<img src="${cf_uploadedImageSrc}" style="width:60px;height:60px;object-fit:contain;border-radius:8px;opacity:0.8" alt="">`;
-  } else if(cf_selectedIcon && CF_ICONS[cf_selectedIcon]){
-    iconEl.innerHTML = `<div style="width:60px;height:60px;color:${textCol};opacity:0.75">${CF_ICONS[cf_selectedIcon].svg}</div>`;
-  } else if(desc){
-    iconEl.innerHTML = `<div style="width:60px;height:60px;color:${textCol};opacity:0.35">${CF_PLACEHOLDER_SVG}</div>`;
-  } else {
-    iconEl.innerHTML = `<div style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(245,237,216,0.25);text-align:center;line-height:1.4">icon<br>here</div>`;
-  }
-
-  // Body text
-  if(!quote){
-    body.innerHTML = `<span style="font-size:15px;opacity:0.35;font-style:italic;color:${textCol}">Start typing your quote…</span>`;
-    return;
-  }
-
-  const tokens = quote.split(/\s+/);
-  const html   = tokens.map(tok => {
-    const clean = tok.replace(/[^\w']/g,'').toLowerCase();
-    const isEm  = cf_emphasisWords.has(clean);
-    return `<span class="cf-word${isEm?' emphasis':' normal'}" style="color:${textCol}">${tok} </span>`;
-  }).join('');
-  body.innerHTML = `<div style="text-align:center;font-family:Georgia,serif">${html}</div>`;
-}
-
-// ── Submit ────────────────────────────────────
-function cf_submitCard(){
-  const quote       = document.getElementById('cf-quote-input').value.trim();
-  const contributor = document.getElementById('cf-contributor-name').value.trim();
-  if(!quote){ showToast('Please write a quote first'); return; }
-
-  const emphasisList = [...cf_emphasisWords].join(', ') || 'none';
-  const tagStr       = cf_selectedTags.length ? cf_selectedTags.join(', ') : 'any day';
-  const iconStr      = cf_uploadedImageSrc
-    ? '[image uploaded — see attachment]'
-    : (cf_selectedIcon || 'custom — see description');
-  const iconDesc = document.getElementById('cf-icon-description').value.trim();
-
-  const params = new URLSearchParams({
-    [CF_GFORM.fields.quote]:       quote,
-    [CF_GFORM.fields.emphasis]:    emphasisList,
-    [CF_GFORM.fields.tag]:         tagStr,
-    [CF_GFORM.fields.background]:  `${cf_selectedColour.label} (${cf_selectedColour.hex})`,
-    [CF_GFORM.fields.icon]:        iconStr,
-    [CF_GFORM.fields.iconDesc]:    iconDesc || '',
-    [CF_GFORM.fields.contributor]: contributor || 'anonymous'
-  });
-
-  const fullUrl = `${CF_GFORM.url}?usp=pp_url&${params.toString()}`;
-
-  window.open(fullUrl, '_blank');
-  showToast('Opening Google Form… just hit Submit there ✦');
-}
 </script>
 
 <script>
@@ -2399,11 +1506,6 @@ function cf_submitCard(){
     document.getElementById('ios-install-banner').style.display = 'none';
   }
 
-  // Auto-open card form if ?contribute=1
-  (function(){
-    if(new URLSearchParams(window.location.search).get('contribute')==='1')
-      openCardForm();
-  })();
 </script>
 </body>
 </html>
