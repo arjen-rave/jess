@@ -5145,19 +5145,6 @@
     },
     {
       "id": 325,
-      "name": "Toe sucking bad",
-      "parts": [
-        { "t": "And then the realisation hits", "s": "medium" },
-        { "t": "that you now actually have to", "s": "small" },
-        { "t": "stop the bad habits", "s": "big" },
-        { "t": "you said you'd quit in 2027…", "s": "small" }
-      ],
-      "icon": "foot",
-      "bg": "#E88E5A",
-      "tags": []
-    },
-    {
-      "id": 326,
       "name": "No New Year",
       "parts": [
         { "t": "I don't think I want a new year this year", "s": "medium" },
@@ -5168,6 +5155,18 @@
       "icon": "hny",
       "bg": "#FF4FA7",
       "tags": ["nyee"]
+    },
+    {
+      "id": 326,
+      "name": "Toe sucking bad",
+      "parts": [
+        { "t": "The existence of finger-licking good", "s": "medium" },
+        { "t": "Implies the existence", "s": "small" },
+        { "t": "Of toe-sucking bad.", "s": "big" }
+      ],
+      "icon": "foot",
+      "bg": "#E88E5A",
+      "tags": []
     }
   ]
 }
