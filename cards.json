@@ -5053,7 +5053,7 @@
       "name": "Fuck it",
       "parts": [
         { "t": "A wise woman once said", "s": "small" },
-        { "t": "FUCK IT", "s": "small" },
+        { "t": "FUCK IT", "s": "big" },
         { "t": "And then she lived happily ever after. The End.", "s": "tiny" }
       ],
       "icon": "middle_finger",
