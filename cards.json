@@ -5095,6 +5095,44 @@
       "icon": "slushy",
       "bg": "#FBCCE7",
       "tags": ["weekday"]
+    },
+    {
+      "id": 331,
+      "name": "Otherworldly",
+      "parts": [
+        { "t": "Stop trying to look pretty.", "s": "tiny" },
+        { "t": "Start looking otherworldly", "s": "medium" },
+        { "t": "And mildly threatening.", "s": "big" }
+      ],
+      "icon": "octopus",
+      "bg": "#84DE02",
+      "tags": ["weekday"]
+    },
+    {
+      "id": 332,
+      "name": "rodeo",
+      "parts": [
+        { "t": "I didn't know", "s": "small" },
+        { "t": "you were supposed to", "s": "small" },
+        { "t": "know everything", "s": "big" },
+        { "t": "by your second rodeo.", "s": "small" },
+        { "t": "Seems like a very low amount of rodeos to me.", "s": "tiny" }
+      ],
+      "icon": "horse",
+      "bg": "#C7A384",
+      "tags": []
+    },
+    {
+      "id": 333,
+      "name": "push",
+      "parts": [
+        { "t": "Some people just need a", "s": "small" },
+        { "t": "push in the right direction", "s": "small" },
+        { "t": "Like out the window or off a bridge.", "s": "tiny" }
+      ],
+      "icon": "bridge",
+      "bg": "#A3C1AD",
+      "tags": []
     }
   ]
 }
