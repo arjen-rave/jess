@@ -5324,6 +5324,132 @@
       "icon": "smile",
       "bg": "#1a472a",
       "tags": []
+    },
+    {
+      "id": 350,
+      "name": "Walk Beside Me",
+      "parts": [
+        { "t": "Don't walk behind me; I may not lead.", "s": "small" },
+        { "t": "Don't walk in front of me; I may not follow.", "s": "small" },
+        { "t": "Just walk beside me and be my friend.", "s": "big" }
+      ],
+      "icon": "people",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 351,
+      "name": "Make A Difference",
+      "parts": [
+        { "t": "No one ever made a difference", "s": "small" },
+        { "t": "by being like everyone else.", "s": "big" }
+      ],
+      "icon": "star",
+      "bg": "#1A3A5A",
+      "tags": []
+    },
+    {
+      "id": 352,
+      "name": "Your Own Kind Of Beautiful",
+      "parts": [
+        { "t": "Be your own kind of", "s": "small" },
+        { "t": "beautiful.", "s": "big" }
+      ],
+      "icon": "pose",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 353,
+      "name": "Let The Music Set You Free",
+      "parts": [
+        { "t": "Close your eyes", "s": "small" },
+        { "t": "and let the music", "s": "medium" },
+        { "t": "set you free.", "s": "big" }
+      ],
+      "icon": "musical",
+      "bg": "#2A2A4A",
+      "tags": []
+    },
+    {
+      "id": 354,
+      "name": "Don't Throw It Away",
+      "parts": [
+        { "t": "Chance won't come every single day,", "s": "small" },
+        { "t": "so don't throw it away.", "s": "big" }
+      ],
+      "icon": "hourglass",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 355,
+      "name": "Just You Wait",
+      "parts": [
+        { "t": "There's a million things you haven't done.", "s": "small" },
+        { "t": "But just you wait.", "s": "big" }
+      ],
+      "icon": "clock",
+      "bg": "#1A1A1A",
+      "tags": []
+    },
+    {
+      "id": 356,
+      "name": "Authentic Chaos",
+      "parts": [
+        { "t": "In a world full of toxic positivity,", "s": "small" },
+        { "t": "be authentic", "s": "medium" },
+        { "t": "chaos.", "s": "big" }
+      ],
+      "icon": "goose",
+      "bg": "#3C3C3C",
+      "tags": []
+    },
+    {
+      "id": 357,
+      "name": "Kind With A Spine",
+      "parts": [
+        { "t": "Be kind,", "s": "medium" },
+        { "t": "but with a spine.", "s": "big" }
+      ],
+      "icon": "scales",
+      "bg": "#4A5A4A",
+      "tags": []
+    },
+    {
+      "id": 358,
+      "name": "Aut Inveniam Viam",
+      "parts": [
+        { "t": "Aut inveniam viam", "s": "medium" },
+        { "t": "aut faciam.", "s": "big" }
+      ],
+      "icon": "mountain",
+      "bg": "#C4956A",
+      "tags": []
+    },
+    {
+      "id": 359,
+      "name": "Cactus Self-Care",
+      "parts": [
+        { "t": "Practice self-care like a cactus:", "s": "small" },
+        { "t": "bask in the sun and", "s": "small" },
+        { "t": "stab everyone that tries to touch you.", "s": "big" }
+      ],
+      "icon": "plant",
+      "bg": "#6A8A6A",
+      "tags": []
+    },
+    {
+      "id": 360,
+      "name": "Unicorn Fist",
+      "parts": [
+        { "t": "That's not your middle finger.", "s": "small" },
+        { "t": "That's your", "s": "small" },
+        { "t": "unicorn fist.", "s": "big" }
+      ],
+      "icon": "unicorn",
+      "bg": "#C8A0B8",
+      "tags": []
     }
   ]
 }
