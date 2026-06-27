@@ -5450,6 +5450,67 @@
       "icon": "unicorn",
       "bg": "#C8A0B8",
       "tags": []
+    },
+    {
+      "id": 361,
+      "name": "Your Mess",
+      "parts": [
+        { "t": "You are not behind. You are not ahead.", "s": "small" },
+        { "t": "You are exactly where you need to be —", "s": "small" },
+        { "t": "a complete mess,", "s": "medium" },
+        { "t": "but your mess.", "s": "big" }
+      ],
+      "icon": "pose",
+      "bg": "#C8A0B8",
+      "tags": []
+    },
+    {
+      "id": 362,
+      "name": "She Remembered",
+      "parts": [
+        { "t": "She remembered who she was,", "s": "small" },
+        { "t": "and the game", "s": "medium" },
+        { "t": "changed.", "s": "big" }
+      ],
+      "icon": "queen",
+      "bg": "#4A2A3A",
+      "tags": []
+    },
+    {
+      "id": 363,
+      "name": "100% Of Your Worst Days",
+      "parts": [
+        { "t": "You've survived 100% of your worst days so far.", "s": "small" },
+        { "t": "Disgusting.", "s": "big" },
+        { "t": "Keep going.", "s": "medium" }
+      ],
+      "icon": "trophy",
+      "bg": "#E8C547",
+      "tags": []
+    },
+    {
+      "id": 364,
+      "name": "Half-Arsed Is Valid",
+      "parts": [
+        { "t": "Do it with passion or not at all.", "s": "small" },
+        { "t": "Or do it half-arsed.", "s": "medium" },
+        { "t": "Honestly, you're tired and that's valid too.", "s": "small" }
+      ],
+      "icon": "flame",
+      "bg": "#C4455A",
+      "tags": []
+    },
+    {
+      "id": 365,
+      "name": "Here's To The Ones Who Dream",
+      "parts": [
+        { "t": "Here's to the ones who dream,", "s": "small" },
+        { "t": "foolish as", "s": "small" },
+        { "t": "they may seem.", "s": "big" }
+      ],
+      "icon": "star",
+      "bg": "#1A1A2E",
+      "tags": ["birthday_erika"]
     }
   ]
 }
