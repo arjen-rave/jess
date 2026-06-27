@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="For Jess">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="/jess/icon-192.png">
 <meta name="theme-color" content="#242424">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -651,7 +651,8 @@ function specialDates(sp){
   const [fm,fd]=sp.from.split('-').map(Number);
   const [tm,td]=sp.to.split('-').map(Number);
   let cur=new Date(2000,fm-1,fd);
-  const end=new Date(2000,tm-1,td);
+  const endYear = fm > tm ? 2001 : 2000;
+  const end=new Date(endYear,tm-1,td);
   while(cur<=end){
     dates.push(`${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`);
     cur.setDate(cur.getDate()+1);
