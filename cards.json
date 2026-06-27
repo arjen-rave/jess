@@ -5274,7 +5274,7 @@
         { "t": "and sleigh rides through he snow", "s": "medium" },
         { "t": "sounds", "s": "tiny" },
         { "t": "SO GOOD", "s": "big" },
-        { "t": "right now", "s": "tiny" },
+        { "t": "right now", "s": "tiny" }
       ],
       "icon": "sleigh",
       "bg": "#3D2622",
@@ -5286,7 +5286,7 @@
       "parts": [
         { "t": "Sometimes you just need to watch a pirated copy of a musical on YouTube with your sister.", "s": "small" },
         { "t": "And sing along with every song.", "s": "medium" },
-        { "t": "DUH!", "s": "big" },
+        { "t": "DUH!", "s": "big" }
       ],
       "icon": "musical",
       "bg": "#642620",
