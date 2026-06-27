@@ -5011,7 +5011,6 @@
       "parts": [
         {"t": "Can I get", "s": "small"},
         {"t": "a fucking ETA on","s": "medium"},
-        {"t": "If you","s": "small"},
         {"t": "“This too shall pass.”","s": "big"}
       ],
       "icon": "hourglass",
@@ -5227,7 +5226,7 @@
       "name": "Super Nintendo Chalmers",
       "parts": [
         { "t": "Hi", "s": "small" },
-        { "t": "Super Nintendo Chalmers", "s": "medium" }
+        { "t": "Super Nintendo Chalmers.", "s": "medium" }
       ],
       "icon": "ralph",
       "bg": "#E4000F",
@@ -5275,7 +5274,7 @@
         { "t": "and sleigh rides through he snow", "s": "medium" },
         { "t": "sounds", "s": "tiny" },
         { "t": "SO GOOD", "s": "big" },
-        { "t": "right now", "s": "tiny" }
+        { "t": "right now.", "s": "tiny" }
       ],
       "icon": "sleigh",
       "bg": "#3D2622",
@@ -5320,7 +5319,7 @@
       "name": "We're that funny",
       "parts": [
         { "t": "Giggling that would build up to cracking, always resulting in a table full of Chadwick girls crying at the kitchen table because yes,", "s": "tiny" },
-        { "t": "We really are THAT FUNNY", "s": "big" }
+        { "t": "We really are THAT FUNNY.", "s": "big" }
       ],
       "icon": "smile",
       "bg": "#1a472a",
