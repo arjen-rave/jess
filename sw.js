@@ -1,4 +1,4 @@
-const CACHE = 'jj-v1';
+const CACHE = 'jj-v1.2';
 const ASSETS = [
   '/jess/',
   '/jess/index.html',
