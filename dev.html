@@ -478,11 +478,7 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
           <span class="toggle-track"></span>
         </label>
       </div>
-      <div class="settings-row" id="notif-time-row" style="display:none">
-        <span>Reminder time</span>
-        <input type="time" id="notif-time" value="08:00" onchange="onNotifTimeChange(this.value)">
-      </div>
-      <p class="settings-note" id="notif-note" style="display:none">Sends a background push notification each day at the set time.</p>
+      <p class="settings-note" id="notif-note" style="display:none">Daily reminder fires at 07:00 Toronto time. Toggle off to unsubscribe.</p>
     </div>
 
     <div class="settings-block">
@@ -1457,7 +1453,7 @@ loadData();
     return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
   }
 
-  async function subscribePush(time) {
+  async function subscribePush() {
     try {
       const perm = Notification.permission === 'default'
         ? await Notification.requestPermission()
@@ -1465,7 +1461,6 @@ loadData();
       if (perm !== 'granted') {
         showToast('Notifications blocked — check your settings');
         document.getElementById('notif-toggle').checked = false;
-        document.getElementById('notif-time-row').style.display = 'none';
         document.getElementById('notif-note').style.display = 'none';
         return;
       }
@@ -1484,15 +1479,12 @@ loadData();
       if (!res.ok) throw new Error('Failed to save subscription on server');
 
       localStorage.setItem('jj_notif_enabled', 'true');
-      localStorage.setItem('jj_notif_time', time);
       localStorage.setItem('jj_notif_consented', 'true');
-      const [h, m] = time.split(':');
-      showToast(`Notifications set for ${h}:${m} ✦`);
+      showToast('Daily reminder turned on ✦');
     } catch (e) {
       console.error('subscribePush error:', e);
       showToast(`Could not set up notifications: ${e.message}`);
       document.getElementById('notif-toggle').checked = false;
-      document.getElementById('notif-time-row').style.display = 'none';
       document.getElementById('notif-note').style.display = 'none';
       localStorage.setItem('jj_notif_enabled', 'false');
     }
@@ -1526,32 +1518,19 @@ loadData();
         document.getElementById('notif-toggle').checked = false;
         return;
       }
-      const time = document.getElementById('notif-time').value || '08:00';
-      document.getElementById('notif-time-row').style.display = '';
       document.getElementById('notif-note').style.display = '';
-      await subscribePush(time);
+      await subscribePush();
     } else {
-      document.getElementById('notif-time-row').style.display = 'none';
       document.getElementById('notif-note').style.display = 'none';
       await unsubscribePush();
-    }
-  }
-
-  async function onNotifTimeChange(time) {
-    if (!time) return;
-    localStorage.setItem('jj_notif_time', time);
-    if (localStorage.getItem('jj_notif_enabled') === 'true') {
-      await subscribePush(time);
     }
   }
 
   async function onConsentAccept() {
     closeModal('modal-notif-consent');
     document.getElementById('notif-toggle').checked = true;
-    document.getElementById('notif-time-row').style.display = '';
     document.getElementById('notif-note').style.display = '';
-    const time = document.getElementById('notif-time').value || '08:00';
-    await subscribePush(time);
+    await subscribePush();
   }
 
   function onConsentDecline() {
@@ -1562,13 +1541,10 @@ loadData();
   // ── BOOT — restore notification state ────────────────────
   (function () {
     const enabled = localStorage.getItem('jj_notif_enabled') === 'true';
-    const time    = localStorage.getItem('jj_notif_time') || '08:00';
     const toggle  = document.getElementById('notif-toggle');
     if (toggle) {
       toggle.checked = enabled;
-      document.getElementById('notif-time').value = time;
       if (enabled) {
-        document.getElementById('notif-time-row').style.display = '';
         document.getElementById('notif-note').style.display = '';
       }
     }
