@@ -1,0 +1,34 @@
+name: Send daily Just For Jess notification
+
+on:
+  schedule:
+    - cron: "0 13 * * *"  # 15:00 Amsterdam CEST (test). Change to 0 11 * * * for 07:00 Toronto EDT.
+  workflow_dispatch:
+    inputs:
+      test_send:
+        description: "Send a one-off test notification to all subscribers"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  send-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        working-directory: .github/scripts
+        run: npm install web-push
+      - name: Send push notification
+        working-directory: .github/scripts
+        env:
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          SITE_URL: "https://arjen-rave.github.io/jess/"
+        run: node send-push.js

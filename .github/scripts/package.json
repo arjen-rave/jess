@@ -1,0 +1,7 @@
+{
+  "name": "jess-push-scripts",
+  "version": "1.0.0",
+  "dependencies": {
+    "web-push": "^3.6.6"
+  }
+}
