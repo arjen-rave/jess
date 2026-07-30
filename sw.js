@@ -1,10 +1,13 @@
-const CACHE = 'jj-v1.5-dev';
+const CACHE = 'jj-v1.5-dev-b';
 const ASSETS = [
   '/jess/',
   '/jess/index.html',
+  '/jess/dev.html',
   '/jess/manifest.json',
   '/jess/icon-192.png',
-  '/jess/icon-512.png'
+  '/jess/icon-512.png',
+  '/jess/cards.json',
+  '/jess/schedule.json'
 ];
 
 self.addEventListener('install', e => {
