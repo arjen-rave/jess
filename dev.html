@@ -1391,6 +1391,8 @@ async function loadData(){
     const data=await res.json();
     ICONS=data.icons||{};
     CARDS=data.cards||[];
+    // Mark today as seen on every app open, regardless of screen
+    markSeen(dk(today0()));
     try { renderToday(); } catch(e){
       document.getElementById('card-wrap').innerHTML=
         `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Error: ${e.message}<br><small>${e.stack}</small></div>`;
