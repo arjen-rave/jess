@@ -1,9 +1,10 @@
-const CACHE = 'jj-v1.5-dev-b';
+const CACHE = 'jj-v1.5-dev-c';
 const ASSETS = [
   '/jess/',
   '/jess/index.html',
   '/jess/dev.html',
   '/jess/manifest.json',
+  '/jess/manifest-dev.json',
   '/jess/icon-192.png',
   '/jess/icon-512.png',
   '/jess/cards.json',
