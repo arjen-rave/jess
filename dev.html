@@ -545,7 +545,7 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
     </div>
 
     <div style="text-align:center;padding:16px 0 4px;font-size:11px;color:rgba(245,237,216,0.2);font-family:var(--sans);letter-spacing:0.06em">
-      v1.3-dev · Just For Jess · July 2026
+      v1.4-dev · Just For Jess · July 2026
     </div>
   </div>
 
@@ -803,11 +803,15 @@ function getSeen(){ try{ return JSON.parse(localStorage.getItem('jj_seen')||'[]'
 function saveSeen(a){ localStorage.setItem('jj_seen',JSON.stringify(a)); }
 function markSeen(key){ const s=getSeen(); if(!s.includes(key)){ s.push(key); saveSeen(s); } }
 
-function calcStreak(){
-  const seen=getSeen(), t=today0(), START=getStart(); let streak=0, cur=new Date(t);
+async function calcStreak(){
+  const serverSeen = await getServerSeen();
+  const localSeen = getSeen();
+  const allSeen = [...new Set([...(serverSeen||[]), ...localSeen])];
+  const t=today0(), START=getStart();
+  let streak=0, cur=new Date(t);
   while(cur>=START){
     const key=dk(cur);
-    if(seen.includes(key)){ streak++; cur.setDate(cur.getDate()-1); }
+    if(allSeen.includes(key)){ streak++; cur.setDate(cur.getDate()-1); }
     else if(dk(cur)===dk(t)){ cur.setDate(cur.getDate()-1); }
     else break;
   }
@@ -850,7 +854,7 @@ function renderToday(){
   const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
   document.getElementById('today-date').textContent=`${DAYS[t.getDay()]}, ${t.getDate()} ${MONTHS[t.getMonth()]} ${t.getFullYear()}`;
-  document.getElementById('streak-n').textContent=calcStreak();
+  calcStreak().then(n => document.getElementById('streak-n').textContent=n);
   const card=cardForDate(t);
   document.getElementById('card-wrap').innerHTML=card
     ? renderCard(card)
@@ -1302,10 +1306,29 @@ function exportSchedule(){
     .catch(()=>showToast('Copy failed — try a different browser'));
 }
 
+// ── SERVER SEEN SYNC ──
+async function serverMarkSeen(dateKey){
+  try {
+    await fetch(`${PUSH_SERVER_URL}/seen-dev/add`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
+      body: JSON.stringify({ date: dateKey })
+    });
+  } catch {} // silent fail — offline is fine
+}
+
+async function getServerSeen(){
+  try {
+    const res = await fetch(`${PUSH_SERVER_URL}/seen-dev`);
+    if(!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
 async function syncSchedule(){
   try {
     showToast('Syncing…');
-    const res = await fetch('https://arjen-rave.github.io/jess/schedule.json?t=' + Date.now());
+    const res = await fetch(`${PUSH_SERVER_URL}/schedule-dev?t=` + Date.now());
     if(!res.ok) throw new Error('HTTP ' + res.status);
     const sched = await res.json();
     // Validate
@@ -1398,6 +1421,9 @@ async function loadData(){
         `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Error: ${e.message}<br><small>${e.stack}</small></div>`;
       console.error(e);
     }
+    const todayKey = dk(today0());
+    markSeen(todayKey);
+    serverMarkSeen(todayKey);
   } catch(e){
     document.getElementById('card-wrap').innerHTML=
       `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Failed to load cards: ${e.message}</div>`;

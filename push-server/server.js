@@ -83,6 +83,74 @@ app.post('/unsubscribe', requireSecret, (req, res) => {
   res.json({ ok: true });
 });
 
+// ── SCHEDULE endpoints ──
+app.get('/schedule', (req, res) => {
+  try {
+    const data = fs.readFileSync(path.join(DATA_DIR, 'schedule.json'), 'utf8');
+    res.json(JSON.parse(data));
+  } catch { res.status(404).json({ error: 'No schedule found' }); }
+});
+
+app.post('/schedule', requireSecret, (req, res) => {
+  try {
+    fs.writeFileSync(path.join(DATA_DIR, 'schedule.json'), JSON.stringify(req.body));
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── SEEN endpoints (production) ──
+app.get('/seen', (req, res) => {
+  try {
+    const data = fs.readFileSync(path.join(DATA_DIR, 'seen.json'), 'utf8');
+    res.json(JSON.parse(data));
+  } catch { res.json([]); }
+});
+
+app.post('/seen/add', requireSecret, (req, res) => {
+  const { date } = req.body;
+  if(!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return res.status(400).json({ error: 'Invalid date' });
+  try {
+    let seen = [];
+    try { seen = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'seen.json'), 'utf8')); } catch {}
+    if(!seen.includes(date)) { seen.push(date); fs.writeFileSync(path.join(DATA_DIR, 'seen.json'), JSON.stringify(seen)); }
+    res.json({ ok: true, seen });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── SEEN endpoints (dev) ──
+app.get('/seen-dev', (req, res) => {
+  try {
+    const data = fs.readFileSync(path.join(DATA_DIR, 'seen-dev.json'), 'utf8');
+    res.json(JSON.parse(data));
+  } catch { res.json([]); }
+});
+
+app.post('/seen-dev/add', requireSecret, (req, res) => {
+  const { date } = req.body;
+  if(!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return res.status(400).json({ error: 'Invalid date' });
+  try {
+    let seen = [];
+    try { seen = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'seen-dev.json'), 'utf8')); } catch {}
+    if(!seen.includes(date)) { seen.push(date); fs.writeFileSync(path.join(DATA_DIR, 'seen-dev.json'), JSON.stringify(seen)); }
+    res.json({ ok: true, seen });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
+// ── SCHEDULE-DEV endpoints ──
+app.get('/schedule-dev', (req, res) => {
+  try {
+    const data = fs.readFileSync(path.join(DATA_DIR, 'schedule-dev.json'), 'utf8');
+    res.json(JSON.parse(data));
+  } catch { res.status(404).json({ error: 'No dev schedule found' }); }
+});
+
+app.post('/schedule-dev', requireSecret, (req, res) => {
+  try {
+    fs.writeFileSync(path.join(DATA_DIR, 'schedule-dev.json'), JSON.stringify(req.body));
+    res.json({ ok: true });
+  } catch(e) { res.status(500).json({ error: e.message }); }
+});
+
 // ── Push sender ───────────────────────────────────────────────────────────────
 const PUSH_PAYLOAD = JSON.stringify({
   title: 'Just For Jess ✦',
