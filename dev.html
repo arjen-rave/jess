@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Just For Jess</title>
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="For Jess">
+<link rel="apple-touch-icon" href="/jess/icon-192.png">
+<meta name="theme-color" content="#242424">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --mustard: #E8C547;
+  --mustard-dark: #C4A030;
+  --cream: #F5EDD8;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, 'Segoe UI', Arial, sans-serif;
+  --bg-app: #242424;
+  --bg-nav: #1a1a1a;
+  --surface: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.07);
+  --text-muted: rgba(245,237,216,0.35);
+  --text-dim: rgba(245,237,216,0.55);
+  --grey-btn-bg: rgba(255,255,255,0.07);
+  --grey-btn-border: rgba(255,255,255,0.12);
+  --grey-btn-text: rgba(245,237,216,0.3);
+}
+
+body {
+  font-family: var(--sans);
+  background: #1e1e1e;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  color: #f5edd8;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%; max-width: 420px; min-height: 100vh;
+  display: flex; flex-direction: column;
+  background: var(--bg-app); position: relative;
+}
+
+/* ── TOP NAV ── */
+.top-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 24px 12px; background: var(--bg-app); flex-shrink: 0;
+}
+.nav-title { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--cream); }
+.nav-right  { display: flex; align-items: center; gap: 10px; }
+
+.dev-badge {
+  display: none; font-size: 10px; letter-spacing: 0.12em; font-family: var(--sans);
+  color: var(--mustard); border: 1px solid rgba(232,197,71,0.4);
+  border-radius: 5px; padding: 2px 7px; font-weight: 600;
+  pointer-events: none; user-select: none;
+}
+body.dev-mode .dev-badge { display: inline-block; }
+
+.nav-settings-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--cream); opacity: 0.55; font-size: 20px; line-height: 1;
+  transition: opacity 0.2s; padding: 2px;
+}
+.nav-settings-btn:hover { opacity: 1; }
+
+/* ── SCREENS ── */
+.screen { display: none; flex: 1; padding: 8px 20px 110px; overflow-y: auto; }
+.screen.active { display: block; }
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 420px; background: var(--bg-nav);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; justify-content: space-around; padding: 12px 0 20px; z-index: 100;
+}
+.bottom-btn {
+  background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  color: var(--text-muted); font-size: 10px; font-family: var(--sans);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.2s; padding: 4px 20px;
+}
+.bottom-btn svg { width: 22px; height: 22px; }
+.bottom-btn.active { color: var(--mustard); }
+#btn-deck { display: none; }
+body.dev-mode #btn-deck { display: flex; }
+#btn-calendar .btn-label-normal { display: inline; }
+#btn-calendar .btn-label-dev    { display: none; }
+body.dev-mode #btn-calendar .btn-label-normal { display: none; }
+body.dev-mode #btn-calendar .btn-label-dev    { display: inline; }
+
+/* ── CARD ── */
+.card {
+  border-radius: 20px; padding: 32px 28px 36px; min-height: 480px;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+  animation: cardIn 0.5s cubic-bezier(0.34,1.4,0.64,1) forwards;
+}
+@keyframes cardIn {
+  from { opacity:0; transform:translateY(20px) scale(0.97); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+.card.bg-kraft       { background: linear-gradient(150deg,#C4956A,#A87040); color:#F5EDD8; }
+.card.bg-mustard     { background: linear-gradient(150deg,#E8C547,#D4A820); color:#2A2A2A; }
+.card.bg-cream       { background: linear-gradient(150deg,#F5EDD8,#E8DCC0); color:#2A2A2A; }
+.card.bg-offwhite    { background: linear-gradient(150deg,#F8F4EC,#EDE4D0); color:#2A2A2A; }
+.card.bg-charcoal    { background: linear-gradient(150deg,#3C3C3C,#2A2A2A); color:#F5EDD8; }
+.card.bg-black       { background: linear-gradient(150deg,#2A2A2A,#111);    color:#F5EDD8; }
+.card.bg-pastel-blue { background: linear-gradient(150deg,#B8D4E8,#90B8D4); color:#2A2A2A; }
+.card.bg-pastel-pink { background: linear-gradient(150deg,#F0C8C8,#D8A8A8); color:#2A2A2A; }
+.card.bg-sage        { background: linear-gradient(150deg,#B8C8A8,#98B088); color:#2A2A2A; }
+
+.card-icon { width:68px; height:68px; margin-bottom:4px; flex-shrink:0; opacity:0.75; }
+.card-body {
+  font-family: var(--serif); text-align:center; flex:1;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:12px 4px; gap:4px; line-height:1.3;
+}
+.card-body .t-small  { font-size:15px; }
+.card-body .t-medium { font-size:22px; font-weight:bold; }
+.card-body .t-big    { font-size:30px; font-weight:900; line-height:1.1; }
+.card-body .t-tiny   { font-size:13px; font-style:italic; opacity:0.85; }
+.card-mini { min-height:260px !important; animation:none !important; }
+.card-mini .card-body .t-big    { font-size:18px !important; }
+.card-mini .card-body .t-medium { font-size:14px !important; }
+.card-mini .card-body .t-small  { font-size:12px !important; }
+.card-mini .card-icon { width:44px !important; height:44px !important; }
+
+/* ── TODAY ── */
+.today-meta { text-align:center; margin-bottom:14px; }
+.today-date { font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,237,216,0.4); margin-bottom:6px; }
+.streak { display:inline-flex; align-items:center; gap:6px; color:var(--mustard); font-size:13px; }
+
+/* ── CALENDAR / SCHEDULE ── */
+.cal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+.cal-title  { font-family:var(--serif); font-size:20px; font-style:italic; color:var(--cream); }
+.cal-nav {
+  background:rgba(255,255,255,0.07); border:none; color:var(--cream);
+  width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:18px;
+  line-height:1; transition:background 0.2s;
+}
+.cal-nav:hover { background:rgba(255,255,255,0.15); }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+.cal-lbl { text-align:center; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(245,237,216,0.3); padding:4px 0 8px; }
+.cal-day { aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:12px; transition:all 0.15s; }
+.cal-day.empty  { opacity:0; pointer-events:none; }
+.cal-day.blank  { color:rgba(245,237,216,0.12); }
+.cal-day.future { color:rgba(245,237,216,0.12); border:1px solid rgba(245,237,216,0.07); }
+.cal-day.seen   { color:var(--cream); background:rgba(232,197,71,0.15); border:1px solid rgba(232,197,71,0.3); cursor:pointer; }
+.cal-day.seen:hover { background:rgba(232,197,71,0.28); transform:scale(1.1); }
+.cal-day.today  { background:var(--mustard); color:#222; font-weight:700; cursor:pointer; }
+.cal-day.today:hover { opacity:0.85; transform:scale(1.1); }
+.cal-day.sched-special  { background:var(--mustard); color:#222; font-weight:700; cursor:pointer; }
+.cal-day.sched-special:hover { opacity:0.85; transform:scale(1.1); }
+.cal-day.sched-assigned { color:var(--cream); background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); cursor:pointer; }
+.cal-day.sched-assigned:hover { background:rgba(255,255,255,0.14); transform:scale(1.1); }
+
+.preview-wrap { margin-top:18px; animation:fadeUp 0.3s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);} }
+.preview-label { text-align:center; color:rgba(245,237,216,0.38); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px; }
+.preview-sub   { text-align:center; color:rgba(232,197,71,0.65); font-size:11px; margin-bottom:10px; }
+.preview-close {
+  display:block; margin:12px auto 0; background:none;
+  border:1px solid rgba(245,237,216,0.2); color:var(--cream);
+  border-radius:10px; padding:8px 20px; cursor:pointer; font-size:13px; font-family:var(--sans);
+  transition:background 0.2s;
+}
+.preview-close:hover { background:rgba(255,255,255,0.07); }
+
+/* ── SETTINGS ── */
+.settings-h { font-family:var(--serif); font-size:22px; font-style:italic; color:var(--cream); margin-bottom:24px; }
+.settings-block { background:var(--surface); border-radius:14px; padding:18px; margin-bottom:14px; border:1px solid var(--border); }
+.settings-block h3 { font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mustard); margin-bottom:14px; }
+.settings-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:9px 0; border-bottom:1px solid var(--border); color:var(--cream); font-size:14px;
+}
+.settings-row:last-child { border-bottom:none; padding-bottom:0; }
+.settings-val { color:var(--mustard); font-size:14px; }
+.settings-row input[type="time"],
+.settings-row input[type="date"] {
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+  color:var(--cream); border-radius:8px; padding:5px 8px; font-size:13px; font-family:var(--sans); cursor:pointer;
+}
+.settings-note { font-size:11px; color:var(--grey-btn-text); margin-top:8px; font-style:italic; line-height:1.5; }
+
+.btn-reshuffle {
+  width:100%; background:var(--mustard); border:none; color:#222;
+  border-radius:10px; padding:13px; cursor:pointer; font-size:14px; font-weight:600;
+  margin-top:6px; transition:background 0.2s; display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn-reshuffle:hover { background:var(--mustard-dark); }
+.btn-reset {
+  width:100%; border-radius:10px; padding:13px; cursor:not-allowed; font-size:14px; margin-top:8px;
+  background:var(--grey-btn-bg); border:1px solid var(--grey-btn-border); color:var(--grey-btn-text); transition:all 0.2s;
+}
+body.dev-mode .btn-reset { background:rgba(200,70,70,0.12); border:1px solid rgba(200,70,70,0.28); color:#e88; pointer-events:auto; cursor:pointer; }
+body.dev-mode .btn-reset:hover { background:rgba(200,70,70,0.22); }
+.btn-devmode {
+  width:100%; border-radius:10px; padding:13px; cursor:pointer; font-size:14px; margin-top:6px;
+  background:var(--grey-btn-bg); border:1px solid var(--grey-btn-border); color:var(--grey-btn-text);
+  display:flex; align-items:center; justify-content:center; gap:8px; transition:all 0.2s;
+}
+body.dev-mode .btn-devmode { background:rgba(232,197,71,0.15); border:1px solid rgba(232,197,71,0.4); color:var(--mustard); }
+body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
+
+/* ── SPECIAL DATES CONFIG (dev settings) ── */
+.special-date-row {
+  display:flex; align-items:center; gap:8px;
+  padding:8px 0; border-bottom:1px solid var(--border); font-size:13px; color:var(--cream);
+}
+.special-date-row:last-child { border-bottom:none; }
+.special-date-name { flex:1; font-family:var(--sans); }
+.special-date-range { font-size:11px; color:var(--mustard); font-family:var(--sans); flex-shrink:0; }
+.special-date-del {
+  background:none; border:none; color:rgba(245,237,216,0.25); cursor:pointer;
+  font-size:14px; line-height:1; padding:2px 4px; transition:color 0.15s; flex-shrink:0;
+}
+.special-date-del:hover { color:#e88; }
+.add-special-row { display:flex; gap:6px; margin-top:12px; flex-wrap:wrap; }
+.add-special-row input[type="text"],
+.add-special-row input[type="date"] {
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+  color:var(--cream); border-radius:8px; padding:6px 8px; font-size:12px; font-family:var(--sans);
+}
+.add-special-row input[type="text"] { flex:1; min-width:80px; }
+.add-special-row input[type="date"] { width:130px; }
+.add-special-btn {
+  background:var(--mustard); border:none; color:#222; border-radius:8px;
+  padding:6px 12px; cursor:pointer; font-size:12px; font-weight:600; white-space:nowrap;
+}
+.add-special-label { font-size:10px; color:var(--text-muted); letter-spacing:0.06em; width:100%; margin-bottom:2px; }
+
+/* ── DECK ── */
+.deck-count { font-size:11px; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:16px; }
+.deck-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:14px; padding:14px 16px; margin-bottom:10px; cursor:pointer; transition:background 0.15s;
+}
+.deck-card:hover { background:rgba(255,255,255,0.07); }
+.deck-card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; gap:8px; }
+.deck-id { font-size:10px; color:var(--text-muted); letter-spacing:0.08em; flex-shrink:0; padding-top:2px; }
+.deck-tags { display:flex; gap:4px; flex-wrap:wrap; justify-content:flex-end; }
+.deck-tag { font-size:10px; background:rgba(232,197,71,0.12); border:1px solid rgba(232,197,71,0.25); color:var(--mustard); border-radius:6px; padding:2px 6px; }
+.deck-tag.tag-special { background:rgba(200,100,100,0.15); border-color:rgba(200,100,100,0.3); color:#e8a0a0; }
+.deck-tag.tag-none    { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.1); color:var(--text-muted); }
+.deck-preview-text { font-family:var(--serif); font-size:14px; color:var(--text-dim); line-height:1.4; }
+.deck-meta { display:flex; gap:8px; margin-top:8px; align-items:center; }
+.deck-bg-dot { width:10px; height:10px; border-radius:50%; border:1px solid rgba(255,255,255,0.2); flex-shrink:0; }
+.deck-icon-name { font-size:11px; color:var(--text-muted); }
+.deck-assigned-date { font-size:10px; color:var(--text-muted); margin-top:4px; font-style:italic; }
+
+/* Deck editor */
+.deck-editor { margin-top:14px; border-top:1px solid var(--border); padding-top:14px; }
+.deck-editor-section { margin-bottom:14px; }
+.deck-editor-label { font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mustard); margin-bottom:8px; }
+.deck-editor-sublabel { font-size:10px; color:var(--text-muted); margin-bottom:6px; font-style:italic; }
+
+/* Tag sections */
+.tag-section { margin-bottom:10px; padding:10px; background:rgba(255,255,255,0.03); border-radius:10px; border:1px solid var(--border); }
+.tag-section.disabled { opacity:0.35; pointer-events:none; }
+.tag-section-title { font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(245,237,216,0.5); margin-bottom:8px; }
+.tag-grid { display:flex; flex-wrap:wrap; gap:6px; }
+.tag-pill {
+  font-size:11px; border-radius:20px; padding:4px 10px; cursor:pointer;
+  border:1px solid rgba(255,255,255,0.12); color:rgba(245,237,216,0.45);
+  background:rgba(255,255,255,0.05); transition:all 0.15s; font-family:var(--sans);
+}
+.tag-pill.selected { background:rgba(232,197,71,0.2); border-color:rgba(232,197,71,0.5); color:var(--mustard); }
+.tag-pill.selected.special { background:rgba(200,100,100,0.2); border-color:rgba(200,100,100,0.4); color:#e8a0a0; }
+
+.bg-grid { display:flex; flex-wrap:wrap; gap:8px; }
+.bg-swatch {
+  width:36px; height:36px; border-radius:8px; cursor:pointer;
+  border:2px solid transparent; transition:all 0.15s; display:flex; align-items:center; justify-content:center;
+}
+.bg-swatch.selected { border-color:white; transform:scale(1.15); }
+.bg-swatch svg { width:14px; height:14px; }
+
+.deck-save-btn {
+  flex:1; background:var(--mustard); border:none; color:#222;
+  border-radius:10px; padding:11px; cursor:pointer; font-size:13px; font-weight:600;
+  transition:background 0.2s;
+}
+.deck-save-btn:hover { background:var(--mustard-dark); }
+.deck-discard-btn {
+  flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:rgba(245,237,216,0.5);
+  border-radius:10px; padding:11px; cursor:pointer; font-size:13px; transition:all 0.2s;
+}
+.deck-discard-btn:hover { background:rgba(255,255,255,0.1); color:var(--cream); }
+
+/* dirty banner */
+.dirty-banner {
+  background:rgba(232,197,71,0.12); border:1px solid rgba(232,197,71,0.3);
+  border-radius:10px; padding:10px 14px; margin-bottom:12px;
+  font-size:12px; color:var(--mustard); display:flex; align-items:center; gap:10px;
+}
+.dirty-banner-text { flex:1; line-height:1.4; }
+.dirty-reshuffle { background:var(--mustard); border:none; color:#222; border-radius:8px; padding:6px 12px; cursor:pointer; font-size:12px; font-weight:600; flex-shrink:0; }
+.dirty-dismiss { background:none; border:none; color:rgba(232,197,71,0.5); cursor:pointer; font-size:16px; line-height:1; padding:0; flex-shrink:0; transition:color 0.15s; }
+.dirty-dismiss:hover { color:var(--mustard); }
+
+/* ── MODALS ── */
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,0.72); display:none; align-items:flex-end; justify-content:center; z-index:200; backdrop-filter:blur(4px); }
+.overlay.open { display:flex; }
+.modal { background:#2c2c2c; border-radius:20px 20px 0 0; padding:26px 22px 40px; width:100%; max-width:420px; border-top:1px solid rgba(255,255,255,0.09); }
+.modal h3 { font-family:var(--serif); font-size:19px; font-style:italic; color:var(--cream); margin-bottom:10px; }
+.modal p  { color:var(--text-dim); font-size:14px; line-height:1.6; margin-bottom:18px; }
+.modal-btns { display:flex; gap:10px; }
+.btn-cancel  { flex:1; background:rgba(255,255,255,0.07); border:none; color:var(--cream); border-radius:10px; padding:13px; cursor:pointer; font-size:14px; }
+.btn-confirm { flex:1; background:#c05050; border:none; color:#fff; border-radius:10px; padding:13px; cursor:pointer; font-size:14px; font-weight:600; }
+.btn-confirm.green { background:#5a8a5a; }
+
+/* ── HELP ── */
+.help-block {
+  display:flex; gap:12px; align-items:flex-start;
+  padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.05);
+  color:rgba(245,237,216,0.75); font-size:13px; font-family:var(--sans); line-height:1.55;
+}
+.help-block:last-child { border-bottom:none; }
+.help-block strong { color:var(--cream); display:block; margin-bottom:2px; }
+.help-icon { font-size:18px; flex-shrink:0; width:24px; text-align:center; padding-top:1px; }
+
+/* ── TOAST ── */
+.toast {
+  position:fixed; bottom:86px; left:50%; transform:translateX(-50%) translateY(16px);
+  background:var(--mustard); color:#222; padding:9px 18px; border-radius:20px;
+  font-size:13px; font-weight:600; opacity:0; transition:all 0.28s;
+  pointer-events:none; z-index:999; white-space:nowrap;
+}
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ── iOS INSTALL BANNER ── */
+#ios-install-banner {
+  background:rgba(232,197,71,0.12); border:1px solid rgba(232,197,71,0.32);
+  border-radius:12px; padding:10px 14px; margin-bottom:14px;
+  display:none; align-items:center; gap:10px;
+  font-size:12px; color:var(--mustard); line-height:1.45;
+}
+#ios-install-banner .install-text { flex:1; }
+#ios-install-banner .install-dismiss {
+  background:none; border:none; color:rgba(232,197,71,0.45);
+  cursor:pointer; font-size:16px; line-height:1; padding:0; flex-shrink:0;
+  transition:color 0.15s;
+}
+#ios-install-banner .install-dismiss:hover { color:var(--mustard); }
+
+/* ── NOTIFICATION TOGGLE ── */
+.toggle-switch { position:relative; display:inline-block; width:44px; height:26px; flex-shrink:0; }
+.toggle-switch input { opacity:0; width:0; height:0; position:absolute; }
+.toggle-track {
+  position:absolute; inset:0; border-radius:13px; cursor:pointer; transition:background 0.2s;
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.15);
+}
+.toggle-track::after {
+  content:''; position:absolute; top:3px; left:3px;
+  width:18px; height:18px; border-radius:50%; background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,0.4); transition:transform 0.2s;
+}
+.toggle-switch input:checked + .toggle-track { background:var(--mustard); border-color:var(--mustard); }
+.toggle-switch input:checked + .toggle-track::after { transform:translateX(18px); }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <nav class="top-nav">
+    <span class="nav-title">just for jess ✦</span>
+    <div class="nav-right">
+      <span class="dev-badge">&lt;DEV&gt;</span>
+      <button class="nav-settings-btn" onclick="openHelp()" title="Help" style="font-size:16px;opacity:0.5;width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(245,237,216,0.35);display:flex;align-items:center;justify-content:center;font-weight:600;font-family:var(--serif)">?</button>
+      <button class="nav-settings-btn" onclick="showScreen('settings')">⚙</button>
+    </div>
+  </nav>
+
+  <!-- HELP OVERLAY -->
+  <div class="overlay" id="help-overlay" style="align-items:flex-start;padding-top:0" onclick="closeHelp()">
+    <div id="help-panel" onclick="event.stopPropagation()" style="
+      background:#2c2c2c; border-radius:0 0 24px 24px; padding:28px 24px 36px;
+      width:100%; max-width:420px; max-height:90vh; overflow-y:auto;
+      border-bottom:1px solid rgba(255,255,255,0.09); border-left:1px solid rgba(255,255,255,0.06); border-right:1px solid rgba(255,255,255,0.06);
+    ">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <span style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--cream)">How it works</span>
+        <button onclick="closeHelp()" style="background:none;border:none;color:rgba(245,237,216,0.35);cursor:pointer;font-size:20px;line-height:1;padding:2px 4px">✕</button>
+      </div>
+      <p style="font-size:13px;color:rgba(245,237,216,0.5);font-style:italic;margin-bottom:20px;line-height:1.55">A little something for every day of your year. Here's how it works.</p>
+
+      <!-- For Jess -->
+      <div style="margin-bottom:24px">
+        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mustard);margin-bottom:12px">For Jess 🎂</div>
+        <div class="help-block">
+          <div class="help-icon">📅</div>
+          <div><strong>Today</strong><br>Each day you get one new card — a little something just for you. Open the app, read it, carry on.</div>
+        </div>
+        <div class="help-block">
+          <div class="help-icon">📆</div>
+          <div><strong>Calendar</strong><br>Tap the calendar tab to browse your past cards. Tap any highlighted date to see what card you got that day. Future dates are locked — no peeking.</div>
+        </div>
+        <div class="help-block">
+          <div class="help-icon">🔥</div>
+          <div><strong>Streak</strong><br>The flame shows how many days in a row you've opened the app. No pressure. But also, a little pressure.</div>
+        </div>
+        <div class="help-block">
+          <div class="help-icon">⏰</div>
+          <div><strong>Daily reminder</strong><br>Set the time you want a nudge to open the app in Settings. Works once installed on your iPhone.</div>
+        </div>
+        <div class="help-block">
+          <div class="help-icon">🔀</div>
+          <div><strong>Reshuffle</strong><br>If you want to mix things up, you can reshuffle your future cards in Settings. Your past cards stay exactly as they were.</div>
+        </div>
+        <div class="help-block">
+          <div class="help-icon">⚙️</div>
+          <div><strong>Dev Mode</strong><br>Unlocks advanced controls — access via Settings. Password protected. Dev mode lets you view the full card schedule, browse the complete deck, change the start date, add custom special dates, and perform a full reset. Not for everyday use.</div>
+        </div>
+      </div>
+
+      <button onclick="closeHelp()" style="
+        margin-top:24px; width:100%; background:rgba(255,255,255,0.07);
+        border:none; color:var(--cream); border-radius:12px; padding:13px;
+        cursor:pointer; font-family:var(--sans); font-size:14px;
+      ">Got it</button>
+    </div>
+  </div>
+
+  <!-- TODAY -->
+  <div id="screen-today" class="screen active">
+    <div id="ios-install-banner">
+      <span class="install-text">Tap Share → Add to Home Screen for daily reminders</span>
+      <button class="install-dismiss" onclick="dismissInstallBanner()" title="Dismiss">✕</button>
+    </div>
+    <div class="today-meta">
+      <div class="today-date" id="today-date">—</div>
+      <div class="streak">🔥 <span id="streak-n">0</span> day streak</div>
+    </div>
+    <div id="card-wrap"></div>
+  </div>
+
+  <!-- CALENDAR / SCHEDULE -->
+  <div id="screen-calendar" class="screen">
+    <div class="cal-header">
+      <button class="cal-nav" onclick="calShift(-1)">‹</button>
+      <span class="cal-title" id="cal-label"></span>
+      <button class="cal-nav" onclick="calShift(1)">›</button>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div id="cal-preview"></div>
+  </div>
+
+  <!-- DECK -->
+  <div id="screen-deck" class="screen">
+    <div class="deck-count" id="deck-count"></div>
+    <div id="dirty-banner" style="display:none" class="dirty-banner">
+      <button class="dirty-dismiss" onclick="hideDirtyBanner()" title="Dismiss">✕</button>
+      <span class="dirty-banner-text">Tags changed — schedule may be inconsistent.</span>
+      <button class="dirty-reshuffle" onclick="doReshuffle();hideDirtyBanner()">Reshuffle now</button>
+    </div>
+    <div id="deck-list"></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="screen-settings" class="screen">
+    <div class="settings-h">Settings</div>
+
+    <div class="settings-block">
+      <h3>Notifications</h3>
+      <div class="settings-row">
+        <span>Daily reminder</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="notif-toggle" onchange="onNotifToggle(this.checked)">
+          <span class="toggle-track"></span>
+        </label>
+      </div>
+      <div class="settings-row" id="notif-time-row" style="display:none">
+        <span>Reminder time</span>
+        <input type="time" id="notif-time" value="08:00" onchange="onNotifTimeChange(this.value)">
+      </div>
+      <p class="settings-note" id="notif-note" style="display:none">Sends a background push notification each day at the set time.</p>
+    </div>
+
+    <div class="settings-block">
+      <h3>Library</h3>
+      <div class="settings-row"><span>Cards in library</span><span class="settings-val" id="stat-total">—</span></div>
+      <div class="settings-row"><span>Cards visible</span><span class="settings-val" id="stat-seen">—</span></div>
+      <div class="settings-row"><span>Start date</span><span class="settings-val" id="stat-start">—</span></div>
+      <div class="settings-row dev-only" style="display:none;flex-wrap:wrap;gap:8px">
+        <span>Change start date</span>
+        <div style="display:flex;gap:6px;align-items:center">
+          <input type="date" id="start-date-picker">
+          <button onclick="stageStartDate(document.getElementById('start-date-picker').value)"
+            style="background:var(--mustard);border:none;color:#222;border-radius:8px;padding:5px 10px;cursor:pointer;font-size:12px;font-weight:600;font-family:var(--sans)">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-block">
+      <h3>Shuffle</h3>
+      <button class="btn-reshuffle" onclick="openModal('modal-reshuffle')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        Reshuffle future cards
+      </button>
+      <p class="settings-note">Keeps cards you've already seen. Reassigns everything from today onwards.</p>
+      <button class="btn-reset" onclick="if(document.body.classList.contains('dev-mode')) openModal('modal-reset')">↺ Full reset — start over</button>
+      <p class="settings-note" id="reset-note">Full reset is only available in Dev Mode.</p>
+      <div class="dev-only" style="display:none">
+        <button class="btn-reshuffle" onclick="exportSchedule()" style="margin-top:8px">
+          📋 Export schedule to clipboard
+        </button>
+        <p class="settings-note">Copies the full card schedule to clipboard as JSON. Share with Arjen to sync devices.</p>
+        <button class="btn-reshuffle" onclick="syncSchedule()" style="margin-top:8px;background:rgba(100,180,100,0.8)">
+          🔄 Sync schedule from server
+        </button>
+        <p class="settings-note">Fetches the canonical schedule from the server and replaces your local schedule. Seen dates and streak are untouched.</p>
+      </div>
+    </div>
+
+    <!-- Special Dates — dev only -->
+    <div class="settings-block dev-only" style="display:none">
+      <h3>Special Dates</h3>
+      <div id="special-dates-list"></div>
+      <div class="add-special-row">
+        <span class="add-special-label">Add custom special date</span>
+        <input type="text" id="new-special-name" placeholder="Name (e.g. International Women's Day)" maxlength="40">
+        <input type="date" id="new-special-from" title="Start date">
+        <input type="date" id="new-special-to"   title="End date (optional, same = single day)">
+        <button class="add-special-btn" onclick="addSpecialDate()">Add</button>
+      </div>
+      <p class="settings-note">Built-in dates cannot be deleted. Date ranges allow multiple cards (one per day in range).</p>
+    </div>
+
+    <div class="settings-block">
+      <h3>Developer</h3>
+      <button class="btn-devmode" onclick="toggleDevMode()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Dev Mode
+      </button>
+      <p class="settings-note">Unlocks schedule view, deck editor, special dates config, and full reset.</p>
+    </div>
+
+    <div style="text-align:center;padding:16px 0 4px;font-size:11px;color:rgba(245,237,216,0.2);font-family:var(--sans);letter-spacing:0.06em">
+      v1.3-dev · Just For Jess · July 2026
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="bottom-btn active" id="btn-today" onclick="showScreen('today')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+      Today
+    </button>
+    <button class="bottom-btn" id="btn-calendar" onclick="showScreen('calendar')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span class="btn-label-normal">Calendar</span><span class="btn-label-dev">Schedule</span>
+    </button>
+    <button class="bottom-btn" id="btn-deck" onclick="showScreen('deck')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M12 12v4M10 14h4"/></svg>
+      Deck
+    </button>
+  </nav>
+
+
+</div><!-- /#app -->
+
+<!-- MODALS -->
+<div class="overlay" id="modal-reshuffle">
+  <div class="modal">
+    <h3>Reshuffle future cards?</h3>
+    <p>Cards you've already seen stay put. Everything from today onwards gets a fresh shuffle.</p>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal('modal-reshuffle')">Cancel</button>
+      <button class="btn-confirm" onclick="doReshuffle()">Reshuffle</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="modal-reset">
+  <div class="modal">
+    <h3>Full reset?</h3>
+    <p>Clears everything — seen cards, shuffle order, streak — and reshuffles from today. Nuclear option.</p>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal('modal-reset')">Cancel</button>
+      <button class="btn-confirm" onclick="doReset()">Reset everything</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="modal-startdate">
+  <div class="modal">
+    <h3>Change start date?</h3>
+    <p id="modal-startdate-body">This will reset the schedule and reshuffle from the new start date.</p>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="discardStartDate()">Discard</button>
+      <button class="btn-confirm green" onclick="confirmStartDate()">Save &amp; reshuffle</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="modal-notif-consent">
+  <div class="modal">
+    <h3>Before we set up your daily reminder</h3>
+    <p>To send you notifications when the app is closed, we need to store a notification token on a small private server. This token is not personal data — it's a random code that lets us reach your phone. It's stored securely, used only to send your daily card reminder, and deleted the moment you turn notifications off.<br><br>This server is run by Arjen, not a third party.</p>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="onConsentDecline()">No thanks</button>
+      <button class="btn-confirm" style="background:var(--mustard);color:#222" onclick="onConsentAccept()">Turn on notifications</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="modal-devpassword">
+  <div class="modal">
+    <h3>Dev Mode</h3>
+    <p>Enter the password to unlock Dev Mode.</p>
+    <input type="password" id="devpassword-input"
+      placeholder="Password"
+      style="width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:var(--cream);border-radius:10px;padding:11px 14px;font-size:14px;font-family:var(--sans);margin-bottom:16px;outline:none;box-sizing:border-box"
+      onkeydown="if(event.key==='Enter')checkDevPassword()">
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal('modal-devpassword');document.getElementById('devpassword-input').value=''">Cancel</button>
+      <button class="btn-confirm green" onclick="checkDevPassword()">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+// ICONS + CARDS  (loaded from cards.json at boot)
+// ═══════════════════════════════════════════════
+let ICONS = {};
+let CARDS = [];
+
+const CF_PLACEHOLDER_SVG = `<svg viewBox="0 0 72 72" fill="none"><path d="M8 56 L26 28 L38 46 L48 32 L64 56 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/><circle cx="54" cy="18" r="7" stroke="currentColor" stroke-width="2" opacity=".5"/><path d="M54 8 L54 12 M44 12 L47 15 M64 12 L61 15 M40 18 L44 18 M64 18 L68 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/></svg>`;
+
+// ═══════════════════════════════════════════════
+// SPECIAL DATES CONFIG
+// ═══════════════════════════════════════════════
+const BUILTIN_SPECIALS = [
+  { key:'birthday',        label:"Jess's Birthday",        from:'07-01', to:'07-01', builtin:true },
+  { key:'thanksgiving',    label:'Canadian Thanksgiving',  from:'10-12', to:'10-12', builtin:true },
+  { key:'halloween',       label:'Halloween',              from:'10-31', to:'10-31', builtin:true },
+  { key:'birthday_arjen',  label:"Arjen's birthday",       from:'11-17', to:'11-17', builtin:true },
+  { key:'winter',          label:'Winter',                 from:'12-21', to:'12-21', builtin:true },
+  { key:'christmas',       label:'Christmas',              from:'12-24', to:'12-26', builtin:true },
+  { key:'nyee',            label:"New Year's Eve Eve",     from:'12-30', to:'12-30', builtin:true },
+  { key:'nye',             label:"New Year's Eve",         from:'12-31', to:'12-31', builtin:true },
+  { key:'birthday_erika',  label:"Erika's birthday",       from:'01-01', to:'01-01', builtin:true },
+  { key:'valentine',       label:"Valentine's Day",        from:'02-14', to:'02-14', builtin:true },
+  { key:'birthday_sarah',  label:"Sarah's birthday",       from:'03-01', to:'03-01', builtin:true }
+];
+
+function getCustomSpecials(){ try{ return JSON.parse(localStorage.getItem('jj_specials')||'[]'); }catch{ return []; } }
+function saveCustomSpecials(arr){ localStorage.setItem('jj_specials',JSON.stringify(arr)); }
+function getAllSpecialKeys(){ return getAllSpecials().map(s=>s.key); }
+
+function specialDates(sp){
+  const dates=[];
+  const [fm,fd]=sp.from.split('-').map(Number);
+  const [tm,td]=sp.to.split('-').map(Number);
+  let cur=new Date(2000,fm-1,fd);
+  const endYear = fm > tm ? 2001 : 2000;
+  const end=new Date(endYear,tm-1,td);
+  while(cur<=end){
+    dates.push(`${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`);
+    cur.setDate(cur.getDate()+1);
+  }
+  return dates;
+}
+
+function buildSpecialMap(){
+  const map={};
+  getAllSpecials().forEach(sp=>{
+    specialDates(sp).forEach(md=>{ if(!map[md]) map[md]=[]; map[md].push(sp.key); });
+  });
+  return map;
+}
+
+
+
+
+
+const DOW_TAGS     = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+const WEEKTYPE_TAGS= ['weekday','weekend'];
+const ALL_BGS      = ['kraft','mustard','cream','offwhite','charcoal','black','pastel-blue','pastel-pink','sage'];
+const BG_SWATCHES  = { kraft:'#C4956A', mustard:'#E8C547', cream:'#F5EDD8', offwhite:'#F0E8D8', charcoal:'#3C3C3C', black:'#222', 'pastel-blue':'#B8D4E8', 'pastel-pink':'#F0C8C8', sage:'#B8C8A8' };
+
+// ═══════════════════════════════════════════════
+// TAG HELPERS
+// ═══════════════════════════════════════════════
+function tagLevel(tag){
+  if(getAllSpecialKeys().includes(tag)) return 'special';
+  if(DOW_TAGS.includes(tag))           return 'dow';
+  if(WEEKTYPE_TAGS.includes(tag))      return 'weektype';
+  return 'none';
+}
+
+function cardCategory(tags){
+  if(!tags||!tags.length) return 'any';
+  if(tags.some(t=>getAllSpecialKeys().includes(t))) return 'special';
+  if(tags.some(t=>DOW_TAGS.includes(t)))           return 'dow';
+  if(tags.some(t=>WEEKTYPE_TAGS.includes(t)))      return 'weektype';
+  return 'any';
+}
+
+// ═══════════════════════════════════════════════
+// DATE UTILS
+// ═══════════════════════════════════════════════
+function getStart(){ const s=localStorage.getItem('jj_start'); return s?new Date(s+'T00:00:00'):new Date('2026-07-01T00:00:00'); }
+function dk(d){ const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${day}`; }
+function mmdd(d){ return `${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function today0(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
+function fmtStart(d){
+  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+}
+function dowName(d){ return ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][d.getDay()]; }
+function isWeekend(d){ const dw=d.getDay(); return dw===0||dw===6; }
+
+// ═══════════════════════════════════════════════
+// SCHEDULER
+// ═══════════════════════════════════════════════
+function fisherYates(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function buildSchedule(){
+  const START=getStart(), sched={}, usedIds=new Set();
+  const specialMap=buildSpecialMap();
+
+  // Pass 1 — special dates: one matching card per special-tagged slot.
+  // If a special tag has more cards than slots, the excess cards stay unused
+  // (they are not eligible for regular tag categories, so later passes can't pick them up).
+  for(let i=0;i<366;i++){
+    const d=new Date(START); d.setDate(d.getDate()+i);
+    const md=mmdd(d), key=dk(d);
+    if(sched[key]) continue;
+    const keys=specialMap[md]||[];
+    for(const spKey of keys){
+      const eligible=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.includes(spKey)));
+      if(eligible.length){ sched[key]=eligible[0].id; usedIds.add(eligible[0].id); break; }
+    }
+  }
+
+  // Pass 2 — day-of-week tagged cards.
+  const dowCards=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.some(t=>DOW_TAGS.includes(t))));
+  for(let i=0;i<366;i++){
+    const d=new Date(START); d.setDate(d.getDate()+i);
+    const key=dk(d); if(sched[key]) continue;
+    const dow=dowName(d);
+    const match=dowCards.find(c=>!usedIds.has(c.id)&&c.tags.includes(dow));
+    if(match){ sched[key]=match.id; usedIds.add(match.id); }
+  }
+
+  // Pass 3 — weekday/weekend tagged cards.
+  const wkCards=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.some(t=>WEEKTYPE_TAGS.includes(t))));
+  for(let i=0;i<366;i++){
+    const d=new Date(START); d.setDate(d.getDate()+i);
+    const key=dk(d); if(sched[key]) continue;
+    const wdTag=isWeekend(d)?'weekend':'weekday';
+    const match=wkCards.find(c=>!usedIds.has(c.id)&&c.tags.includes(wdTag));
+    if(match){ sched[key]=match.id; usedIds.add(match.id); }
+  }
+
+  // Pass 4 — untagged cards fill any remaining slots.
+  const anyCards=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&(!c.tags||!c.tags.length)));
+  let ai=0;
+  for(let i=0;i<366;i++){
+    const d=new Date(START); d.setDate(d.getDate()+i);
+    const key=dk(d); if(sched[key]) continue;
+    if(ai<anyCards.length){ sched[key]=anyCards[ai].id; usedIds.add(anyCards[ai].id); ai++; }
+  }
+
+  // Pass 5 — any cards still unused (e.g. special-tagged cards with no matching
+  // slot) are intentionally left unassigned. No recycling into regular slots,
+  // and no more slots are filled once cards are exhausted.
+
+  // Safety dedup — if the same card ID somehow appears on two dates, keep only
+  // the first occurrence (belt-and-suspenders; the logic above should prevent this).
+  const seenIds=new Set();
+  for(const k of Object.keys(sched)){
+    if(seenIds.has(sched[k])){ delete sched[k]; }
+    else seenIds.add(sched[k]);
+  }
+
+  return sched;
+}
+
+function getSched(){ try{ const s=localStorage.getItem('jj_sched'); return s?JSON.parse(s):null; }catch{ return null; } }
+function saveSched(s){ localStorage.setItem('jj_sched',JSON.stringify(s)); }
+function ensureSched(){ let s=getSched(); if(!s){ s=buildSchedule(); saveSched(s); } return s; }
+function getSeen(){ try{ return JSON.parse(localStorage.getItem('jj_seen')||'[]'); }catch{ return []; } }
+function saveSeen(a){ localStorage.setItem('jj_seen',JSON.stringify(a)); }
+function markSeen(key){ const s=getSeen(); if(!s.includes(key)){ s.push(key); saveSeen(s); } }
+
+function calcStreak(){
+  const seen=getSeen(), t=today0(), START=getStart(); let streak=0, cur=new Date(t);
+  while(cur>=START){
+    const key=dk(cur);
+    if(seen.includes(key)){ streak++; cur.setDate(cur.getDate()-1); }
+    else if(dk(cur)===dk(t)){ cur.setDate(cur.getDate()-1); }
+    else break;
+  }
+  return streak;
+}
+
+function cardForDate(date){
+  const s=ensureSched(), id=s[dk(date)];
+  return CARDS.find(c=>c.id===id)||null;
+}
+
+// ═══════════════════════════════════════════════
+// RENDER CARD
+// ═══════════════════════════════════════════════
+function cardIsDark(hex){
+  if(!hex||!hex.startsWith('#')) return true;
+  try{ const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16); return (r*299+g*587+b*114)/1000<145; }catch{ return true; }
+}
+function darkenHex(hex,amt=18){
+  if(!hex||!hex.startsWith('#')) return hex;
+  try{ let r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16); r=Math.max(0,r-amt);g=Math.max(0,g-amt);b=Math.max(0,b-amt); return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`; }catch{ return hex; }
+}
+function renderCard(card,mini=false){
+  const hex=BG_SWATCHES[card.bg]||card.bg||'#3C3C3C';
+  const dark=cardIsDark(hex);
+  const textCol=dark?'#F5EDD8':'#2A2A2A';
+  const iconCol=dark?'rgba(245,237,216,0.8)':'rgba(42,42,42,0.8)';
+  const parts=card.parts.map(p=>`<span class="t-${p.s}" style="display:block">${p.t}</span>`).join('');
+  return `<div class="card${mini?' card-mini':''}" style="background:linear-gradient(150deg,${hex},${darkenHex(hex)});color:${textCol}">
+    <div class="card-icon" style="color:${iconCol}">${ICONS[card.icon]||CF_PLACEHOLDER_SVG}</div>
+    <div class="card-body">${parts}</div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// TODAY
+// ═══════════════════════════════════════════════
+function renderToday(){
+  const t=today0();
+  const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('today-date').textContent=`${DAYS[t.getDay()]}, ${t.getDate()} ${MONTHS[t.getMonth()]} ${t.getFullYear()}`;
+  document.getElementById('streak-n').textContent=calcStreak();
+  const card=cardForDate(t);
+  document.getElementById('card-wrap').innerHTML=card
+    ? renderCard(card)
+    : `<div style="text-align:center;padding:60px 20px;color:var(--text-muted);font-family:var(--serif);font-size:18px;font-style:italic;line-height:1.6">No card for today.<br><small style="font-size:13px">Add more cards to the library.</small></div>`;
+  if(card) markSeen(dk(t));
+  updateStats();
+}
+
+// ═══════════════════════════════════════════════
+// CALENDAR / SCHEDULE
+// ═══════════════════════════════════════════════
+let calY, calM;
+function initCal(){ const t=new Date(); calY=t.getFullYear(); calM=t.getMonth(); renderCal(); }
+function calShift(d){ calM+=d; if(calM>11){calM=0;calY++;} if(calM<0){calM=11;calY--;} document.getElementById('cal-preview').innerHTML=''; renderCal(); }
+
+function renderCal(){
+  const DEV=document.body.classList.contains('dev-mode');
+  const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('cal-label').textContent=`${MONTHS[calM]} ${calY}`;
+  const t=today0(), sched=ensureSched(), START=getStart(), specialMap=buildSpecialMap();
+  const firstDow=new Date(calY,calM,1).getDay(), dim=new Date(calY,calM+1,0).getDate();
+  let html=['Su','Mo','Tu','We','Th','Fr','Sa'].map(l=>`<div class="cal-lbl">${l}</div>`).join('');
+  for(let i=0;i<firstDow;i++) html+=`<div class="cal-day empty"></div>`;
+  for(let d=1;d<=dim;d++){
+    const date=new Date(calY,calM,d); date.setHours(0,0,0,0);
+    const key=dk(date), md=mmdd(date), beforeStart=date<START;
+    if(beforeStart){ html+=`<div class="cal-day blank">${d}</div>`; continue; }
+    let cls='cal-day', attr='';
+    if(DEV){
+      const isSpecial=(specialMap[md]||[]).length>0||key===dk(t);
+      if(isSpecial&&sched[key])   { cls+=' sched-special';  attr=`onclick="showCalPreview('${key}',true)"`; }
+      else if(sched[key])         { cls+=' sched-assigned'; attr=`onclick="showCalPreview('${key}',true)"`; }
+      else                        { cls+=' future'; }
+    } else {
+      const isToday=key===dk(t), isPast=date<t&&!isToday, isFuture=date>t;
+      if(isToday)                     { cls+=' today'; attr=`onclick="showCalPreview('${key}',false)"`; }
+      else if(isPast&&sched[key])     { cls+=' seen';  attr=`onclick="showCalPreview('${key}',false)"`; }
+      else if(isFuture)               { cls+=' future'; }
+      else                            { cls+=' future'; }
+    }
+    html+=`<div class="${cls}" ${attr}>${d}</div>`;
+  }
+  document.getElementById('cal-grid').innerHTML=html;
+}
+
+function showCalPreview(key,devInfo){
+  const sched=ensureSched(), card=CARDS.find(c=>c.id===sched[key]);
+  const date=new Date(key);
+  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const label=`${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]} ${date.getDate()}`;
+  const sub=devInfo&&card?`Card #${card.id} · tags: ${card.tags.join(', ')||'none'} · slot: ${dowName(date)}`:'';
+  document.getElementById('cal-preview').innerHTML=`
+    <div class="preview-wrap">
+      <p class="preview-label">${label}</p>
+      ${sub?`<p class="preview-sub">${sub}</p>`:''}
+      ${card?renderCard(card,true):`<p style="text-align:center;color:var(--text-muted);font-size:13px;padding:20px 0">No card assigned.</p>`}
+      <button class="preview-close" onclick="document.getElementById('cal-preview').innerHTML=''">Close</button>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════════
+// SPECIAL DATES SETTINGS UI
+// ═══════════════════════════════════════════════
+function fmtMMDD(mmdd){ const [m,d]=mmdd.split('-'); return `${d}/${m}`; }
+function mmddToInputVal(mmdd){
+  const [m,d]=mmdd.split('-').map(Number);
+  const now=new Date();
+  let year=now.getFullYear();
+  const thisYear=new Date(year,m-1,d);
+  if(thisYear<now) year++;
+  return `${year}-${mmdd}`;
+}
+function inputValToMMDD(val){ return val.slice(5); }
+
+function getBuiltinOverrides(){ try{ return JSON.parse(localStorage.getItem('jj_builtin_specials')||'{}'); }catch{ return {}; } }
+function saveBuiltinOverrides(obj){ localStorage.setItem('jj_builtin_specials',JSON.stringify(obj)); }
+
+function getAllSpecials(){
+  const overrides=getBuiltinOverrides();
+  const builtins=BUILTIN_SPECIALS.map(sp=>({
+    ...sp,
+    from: overrides[sp.key]?.from || sp.from,
+    to:   overrides[sp.key]?.to   || sp.to
+  }));
+  return [...builtins, ...getCustomSpecials()];
+}
+
+function renderSpecialDates(){
+  const all=getAllSpecials();
+  const html=all.map(sp=>{
+    if(sp.builtin){
+      return `
+        <div class="special-date-row" style="flex-wrap:wrap;gap:6px;align-items:center">
+          <span class="special-date-name" style="min-width:120px">${sp.label}</span>
+          <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+            <span style="font-size:10px;color:var(--text-muted)">from</span>
+            <input type="date" value="${mmddToInputVal(sp.from)}"
+              style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:var(--cream);border-radius:6px;padding:3px 6px;font-size:12px;font-family:var(--sans);cursor:pointer;width:130px"
+              onchange="saveBuiltinSpecial('${sp.key}','from',this.value)">
+            <span style="font-size:10px;color:var(--text-muted)">to</span>
+            <input type="date" value="${mmddToInputVal(sp.to)}"
+              style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:var(--cream);border-radius:6px;padding:3px 6px;font-size:12px;font-family:var(--sans);cursor:pointer;width:130px"
+              onchange="saveBuiltinSpecial('${sp.key}','to',this.value)">
+            <button onclick="resetBuiltinSpecial('${sp.key}')" title="Reset to default"
+              style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:11px;font-family:var(--sans);padding:3px 6px;border:1px solid var(--border);border-radius:6px;transition:color 0.15s"
+              onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--text-muted)'">Reset</button>
+          </div>
+        </div>`;
+    } else {
+      return `
+        <div class="special-date-row">
+          <span class="special-date-name">${sp.label}</span>
+          <span class="special-date-range">${sp.from===sp.to?fmtMMDD(sp.from):`${fmtMMDD(sp.from)} – ${fmtMMDD(sp.to)}`}</span>
+          <button class="special-date-del" onclick="deleteSpecialDate('${sp.key}')" title="Delete">✕</button>
+        </div>`;
+    }
+  }).join('');
+  document.getElementById('special-dates-list').innerHTML=html;
+}
+
+function saveBuiltinSpecial(key,field,inputVal){
+  if(!inputVal) return;
+  const overrides=getBuiltinOverrides();
+  if(!overrides[key]){
+    const orig=BUILTIN_SPECIALS.find(s=>s.key===key);
+    overrides[key]={ from:orig.from, to:orig.to };
+  }
+  overrides[key][field]=inputValToMMDD(inputVal);
+  saveBuiltinOverrides(overrides);
+  showToast(`${key} updated ✦`);
+}
+
+function resetBuiltinSpecial(key){
+  const overrides=getBuiltinOverrides();
+  delete overrides[key];
+  saveBuiltinOverrides(overrides);
+  renderSpecialDates();
+  showToast(`${key} reset to default`);
+}
+
+function addSpecialDate(){
+  const name=document.getElementById('new-special-name').value.trim();
+  const from=document.getElementById('new-special-from').value;
+  const toRaw=document.getElementById('new-special-to').value;
+  const to=toRaw||from;
+  if(!name||!from){ showToast('Name and start date required'); return; }
+  const key=name.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'');
+  if(getAllSpecialKeys().includes(key)){ showToast('Name already exists'); return; }
+  const fromMD=from.slice(5), toMD=to.slice(5);
+  const customs=getCustomSpecials();
+  customs.push({ key, label:name, from:fromMD, to:toMD, builtin:false });
+  saveCustomSpecials(customs);
+  document.getElementById('new-special-name').value='';
+  document.getElementById('new-special-from').value='';
+  document.getElementById('new-special-to').value='';
+  renderSpecialDates();
+  showToast(`Added: ${name} ✦`);
+}
+
+function deleteSpecialDate(key){
+  const customs=getCustomSpecials().filter(s=>s.key!==key);
+  saveCustomSpecials(customs);
+  renderSpecialDates();
+  showToast('Special date removed');
+}
+
+// ═══════════════════════════════════════════════
+// DECK
+// ═══════════════════════════════════════════════
+let expandedDeckId=null;
+let editTags={}, editBg={};
+
+function showDirtyBanner(){ document.getElementById('dirty-banner').style.display='flex'; }
+function hideDirtyBanner(){ document.getElementById('dirty-banner').style.display='none'; }
+
+function renderDeck(){
+  document.getElementById('deck-count').textContent=`${CARDS.length} cards in library`;
+
+  const sched = ensureSched();
+  const usedIds = new Set(Object.values(sched));
+  const unusedCards = CARDS.filter(c => !usedIds.has(c.id));
+  if(unusedCards.length > 0){
+    // Show warning banner
+    const warningEl = document.getElementById('unused-cards-warning') || (() => {
+      const el = document.createElement('div');
+      el.id = 'unused-cards-warning';
+      el.style.cssText = 'background:rgba(232,100,100,0.15);border:1px solid rgba(232,100,100,0.3);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#e88;font-family:var(--sans)';
+      document.getElementById('screen-deck').insertBefore(el, document.getElementById('deck-list'));
+      return el;
+    })();
+    warningEl.textContent = `⚠️ ${unusedCards.length} card${unusedCards.length>1?'s':''} not assigned to any date — ${unusedCards.map(c=>c.name).join(', ')}`;
+  } else {
+    const el = document.getElementById('unused-cards-warning');
+    if(el) el.remove();
+  }
+
+  document.getElementById('deck-list').innerHTML=CARDS.map(c=>renderDeckRow(c)).join('');
+}
+
+function tagDisplayClass(tag){
+  const lvl=tagLevel(tag);
+  if(lvl==='special') return 'deck-tag tag-special';
+  return 'deck-tag';
+}
+
+function renderDeckRow(card){
+  const preview=card.parts.map(p=>p.t).join(' ');
+  const tagsHtml=card.tags.length
+    ? card.tags.map(t=>`<span class="${tagDisplayClass(t)}">${t}</span>`).join('')
+    : `<span class="deck-tag tag-none">any</span>`;
+  const dot=`<div class="deck-bg-dot" style="background:${BG_SWATCHES[card.bg]||card.bg||'#888'}"></div>`;
+  const isExp=expandedDeckId===card.id;
+
+  // Dev-mode: show which date this card is assigned to in the current schedule
+  let assignedLine='';
+  if(document.body.classList.contains('dev-mode')){
+    const _sched=ensureSched();
+    const _DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const _MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const assignedKey=Object.keys(_sched).find(k=>_sched[k]===card.id);
+    if(assignedKey){
+      const [_y,_m,_d]=assignedKey.split('-').map(Number);
+      const _dt=new Date(_y,_m-1,_d);
+      assignedLine=`<div class="deck-assigned-date">Assigned: ${_DAYS[_dt.getDay()]}, ${_d} ${_MONTHS[_m-1]} ${_y}</div>`;
+    } else {
+      assignedLine=`<div class="deck-assigned-date">Assigned: —</div>`;
+    }
+  }
+
+  let editor='';
+  if(isExp){
+    const curTags=editTags[card.id]||[...card.tags];
+    const curBg=editBg[card.id]||card.bg;
+    const cat=cardCategory(curTags);
+    const specialKeys=getAllSpecialKeys();
+    const curSpecial=curTags.find(t=>specialKeys.includes(t))||null;
+
+    const specialPills=getAllSpecials().map(sp=>`
+      <span class="tag-pill${curSpecial===sp.key?' selected special':''}"
+        onclick="event.stopPropagation();setSpecialTag(${card.id},'${sp.key}')">${sp.label}</span>`).join('');
+
+    const dowDisabled=cat==='special';
+    const dowPills=DOW_TAGS.map(t=>`
+      <span class="tag-pill${curTags.includes(t)?' selected':''}"
+        onclick="event.stopPropagation();toggleDowTag(${card.id},'${t}')">${t}</span>`).join('');
+
+    const wkDisabled=cat==='special'||cat==='dow';
+    const wkPills=WEEKTYPE_TAGS.map(t=>`
+      <span class="tag-pill${curTags.includes(t)?' selected':''}"
+        onclick="event.stopPropagation();setWeekTypeTag(${card.id},'${t}')">${t}</span>`).join('');
+
+    const bgSwatches=ALL_BGS.map(b=>`
+      <div class="bg-swatch${curBg===b?' selected':''}"
+        style="background:${BG_SWATCHES[b]}"
+        onclick="event.stopPropagation();selectBg(${card.id},'${b}')"
+        title="${b}">
+        ${curBg===b?`<svg viewBox="0 0 24 24" fill="none" stroke="${['cream','offwhite','mustard','pastel-blue','pastel-pink','sage'].includes(b)?'#333':'#fff'}" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>`:''}
+      </div>`).join('');
+
+    const previewCard={...card, tags:curTags, bg:curBg};
+
+    editor=`
+      <div class="deck-editor" onclick="event.stopPropagation()">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mustard)">Editing #${card.id}</span>
+          <button onclick="event.stopPropagation();discardDeckEdits(${card.id})" style="background:none;border:none;color:rgba(245,237,216,0.3);cursor:pointer;font-size:14px;line-height:1;padding:2px 4px" title="Discard">✕</button>
+        </div>
+
+        <div class="deck-editor-section">
+          <div class="deck-editor-label">Tags</div>
+
+          <div class="tag-section">
+            <div class="tag-section-title">Special day <span style="font-style:italic;opacity:0.6;text-transform:none">(single select — clears other tags)</span></div>
+            <div class="tag-grid">${specialPills}</div>
+          </div>
+
+          <div class="tag-section${dowDisabled?' disabled':''}">
+            <div class="tag-section-title">Day of week <span style="font-style:italic;opacity:0.6;text-transform:none">(multi-select)</span></div>
+            <div class="tag-grid">${dowPills}</div>
+          </div>
+
+          <div class="tag-section${wkDisabled?' disabled':''}">
+            <div class="tag-section-title">Week type <span style="font-style:italic;opacity:0.6;text-transform:none">(single select)</span></div>
+            <div class="tag-grid">${wkPills}</div>
+          </div>
+
+          <div style="font-size:11px;color:var(--text-muted);margin-top:6px;font-style:italic">
+            No tags selected = eligible for any slot.
+          </div>
+        </div>
+
+        <div class="deck-editor-section">
+          <div class="deck-editor-label">Background</div>
+          <div class="bg-grid">${bgSwatches}</div>
+        </div>
+
+        <div class="deck-editor-section">
+          <div class="deck-editor-label">Preview</div>
+          ${renderCard(previewCard,true)}
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:4px">
+          <button class="deck-discard-btn" onclick="event.stopPropagation();discardDeckEdits(${card.id})">Discard</button>
+          <button class="deck-save-btn" onclick="event.stopPropagation();saveDeckEdits(${card.id})">Save</button>
+        </div>
+      </div>`;
+  }
+
+  return `<div class="deck-card" onclick="toggleDeckCard(${card.id})">
+    <div class="deck-card-header">
+      <div class="deck-tags">${tagsHtml}</div>
+    </div>
+    <div class="deck-preview-text">${preview.length>80?preview.slice(0,80)+'…':preview}</div>
+    <div class="deck-meta">${dot}<span class="deck-icon-name">${card.bg} · ${card.icon}</span></div>
+    ${assignedLine}
+    ${editor}
+  </div>`;
+}
+
+function toggleDeckCard(id){
+  expandedDeckId=(expandedDeckId===id)?null:id;
+  renderDeck();
+  if(expandedDeckId!==null){
+    setTimeout(()=>{
+      const els=document.querySelectorAll('.deck-card');
+      const idx=CARDS.findIndex(c=>c.id===id);
+      if(els[idx]) els[idx].scrollIntoView({behavior:'smooth',block:'nearest'});
+    },50);
+  }
+}
+
+function setSpecialTag(cardId,key){
+  if(!editTags[cardId]) editTags[cardId]=[...CARDS.find(c=>c.id===cardId).tags];
+  const cur=editTags[cardId];
+  const alreadySet=cur.includes(key);
+  if(alreadySet){ editTags[cardId]=[]; }
+  else {
+    const hadOthers=cur.length>0;
+    editTags[cardId]=[key];
+    if(hadOthers) showToast('Other tags cleared — special day takes priority');
+  }
+  renderDeck();
+}
+
+function toggleDowTag(cardId,tag){
+  if(!editTags[cardId]) editTags[cardId]=[...CARDS.find(c=>c.id===cardId).tags];
+  const cur=editTags[cardId];
+  const hadWeektype=cur.some(t=>WEEKTYPE_TAGS.includes(t));
+  editTags[cardId]=cur.filter(t=>!WEEKTYPE_TAGS.includes(t));
+  const i=editTags[cardId].indexOf(tag);
+  if(i>=0) editTags[cardId].splice(i,1); else editTags[cardId].push(tag);
+  if(hadWeektype) showToast('Week type cleared');
+  renderDeck();
+}
+
+function setWeekTypeTag(cardId,tag){
+  if(!editTags[cardId]) editTags[cardId]=[...CARDS.find(c=>c.id===cardId).tags];
+  const cur=editTags[cardId];
+  const hadDow=cur.some(t=>DOW_TAGS.includes(t));
+  const alreadySet=cur.includes(tag);
+  if(alreadySet){ editTags[cardId]=cur.filter(t=>t!==tag); }
+  else {
+    editTags[cardId]=[...cur.filter(t=>!DOW_TAGS.includes(t)&&!WEEKTYPE_TAGS.includes(t)),tag];
+    if(hadDow) showToast('Day tags cleared');
+  }
+  renderDeck();
+}
+
+function selectBg(cardId,bg){ editBg[cardId]=bg; renderDeck(); }
+
+function discardDeckEdits(cardId){
+  delete editTags[cardId]; delete editBg[cardId];
+  expandedDeckId=null; renderDeck();
+  showToast('Changes discarded');
+}
+
+function saveDeckEdits(cardId){
+  const card=CARDS.find(c=>c.id===cardId); if(!card) return;
+  const newTags=editTags[cardId]!==undefined?editTags[cardId]:[...card.tags];
+  const newBg=editBg[cardId]||card.bg;
+  const tagsChanged=JSON.stringify([...newTags].sort())!==JSON.stringify([...card.tags].sort());
+  card.tags=[...newTags]; card.bg=newBg;
+  delete editTags[cardId]; delete editBg[cardId];
+  expandedDeckId=null; renderDeck();
+  if(tagsChanged) showDirtyBanner();
+  showToast(`Card #${cardId} saved ✦`);
+}
+
+// ═══════════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════════
+function updateStats(){
+  document.getElementById('stat-total').textContent=CARDS.length;
+  const start=getStart(), t=today0(), sched=ensureSched();
+  let visible=0;
+  for(let i=0;i<366;i++){
+    const d=new Date(start); d.setDate(d.getDate()+i);
+    if(d>t) break;
+    if(sched[dk(d)]) visible++;
+  }
+  document.getElementById('stat-seen').textContent=visible;
+  document.getElementById('stat-start').textContent=fmtStart(start);
+  document.getElementById('start-date-picker').value=dk(start);
+}
+
+function openModal(id)  { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function doReshuffle(){
+  const t=today0(), seen=getSeen(), sched=ensureSched(), fresh=buildSchedule();
+  Object.keys(fresh).forEach(key=>{ const d=new Date(key); d.setHours(0,0,0,0); if(d>=t&&!seen.includes(key)) sched[key]=fresh[key]; });
+  saveSched(sched); closeModal('modal-reshuffle'); hideDirtyBanner();
+  showToast('Future cards reshuffled ✦');
+  if(document.getElementById('screen-calendar').classList.contains('active')) renderCal();
+}
+
+function doReset(){
+  const t=today0(); localStorage.setItem('jj_start',dk(t));
+  localStorage.removeItem('jj_sched'); localStorage.removeItem('jj_seen');
+  closeModal('modal-reset'); showToast('Fresh start ✦'); renderToday(); updateStats();
+}
+
+let _pendingStartDate=null;
+function stageStartDate(val){
+  if(!val) return; _pendingStartDate=val;
+  const d=new Date(val+'T00:00:00');
+  document.getElementById('modal-startdate-body').textContent=
+    `Change start date to ${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}? This will reset the schedule and reshuffle from that date.`;
+  openModal('modal-startdate');
+}
+function confirmStartDate(){
+  if(!_pendingStartDate) return;
+  localStorage.setItem('jj_start',_pendingStartDate); localStorage.removeItem('jj_sched');
+  _pendingStartDate=null; closeModal('modal-startdate');
+  showToast('Start date updated — reshuffled ✦'); updateStats(); renderToday();
+  if(document.getElementById('screen-calendar').classList.contains('active')) renderCal();
+}
+function discardStartDate(){
+  _pendingStartDate=null; document.getElementById('start-date-picker').value=dk(getStart());
+  closeModal('modal-startdate');
+}
+
+function exportSchedule(){
+  const sched = localStorage.getItem('jj_sched');
+  if(!sched){ showToast('No schedule found — open the app first'); return; }
+  navigator.clipboard.writeText(sched)
+    .then(()=>showToast('Schedule copied to clipboard ✦'))
+    .catch(()=>showToast('Copy failed — try a different browser'));
+}
+
+async function syncSchedule(){
+  try {
+    showToast('Syncing…');
+    const res = await fetch('https://arjen-rave.github.io/jess/schedule.json?t=' + Date.now());
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const sched = await res.json();
+    // Validate
+    const isValid = typeof sched === 'object' && !Array.isArray(sched) &&
+      Object.keys(sched).length > 0 &&
+      Object.entries(sched).every(([k,v]) => /^\d{4}-\d{2}-\d{2}$/.test(k) && typeof v === 'number');
+    if(!isValid) throw new Error('Invalid schedule format');
+    localStorage.setItem('jj_sched', JSON.stringify(sched));
+    showToast('Synced with server ✦ — restart app to apply');
+  } catch(e) {
+    showToast('Sync failed: ' + e.message);
+  }
+}
+
+// ═══════════════════════════════════════════════
+// DEV MODE
+// ═══════════════════════════════════════════════
+const DEV_PASSWORD = 'Alohomora';
+
+function toggleDevMode(){
+  if(document.body.classList.contains('dev-mode')){
+    document.body.classList.remove('dev-mode');
+    document.querySelectorAll('.dev-only').forEach(el=>el.style.display='none');
+    const cur=document.querySelector('.screen.active');
+    if(cur&&cur.id==='screen-deck') showScreen('today');
+    document.getElementById('reset-note').style.display='';
+    showToast('Dev mode off');
+  } else {
+    document.getElementById('devpassword-input').value='';
+    openModal('modal-devpassword');
+  }
+}
+
+function checkDevPassword(){
+  if(document.getElementById('devpassword-input').value !== DEV_PASSWORD){
+    showToast('Incorrect password — say the magic word');
+    return;
+  }
+  closeModal('modal-devpassword');
+  document.getElementById('devpassword-input').value='';
+  document.body.classList.add('dev-mode');
+  document.querySelectorAll('.dev-only').forEach(el=>el.style.display='');
+  document.getElementById('reset-note').style.display='none';
+  renderSpecialDates();
+  showToast('Dev mode on ✦');
+}
+
+// ═══════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════
+function showScreen(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.bottom-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  const btn=document.getElementById('btn-'+name); if(btn) btn.classList.add('active');
+  if(name==='calendar') initCal();
+  if(name==='deck')     { expandedDeckId=null; renderDeck(); }
+  if(name==='settings') { updateStats(); if(document.body.classList.contains('dev-mode')) renderSpecialDates(); }
+}
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+function openHelp()  { document.getElementById('help-overlay').classList.add('open'); }
+function closeHelp() { document.getElementById('help-overlay').classList.remove('open'); }
+
+// ═══════════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════════
+document.getElementById('card-wrap').innerHTML=
+  `<div style="text-align:center;padding:60px 20px;color:var(--text-muted);font-family:var(--serif);font-size:16px;font-style:italic">Loading…</div>`;
+
+async function loadData(){
+  try {
+    const res=await fetch('cards.json');
+    if(!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data=await res.json();
+    ICONS=data.icons||{};
+    CARDS=data.cards||[];
+    try { renderToday(); } catch(e){
+      document.getElementById('card-wrap').innerHTML=
+        `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Error: ${e.message}<br><small>${e.stack}</small></div>`;
+      console.error(e);
+    }
+  } catch(e){
+    document.getElementById('card-wrap').innerHTML=
+      `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Failed to load cards: ${e.message}</div>`;
+    console.error(e);
+  }
+}
+loadData();
+
+</script>
+
+<script>
+  // ── PUSH NOTIFICATION CONFIG ──────────────────────────────
+  const PUSH_SERVER_URL = 'https://jess-push-server.onrender.com'; // TODO: replace after deploy
+  const PUSH_SECRET = 'Draco-Dormiens-Nunquam-Titillandus'; 
+
+  // ── SERVICE WORKER ────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/jess/sw.js')
+        .then(reg => { console.log('SW registered:', reg.scope); })
+        .catch(err => console.log('SW registration failed:', err));
+    });
+  }
+
+  // ── PUSH HELPERS ──────────────────────────────────────────
+  function urlBase64ToUint8Array(b64) {
+    const pad = '='.repeat((4 - b64.length % 4) % 4);
+    const raw = atob((b64 + pad).replace(/-/g, '+').replace(/_/g, '/'));
+    return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
+  }
+
+  async function subscribePush(time) {
+    try {
+      const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
+      if (!keyRes.ok) throw new Error('Could not reach notification server');
+      const { key } = await keyRes.json();
+
+      const perm = Notification.permission === 'default'
+        ? await Notification.requestPermission()
+        : Notification.permission;
+      if (perm !== 'granted') {
+        showToast('Notifications blocked — check your settings');
+        document.getElementById('notif-toggle').checked = false;
+        document.getElementById('notif-time-row').style.display = 'none';
+        document.getElementById('notif-note').style.display = 'none';
+        return;
+      }
+
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(key)
+      });
+
+      const res = await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
+        body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+      });
+      if (!res.ok) throw new Error('Failed to save subscription on server');
+
+      localStorage.setItem('jj_notif_enabled', 'true');
+      localStorage.setItem('jj_notif_time', time);
+      localStorage.setItem('jj_notif_consented', 'true');
+      const [h, m] = time.split(':');
+      showToast(`Notifications set for ${h}:${m} ✦`);
+    } catch (e) {
+      console.error('subscribePush error:', e);
+      showToast(`Could not set up notifications: ${e.message}`);
+      document.getElementById('notif-toggle').checked = false;
+      document.getElementById('notif-time-row').style.display = 'none';
+      document.getElementById('notif-note').style.display = 'none';
+      localStorage.setItem('jj_notif_enabled', 'false');
+    }
+  }
+
+  async function unsubscribePush() {
+    try {
+      await fetch(`${PUSH_SERVER_URL}/unsubscribe`, {
+        method: 'POST',
+        headers: { 'x-push-secret': PUSH_SECRET }
+      });
+    } catch (e) { console.warn('unsubscribe server error:', e); }
+    try {
+      const reg = await navigator.serviceWorker.ready;
+      const sub = await reg.pushManager.getSubscription();
+      if (sub) await sub.unsubscribe();
+    } catch (e) { console.warn('local unsubscribe error:', e); }
+    localStorage.setItem('jj_notif_enabled', 'false');
+    showToast('Notifications turned off');
+  }
+
+  // ── TOGGLE HANDLERS ───────────────────────────────────────
+  async function onNotifToggle(enabled) {
+    if (enabled) {
+      const consented = localStorage.getItem('jj_notif_consented');
+      if (!consented) {
+        openModal('modal-notif-consent');
+        document.getElementById('notif-toggle').checked = false;
+        return;
+      }
+      const time = document.getElementById('notif-time').value || '08:00';
+      document.getElementById('notif-time-row').style.display = '';
+      document.getElementById('notif-note').style.display = '';
+      await subscribePush(time);
+    } else {
+      document.getElementById('notif-time-row').style.display = 'none';
+      document.getElementById('notif-note').style.display = 'none';
+      await unsubscribePush();
+    }
+  }
+
+  async function onNotifTimeChange(time) {
+    if (!time) return;
+    localStorage.setItem('jj_notif_time', time);
+    if (localStorage.getItem('jj_notif_enabled') === 'true') {
+      await subscribePush(time);
+    }
+  }
+
+  async function onConsentAccept() {
+    closeModal('modal-notif-consent');
+    document.getElementById('notif-toggle').checked = true;
+    document.getElementById('notif-time-row').style.display = '';
+    document.getElementById('notif-note').style.display = '';
+    const time = document.getElementById('notif-time').value || '08:00';
+    await subscribePush(time);
+  }
+
+  function onConsentDecline() {
+    closeModal('modal-notif-consent');
+    document.getElementById('notif-toggle').checked = false;
+  }
+
+  // ── BOOT — restore notification state ────────────────────
+  (function () {
+    const enabled = localStorage.getItem('jj_notif_enabled') === 'true';
+    const time    = localStorage.getItem('jj_notif_time') || '08:00';
+    const toggle  = document.getElementById('notif-toggle');
+    if (toggle) {
+      toggle.checked = enabled;
+      document.getElementById('notif-time').value = time;
+      if (enabled) {
+        document.getElementById('notif-time-row').style.display = '';
+        document.getElementById('notif-note').style.display = '';
+      }
+    }
+    // Silently re-register with server if enabled and subscription still exists
+    if (enabled && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(async reg => {
+        const sub = await reg.pushManager.getSubscription();
+        if (!sub) return;
+        try {
+          const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
+          const { key } = await keyRes.json();
+          // Re-subscribe if key matches; otherwise let it ride until user re-toggles
+          await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
+            body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+          });
+        } catch (e) { console.warn('Notification re-register failed:', e); }
+      }).catch(() => {});
+    }
+  })();
+
+
+  // ── iOS INSTALL BANNER ───────────────────────────────────
+  (function () {
+    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.navigator.standalone === true;
+    if (isIos && !isStandalone && !localStorage.getItem('jj_dismissed_install')) {
+      document.getElementById('ios-install-banner').style.display = 'flex';
+    }
+  })();
+
+ function dismissInstallBanner() {
+    localStorage.setItem('jj_dismissed_install', '1');
+    document.getElementById('ios-install-banner').style.display = 'none';
+  }
+
+</script>
+</body>
+</html>
