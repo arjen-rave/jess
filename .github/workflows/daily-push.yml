@@ -2,7 +2,7 @@ name: Send daily Just For Jess notification
 
 on:
   schedule:
-    - cron: "0 13 * * *"  # 15:00 Amsterdam CEST (test). Change to 0 11 * * * for 07:00 Toronto EDT.
+    - cron: "45 13 * * *"  # 15:45 Amsterdam CEST (test). Change to 0 11 * * * for 07:00 Toronto EDT.
   workflow_dispatch:
     inputs:
       test_send:
