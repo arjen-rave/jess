@@ -1,0 +1,5 @@
+.claude/
+Alpha archive/
+Beta archive/
+node_modules/
+.env
