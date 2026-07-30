@@ -545,7 +545,7 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
     </div>
 
     <div style="text-align:center;padding:16px 0 4px;font-size:11px;color:rgba(245,237,216,0.2);font-family:var(--sans);letter-spacing:0.06em">
-      v1.4-dev · Just For Jess · July 2026
+      v1.5-dev · Just For Jess · July 2026
     </div>
   </div>
 
@@ -1436,8 +1436,10 @@ loadData();
 
 <script>
   // ── PUSH NOTIFICATION CONFIG ──────────────────────────────
-  const PUSH_SERVER_URL = 'https://jess-push-server.onrender.com'; // TODO: replace after deploy
-  const PUSH_SECRET = 'Draco-Dormiens-Nunquam-Titillandus'; 
+  const PUSH_SERVER_URL = 'https://jess-push-server.onrender.com'; // still used for schedule/seen sync
+  const PUSH_SECRET = 'Draco-Dormiens-Nunquam-Titillandus';
+  const JESS_SUBSCRIBE_URL = 'https://jess-subscribe.arjen-ravestein.workers.dev';
+  const JESS_VAPID_PUBLIC_KEY = 'BGUanEtI-qd2oNJzCUnQsaeZADjlJiLFHbneSWSR_HphfisZDwjQeuRkpX8WKBnZneP1-raQ4MfOJGLPUrY14h8';
 
   // ── SERVICE WORKER ────────────────────────────────────────
   if ('serviceWorker' in navigator) {
@@ -1457,10 +1459,6 @@ loadData();
 
   async function subscribePush(time) {
     try {
-      const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
-      if (!keyRes.ok) throw new Error('Could not reach notification server');
-      const { key } = await keyRes.json();
-
       const perm = Notification.permission === 'default'
         ? await Notification.requestPermission()
         : Notification.permission;
@@ -1475,13 +1473,13 @@ loadData();
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(key)
+        applicationServerKey: urlBase64ToUint8Array(JESS_VAPID_PUBLIC_KEY)
       });
 
-      const res = await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+      const res = await fetch(`${JESS_SUBSCRIBE_URL}/subscribe`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
-        body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sub)
       });
       if (!res.ok) throw new Error('Failed to save subscription on server');
 
@@ -1502,15 +1500,18 @@ loadData();
 
   async function unsubscribePush() {
     try {
-      await fetch(`${PUSH_SERVER_URL}/unsubscribe`, {
-        method: 'POST',
-        headers: { 'x-push-secret': PUSH_SECRET }
-      });
-    } catch (e) { console.warn('unsubscribe server error:', e); }
-    try {
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.getSubscription();
-      if (sub) await sub.unsubscribe();
+      if (sub) {
+        try {
+          await fetch(`${JESS_SUBSCRIBE_URL}/unsubscribe`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ endpoint: sub.endpoint })
+          });
+        } catch (e) { console.warn('unsubscribe server error:', e); }
+        await sub.unsubscribe();
+      }
     } catch (e) { console.warn('local unsubscribe error:', e); }
     localStorage.setItem('jj_notif_enabled', 'false');
     showToast('Notifications turned off');
@@ -1571,19 +1572,16 @@ loadData();
         document.getElementById('notif-note').style.display = '';
       }
     }
-    // Silently re-register with server if enabled and subscription still exists
+    // Silently re-register with the worker if enabled and subscription still exists
     if (enabled && 'serviceWorker' in navigator) {
       navigator.serviceWorker.ready.then(async reg => {
         const sub = await reg.pushManager.getSubscription();
         if (!sub) return;
         try {
-          const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
-          const { key } = await keyRes.json();
-          // Re-subscribe if key matches; otherwise let it ride until user re-toggles
-          await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+          await fetch(`${JESS_SUBSCRIBE_URL}/subscribe`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
-            body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(sub)
           });
         } catch (e) { console.warn('Notification re-register failed:', e); }
       }).catch(() => {});
