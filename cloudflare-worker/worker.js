@@ -22,9 +22,11 @@
 
 const CORS_HEADERS = (origin) => ({
   "Access-Control-Allow-Origin": origin,
-  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type"
 });
+
+const READ_ONLY_PATHS = ["/seen", "/seen-dev", "/schedule"];
 
 const SUBSCRIPTIONS_RAW_URL = "https://raw.githubusercontent.com/arjen-rave/jess/main/subscriptions.json";
 
@@ -43,7 +45,8 @@ export default {
       return new Response(null, { headers: CORS_HEADERS(origin) });
     }
 
-    if (request.method !== "POST") {
+    const isReadRoute = request.method === "GET" && READ_ONLY_PATHS.includes(url.pathname);
+    if (!isReadRoute && request.method !== "POST") {
       return new Response("Method not allowed", { status: 405, headers: CORS_HEADERS(origin) });
     }
 
@@ -64,6 +67,39 @@ export default {
         const { endpoint } = await request.json();
         await updateSubscriptions(env, (subs) => subs.filter((s) => s.endpoint !== endpoint));
         return new Response("OK", { status: 200, headers: CORS_HEADERS(origin) });
+      }
+
+      // ── SEEN endpoints ──
+      if (url.pathname === '/seen' || url.pathname === '/seen-dev') {
+        const fileName = url.pathname === '/seen-dev' ? 'seen-dev.json' : 'seen.json';
+        const raw = await fetch(
+          `https://raw.githubusercontent.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/main/${fileName}?t=${Date.now()}`
+        );
+        if (!raw.ok) return new Response('[]', { status: 200, headers: CORS_HEADERS(origin) });
+        const text = await raw.text();
+        return new Response(text, { status: 200, headers: { ...CORS_HEADERS(origin), 'Content-Type': 'application/json' } });
+      }
+
+      if (url.pathname === '/seen/add' || url.pathname === '/seen-dev/add') {
+        const fileName = url.pathname === '/seen-dev/add' ? 'seen-dev.json' : 'seen.json';
+        const { date } = await request.json();
+        if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+          return new Response('Invalid date', { status: 400, headers: CORS_HEADERS(origin) });
+        }
+        await updateFile(env, fileName, (seen) => {
+          return seen.includes(date) ? seen : [...seen, date];
+        });
+        return new Response('OK', { status: 200, headers: CORS_HEADERS(origin) });
+      }
+
+      // ── SCHEDULE endpoint ──
+      if (url.pathname === '/schedule') {
+        const raw = await fetch(
+          `https://raw.githubusercontent.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/main/schedule.json?t=${Date.now()}`
+        );
+        if (!raw.ok) return new Response(JSON.stringify({ error: 'No schedule found' }), { status: 404, headers: CORS_HEADERS(origin) });
+        const text = await raw.text();
+        return new Response(text, { status: 200, headers: { ...CORS_HEADERS(origin), 'Content-Type': 'application/json' } });
       }
 
       return new Response("Not found", { status: 404, headers: CORS_HEADERS(origin) });
@@ -115,6 +151,52 @@ async function updateSubscriptions(env, mutate) {
     await new Promise((r) => setTimeout(r, attempt * 500));
   }
   throw new Error("Failed to update subscriptions.json after 3 attempts.");
+}
+
+async function updateFile(env, fileName, mutate) {
+  const owner = env.GITHUB_OWNER;
+  const repo = env.GITHUB_REPO;
+  const branch = env.GITHUB_BRANCH || 'main';
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${fileName}?ref=${branch}`;
+
+  const ghHeaders = {
+    Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+    'User-Agent': 'jess-subscribe-worker',
+    Accept: 'application/vnd.github+json'
+  };
+
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    const getRes = await fetch(apiUrl, { headers: ghHeaders });
+    let current, currentData;
+    if (getRes.status === 404) {
+      currentData = [];
+      current = { sha: null };
+    } else {
+      if (!getRes.ok) throw new Error(`GitHub GET failed: ${getRes.status}`);
+      current = await getRes.json();
+      currentData = JSON.parse(atob(current.content));
+    }
+    const nextData = mutate(currentData);
+    const putBody = {
+      message: `Update ${fileName} [skip ci]`,
+      content: btoa(JSON.stringify(nextData, null, 2)),
+      branch
+    };
+    if (current.sha) putBody.sha = current.sha;
+
+    const putRes = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: { ...ghHeaders, 'Content-Type': 'application/json' },
+      body: JSON.stringify(putBody)
+    });
+
+    if (putRes.ok) return;
+    if (putRes.status !== 409 && putRes.status !== 422) {
+      throw new Error(`GitHub PUT failed: ${putRes.status}`);
+    }
+    await new Promise((r) => setTimeout(r, attempt * 500));
+  }
+  throw new Error(`Failed to update ${fileName} after 3 attempts.`);
 }
 
 // ─────────────────────────────────────────────────────────────────────────
