@@ -541,7 +541,7 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
     </div>
 
     <div style="text-align:center;padding:16px 0 4px;font-size:11px;color:rgba(245,237,216,0.2);font-family:var(--sans);letter-spacing:0.06em">
-      v1.6-dev · Just For Jess · July 2026
+      v1.7-dev · Just For Jess · July 2026
     </div>
   </div>
 
@@ -1305,9 +1305,9 @@ function exportSchedule(){
 // ── SERVER SEEN SYNC ──
 async function serverMarkSeen(dateKey){
   try {
-    await fetch(`${PUSH_SERVER_URL}/seen-dev/add`, {
+    await fetch(`${JESS_SUBSCRIBE_URL}/seen-dev/add`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ date: dateKey })
     });
   } catch {} // silent fail — offline is fine
@@ -1315,7 +1315,7 @@ async function serverMarkSeen(dateKey){
 
 async function getServerSeen(){
   try {
-    const res = await fetch(`${PUSH_SERVER_URL}/seen-dev`);
+    const res = await fetch(`${JESS_SUBSCRIBE_URL}/seen-dev`);
     if(!res.ok) return null;
     return await res.json();
   } catch { return null; }
@@ -1324,7 +1324,7 @@ async function getServerSeen(){
 async function syncSchedule(){
   try {
     showToast('Syncing…');
-    const res = await fetch(`${PUSH_SERVER_URL}/schedule-dev?t=` + Date.now());
+    const res = await fetch(`${JESS_SUBSCRIBE_URL}/schedule?t=` + Date.now());
     if(!res.ok) throw new Error('HTTP ' + res.status);
     const sched = await res.json();
     // Validate
@@ -1432,7 +1432,6 @@ loadData();
 
 <script>
   // ── PUSH NOTIFICATION CONFIG ──────────────────────────────
-  const PUSH_SERVER_URL = 'https://jess-push-server.onrender.com'; // still used for schedule/seen sync
   const PUSH_SECRET = 'Draco-Dormiens-Nunquam-Titillandus';
   const JESS_SUBSCRIBE_URL = 'https://jess-subscribe.arjen-ravestein.workers.dev';
   const JESS_VAPID_PUBLIC_KEY = 'BGUanEtI-qd2oNJzCUnQsaeZADjlJiLFHbneSWSR_HphfisZDwjQeuRkpX8WKBnZneP1-raQ4MfOJGLPUrY14h8';
