@@ -478,11 +478,7 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
           <span class="toggle-track"></span>
         </label>
       </div>
-      <div class="settings-row" id="notif-time-row" style="display:none">
-        <span>Reminder time</span>
-        <input type="time" id="notif-time" value="08:00" onchange="onNotifTimeChange(this.value)">
-      </div>
-      <p class="settings-note" id="notif-note" style="display:none">Sends a background push notification each day at the set time.</p>
+      <p class="settings-note" id="notif-note" style="display:none">Daily reminder fires at 07:00 Toronto time. Toggle off to unsubscribe.</p>
     </div>
 
     <div class="settings-block">
@@ -514,6 +510,10 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
           📋 Export schedule to clipboard
         </button>
         <p class="settings-note">Copies the full card schedule to clipboard as JSON. Share with Arjen to sync devices.</p>
+        <button class="btn-reshuffle" onclick="syncSchedule()" style="margin-top:8px;background:rgba(100,180,100,0.8)">
+          🔄 Sync schedule from server
+        </button>
+        <p class="settings-note">Fetches the canonical schedule from the server and replaces your local schedule. Seen dates and streak are untouched.</p>
       </div>
     </div>
 
@@ -541,7 +541,7 @@ body.dev-mode .btn-devmode:hover { background:rgba(232,197,71,0.25); }
     </div>
 
     <div style="text-align:center;padding:16px 0 4px;font-size:11px;color:rgba(245,237,216,0.2);font-family:var(--sans);letter-spacing:0.06em">
-      v1.3 · Just For Jess · July 2026
+      v1.4 · Just For Jess · July 2026
     </div>
   </div>
 
@@ -794,11 +794,15 @@ function getSeen(){ try{ return JSON.parse(localStorage.getItem('jj_seen')||'[]'
 function saveSeen(a){ localStorage.setItem('jj_seen',JSON.stringify(a)); }
 function markSeen(key){ const s=getSeen(); if(!s.includes(key)){ s.push(key); saveSeen(s); } }
 
-function calcStreak(){
-  const seen=getSeen(), t=today0(), START=getStart(); let streak=0, cur=new Date(t);
+async function calcStreak(){
+  const serverSeen = await getServerSeen();
+  const localSeen = getSeen();
+  const allSeen = [...new Set([...(serverSeen||[]), ...localSeen])];
+  const t=today0(), START=getStart();
+  let streak=0, cur=new Date(t);
   while(cur>=START){
     const key=dk(cur);
-    if(seen.includes(key)){ streak++; cur.setDate(cur.getDate()-1); }
+    if(allSeen.includes(key)){ streak++; cur.setDate(cur.getDate()-1); }
     else if(dk(cur)===dk(t)){ cur.setDate(cur.getDate()-1); }
     else break;
   }
@@ -841,7 +845,7 @@ function renderToday(){
   const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
   document.getElementById('today-date').textContent=`${DAYS[t.getDay()]}, ${t.getDate()} ${MONTHS[t.getMonth()]} ${t.getFullYear()}`;
-  document.getElementById('streak-n').textContent=calcStreak();
+  calcStreak().then(n => document.getElementById('streak-n').textContent=n);
   const card=cardForDate(t);
   document.getElementById('card-wrap').innerHTML=card
     ? renderCard(card)
@@ -1274,6 +1278,43 @@ function exportSchedule(){
     .catch(()=>showToast('Copy failed — try a different browser'));
 }
 
+// ── SERVER SEEN SYNC ──
+async function serverMarkSeen(dateKey){
+  try {
+    await fetch(`${JESS_SUBSCRIBE_URL}/seen/add`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date: dateKey })
+    });
+  } catch {} // silent fail — offline is fine
+}
+
+async function getServerSeen(){
+  try {
+    const res = await fetch(`${JESS_SUBSCRIBE_URL}/seen`);
+    if(!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+async function syncSchedule(){
+  try {
+    showToast('Syncing…');
+    const res = await fetch(`${JESS_SUBSCRIBE_URL}/schedule?t=` + Date.now());
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const sched = await res.json();
+    // Validate
+    const isValid = typeof sched === 'object' && !Array.isArray(sched) &&
+      Object.keys(sched).length > 0 &&
+      Object.entries(sched).every(([k,v]) => /^\d{4}-\d{2}-\d{2}$/.test(k) && typeof v === 'number');
+    if(!isValid) throw new Error('Invalid schedule format');
+    localStorage.setItem('jj_sched', JSON.stringify(sched));
+    showToast('Synced with server ✦ — restart app to apply');
+  } catch(e) {
+    showToast('Sync failed: ' + e.message);
+  }
+}
+
 // ═══════════════════════════════════════════════
 // DEV MODE
 // ═══════════════════════════════════════════════
@@ -1345,11 +1386,16 @@ async function loadData(){
     const data=await res.json();
     ICONS=data.icons||{};
     CARDS=data.cards||[];
+    // Mark today as seen on every app open, regardless of screen
+    markSeen(dk(today0()));
     try { renderToday(); } catch(e){
       document.getElementById('card-wrap').innerHTML=
         `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Error: ${e.message}<br><small>${e.stack}</small></div>`;
       console.error(e);
     }
+    const todayKey = dk(today0());
+    markSeen(todayKey);
+    serverMarkSeen(todayKey);
   } catch(e){
     document.getElementById('card-wrap').innerHTML=
       `<div style="color:#e88;font-family:monospace;padding:20px;font-size:13px">Failed to load cards: ${e.message}</div>`;
@@ -1362,8 +1408,9 @@ loadData();
 
 <script>
   // ── PUSH NOTIFICATION CONFIG ──────────────────────────────
-  const PUSH_SERVER_URL = 'https://jess-push-server.onrender.com'; // TODO: replace after deploy
-  const PUSH_SECRET = 'Draco-Dormiens-Nunquam-Titillandus'; 
+  const PUSH_SECRET = 'Draco-Dormiens-Nunquam-Titillandus';
+  const JESS_SUBSCRIBE_URL = 'https://jess-subscribe.arjen-ravestein.workers.dev';
+  const JESS_VAPID_PUBLIC_KEY = 'BGUanEtI-qd2oNJzCUnQsaeZADjlJiLFHbneSWSR_HphfisZDwjQeuRkpX8WKBnZneP1-raQ4MfOJGLPUrY14h8';
 
   // ── SERVICE WORKER ────────────────────────────────────────
   if ('serviceWorker' in navigator) {
@@ -1386,19 +1433,14 @@ loadData();
     return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
   }
 
-  async function subscribePush(time) {
+  async function subscribePush() {
     try {
-      const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
-      if (!keyRes.ok) throw new Error('Could not reach notification server');
-      const { key } = await keyRes.json();
-
       const perm = Notification.permission === 'default'
         ? await Notification.requestPermission()
         : Notification.permission;
       if (perm !== 'granted') {
         showToast('Notifications blocked — check your settings');
         document.getElementById('notif-toggle').checked = false;
-        document.getElementById('notif-time-row').style.display = 'none';
         document.getElementById('notif-note').style.display = 'none';
         return;
       }
@@ -1406,26 +1448,23 @@ loadData();
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(key)
+        applicationServerKey: urlBase64ToUint8Array(JESS_VAPID_PUBLIC_KEY)
       });
 
-      const res = await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+      const res = await fetch(`${JESS_SUBSCRIBE_URL}/subscribe`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
-        body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sub)
       });
       if (!res.ok) throw new Error('Failed to save subscription on server');
 
       localStorage.setItem('jj_notif_enabled', 'true');
-      localStorage.setItem('jj_notif_time', time);
       localStorage.setItem('jj_notif_consented', 'true');
-      const [h, m] = time.split(':');
-      showToast(`Notifications set for ${h}:${m} ✦`);
+      showToast('Daily reminder turned on ✦');
     } catch (e) {
       console.error('subscribePush error:', e);
       showToast(`Could not set up notifications: ${e.message}`);
       document.getElementById('notif-toggle').checked = false;
-      document.getElementById('notif-time-row').style.display = 'none';
       document.getElementById('notif-note').style.display = 'none';
       localStorage.setItem('jj_notif_enabled', 'false');
     }
@@ -1433,15 +1472,18 @@ loadData();
 
   async function unsubscribePush() {
     try {
-      await fetch(`${PUSH_SERVER_URL}/unsubscribe`, {
-        method: 'POST',
-        headers: { 'x-push-secret': PUSH_SECRET }
-      });
-    } catch (e) { console.warn('unsubscribe server error:', e); }
-    try {
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.getSubscription();
-      if (sub) await sub.unsubscribe();
+      if (sub) {
+        try {
+          await fetch(`${JESS_SUBSCRIBE_URL}/unsubscribe`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ endpoint: sub.endpoint })
+          });
+        } catch (e) { console.warn('unsubscribe server error:', e); }
+        await sub.unsubscribe();
+      }
     } catch (e) { console.warn('local unsubscribe error:', e); }
     localStorage.setItem('jj_notif_enabled', 'false');
     showToast('Notifications turned off');
@@ -1456,32 +1498,19 @@ loadData();
         document.getElementById('notif-toggle').checked = false;
         return;
       }
-      const time = document.getElementById('notif-time').value || '08:00';
-      document.getElementById('notif-time-row').style.display = '';
       document.getElementById('notif-note').style.display = '';
-      await subscribePush(time);
+      await subscribePush();
     } else {
-      document.getElementById('notif-time-row').style.display = 'none';
       document.getElementById('notif-note').style.display = 'none';
       await unsubscribePush();
-    }
-  }
-
-  async function onNotifTimeChange(time) {
-    if (!time) return;
-    localStorage.setItem('jj_notif_time', time);
-    if (localStorage.getItem('jj_notif_enabled') === 'true') {
-      await subscribePush(time);
     }
   }
 
   async function onConsentAccept() {
     closeModal('modal-notif-consent');
     document.getElementById('notif-toggle').checked = true;
-    document.getElementById('notif-time-row').style.display = '';
     document.getElementById('notif-note').style.display = '';
-    const time = document.getElementById('notif-time').value || '08:00';
-    await subscribePush(time);
+    await subscribePush();
   }
 
   function onConsentDecline() {
@@ -1492,29 +1521,23 @@ loadData();
   // ── BOOT — restore notification state ────────────────────
   (function () {
     const enabled = localStorage.getItem('jj_notif_enabled') === 'true';
-    const time    = localStorage.getItem('jj_notif_time') || '08:00';
     const toggle  = document.getElementById('notif-toggle');
     if (toggle) {
       toggle.checked = enabled;
-      document.getElementById('notif-time').value = time;
       if (enabled) {
-        document.getElementById('notif-time-row').style.display = '';
         document.getElementById('notif-note').style.display = '';
       }
     }
-    // Silently re-register with server if enabled and subscription still exists
+    // Silently re-register with the worker if enabled and subscription still exists
     if (enabled && 'serviceWorker' in navigator) {
       navigator.serviceWorker.ready.then(async reg => {
         const sub = await reg.pushManager.getSubscription();
         if (!sub) return;
         try {
-          const keyRes = await fetch(`${PUSH_SERVER_URL}/vapid-public-key`);
-          const { key } = await keyRes.json();
-          // Re-subscribe if key matches; otherwise let it ride until user re-toggles
-          await fetch(`${PUSH_SERVER_URL}/subscribe`, {
+          await fetch(`${JESS_SUBSCRIBE_URL}/subscribe`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-push-secret': PUSH_SECRET },
-            body: JSON.stringify({ subscription: sub, time, enabled: true, timezone: Intl.DateTimeFormat().resolvedOptions().timeZone })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(sub)
           });
         } catch (e) { console.warn('Notification re-register failed:', e); }
       }).catch(() => {});
