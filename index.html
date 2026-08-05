@@ -721,24 +721,35 @@ function isWeekend(d){ const dw=d.getDay(); return dw===0||dw===6; }
 // ═══════════════════════════════════════════════
 // SCHEDULER
 // ═══════════════════════════════════════════════
-function shuffle(arr){ return [...arr].sort(()=>Math.random()-.5); }
+function fisherYates(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
 
 function buildSchedule(){
   const START=getStart(), sched={}, usedIds=new Set();
   const specialMap=buildSpecialMap();
 
+  // Pass 1 — special dates: one matching card per special-tagged slot.
+  // If a special tag has more cards than slots, the excess cards stay unused
+  // (they are not eligible for regular tag categories, so later passes can't pick them up).
   for(let i=0;i<366;i++){
     const d=new Date(START); d.setDate(d.getDate()+i);
     const md=mmdd(d), key=dk(d);
     if(sched[key]) continue;
     const keys=specialMap[md]||[];
     for(const spKey of keys){
-      const eligible=shuffle(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.includes(spKey)));
+      const eligible=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.includes(spKey)));
       if(eligible.length){ sched[key]=eligible[0].id; usedIds.add(eligible[0].id); break; }
     }
   }
 
-  const dowCards=shuffle(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.some(t=>DOW_TAGS.includes(t))));
+  // Pass 2 — day-of-week tagged cards.
+  const dowCards=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.some(t=>DOW_TAGS.includes(t))));
   for(let i=0;i<366;i++){
     const d=new Date(START); d.setDate(d.getDate()+i);
     const key=dk(d); if(sched[key]) continue;
@@ -747,7 +758,8 @@ function buildSchedule(){
     if(match){ sched[key]=match.id; usedIds.add(match.id); }
   }
 
-  const wkCards=shuffle(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.some(t=>WEEKTYPE_TAGS.includes(t))));
+  // Pass 3 — weekday/weekend tagged cards.
+  const wkCards=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&c.tags.some(t=>WEEKTYPE_TAGS.includes(t))));
   for(let i=0;i<366;i++){
     const d=new Date(START); d.setDate(d.getDate()+i);
     const key=dk(d); if(sched[key]) continue;
@@ -756,7 +768,8 @@ function buildSchedule(){
     if(match){ sched[key]=match.id; usedIds.add(match.id); }
   }
 
-  const anyCards=shuffle(CARDS.filter(c=>!usedIds.has(c.id)&&(!c.tags||!c.tags.length)));
+  // Pass 4 — untagged cards fill any remaining slots.
+  const anyCards=fisherYates(CARDS.filter(c=>!usedIds.has(c.id)&&(!c.tags||!c.tags.length)));
   let ai=0;
   for(let i=0;i<366;i++){
     const d=new Date(START); d.setDate(d.getDate()+i);
@@ -764,17 +777,9 @@ function buildSchedule(){
     if(ai<anyCards.length){ sched[key]=anyCards[ai].id; usedIds.add(anyCards[ai].id); ai++; }
   }
 
-  // Pass 5 — catch-all: any cards still unscheduled (e.g. tagged cards whose
-  // specific day never fell in the window, or small-library edge cases) get
-  // placed in the next available empty slot regardless of tag.
-  // This ensures every card appears exactly once when slots are available.
-  const leftover=shuffle(CARDS.filter(c=>!usedIds.has(c.id)));
-  let li=0;
-  for(let i=0;i<366&&li<leftover.length;i++){
-    const d=new Date(START); d.setDate(d.getDate()+i);
-    const key=dk(d); if(sched[key]) continue;
-    sched[key]=leftover[li].id; usedIds.add(leftover[li].id); li++;
-  }
+  // Pass 5 — any cards still unused (e.g. special-tagged cards with no matching
+  // slot) are intentionally left unassigned. No recycling into regular slots,
+  // and no more slots are filled once cards are exhausted.
 
   // Safety dedup — if the same card ID somehow appears on two dates, keep only
   // the first occurrence (belt-and-suspenders; the logic above should prevent this).
