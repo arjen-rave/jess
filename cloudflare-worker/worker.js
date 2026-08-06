@@ -132,6 +132,7 @@ async function updateSubscriptions(env, mutate) {
     const current = await getRes.json();
     const currentSubs = JSON.parse(atob(current.content));
     const nextSubs = mutate(currentSubs);
+    if (JSON.stringify(nextSubs) === JSON.stringify(currentSubs)) return;
 
     const putRes = await fetch(apiUrl, {
       method: "PUT",
@@ -177,6 +178,7 @@ async function updateFile(env, fileName, mutate) {
       currentData = JSON.parse(atob(current.content));
     }
     const nextData = mutate(currentData);
+    if (JSON.stringify(nextData) === JSON.stringify(currentData)) return;
     const putBody = {
       message: `Update ${fileName} [skip ci]`,
       content: btoa(JSON.stringify(nextData, null, 2)),
